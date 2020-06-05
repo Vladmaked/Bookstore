@@ -1,0 +1,27 @@
+
+.breadcrumb-row {
+  margin: 25px 0;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-direction: row;
+}
+
+.breadcrumb-link {
+  text-decoration: none;
+  color: #606060;
+}
+
+.breadcrumb-text {
+  color: #232F2B;
+  font-weight: 500;
+}
+
+.arrow-right {
+  background-image: url("../../../assets/img/icons/arrow_right.svg");
+  width: 10px;
+  height: 8px;
+  margin: 0 10px;
+  display: inline-block;
+}

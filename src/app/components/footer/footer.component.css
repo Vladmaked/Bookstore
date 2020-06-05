@@ -1,0 +1,78 @@
+.footer {
+  background-color: #232F2B;
+  height: 400px;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.025em;
+}
+
+.footer__row {
+  margin-top: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__info a {
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+.footer__info a:nth-child(2) {
+  padding: 10px 0;
+}
+
+.footer__contacts {
+  margin-top: 60px;
+}
+
+.footer__contacts p:nth-child(2) {
+  padding: 10px 0;
+}
+
+.footer__copyright {
+  margin-top: 30px;
+  color: #545454;
+}
+
+.subscribe {
+  margin-top: 154px;
+  display: flex;
+  flex-direction: column;
+}
+
+.subscribe__container {
+  width: 301px;
+}
+
+.subscribe__input input {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid white;
+  background-color: #232F2B;
+  margin-top: 14px;
+  width: 100%;
+  padding-bottom: 11px;
+  color: white;
+}
+
+.subscribe__input input:active, :hover, :focus {
+  outline: 0;
+  outline-offset: 0;
+}
+
+.subscribe-button {
+  position: absolute;
+  background: none;
+  padding-top: 10px;
+  margin-left: -28px;
+  border: none;
+  cursor: pointer;
+}
+
+

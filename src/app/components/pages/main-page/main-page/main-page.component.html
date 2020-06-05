@@ -1,0 +1,33 @@
+<app-main-slider></app-main-slider>
+
+<section class="goods-section">
+  <div class="container">
+    <div class="main-goods">
+      <div class="main-goods__tabs">
+        <button type="button" class="main-goods__tab tab-salesHits" (click)="showListOfGoods(listBestseller, '.tab-salesHits')">Хіти продажів</button>
+        <button class="main-goods__tab tab-recommendations" (click)="showListOfGoods(listRecommendations, '.tab-recommendations')">Рекомендуємо</button>
+        <button class="main-goods__tab tab-discountBooks" (click)="showListOfGoods(listDiscountBooks, '.tab-discountBooks')">Книги зі знижками</button>
+      </div>
+      <div class="main-goods__row">
+        <ul class="main-goods__grid sales-hits">
+          <li *ngFor="let good of goods;" class="main-goods__cell">
+            <a href="" class="main-goods__image">
+              <img src="" alt="">
+              {{good.img}}
+            </a>
+            <a href="" class="main-goods__title">
+              {{good.title}}
+            </a>
+            <a href="" class="main-goods__author">
+              {{good.author}}
+            </a>
+            <div class="main-goods__buy-row">
+              <p class="main-goods__price">{{good.price}} <span class="main-goods__currency">₴</span></p>
+              <button class="add-product-to-cart"><img src="../../../../../assets/img/icons/buy_icon.svg" alt=""></button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

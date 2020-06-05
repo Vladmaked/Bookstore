@@ -1,0 +1,51 @@
+<div class="container">
+  <header class="header">
+    <nav class="header__navigation navigation">
+      <div class="icon-navigation navigation__icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="navigation__menu menu">
+          <li class="navigation__item navigation__item_margin-category" routerLinkActive="active">
+            <a [routerLink]="['/catalog']" class="link navigation__link">всі категорії</a>
+              <ul class="menu__sub-menu sub-menu">
+                <li class="sub-menu__item" *ngFor="let item of allCategory" routerLinkActive="active">
+                  <a class="link link_padding" [routerLink]="['catalog', item.id ]">{{item.name}}</a><i *ngIf="item.subcategory" class="arrow-right"></i>
+                  <ul class="sub-menu__sub-sub-menu sub-sub-menu" *ngIf="item.subcategory">
+                    <li class="sub-sub-menu__item" *ngFor="let i of item.subcategory" routerLinkActive="active">
+                      <a class="link link_padding" href="#">{{i}}</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+          </li>
+          <li class="navigation__item navigation__item_margin-author">
+            <a [routerLink]="['catalog']" class="link navigation__link">всі автори</a>
+          </li>
+          <li class="navigation__item navigation__item_margin-logo"><a [routerLink]="['']" class="navigation__link link"><img src="../../../assets/img/logo/logo.png" alt="logo"></a></li>
+          <li class="navigation__item navigation__item_margin-info"><a [routerLink]="['information']" class="navigation__link link">доставка та оплата</a></li>
+          <li class="navigation__item"><a [routerLink]="['information']" class="navigation__link link">контакти</a></li>
+      </ul>
+    </nav>
+    <div class="header__action action">
+      <div class="action__phone phone">
+        <a class="phone__link link" href="tel:+380472360337"><i class="phone-icon"></i>+380 (472) 36-03-37</a>
+      </div>
+      <ul class="action__menu">
+        <li class="action__item">
+          <a [routerLink]="['account']" class="link"><i class="account-icon"></i></a>
+        </li>
+        <li class="action__item">
+          <a [routerLink]="['cart']" class="link"><i class="shopping-cart-icon"></i>
+          </a></li>
+      </ul>
+    </div>
+    <div class="header__search search">
+      <form class="search__form" action="#">
+          <input class="search__input" type="search" name="search-input" aria-label="Пошук товарів" autocomplete="off" placeholder="Введіть ключове слово, прізвище автора, ISBN, назву книги">
+          <button class="search__button">Знайти</button>
+      </form>
+    </div>
+  </header>
+</div>
