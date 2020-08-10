@@ -1,0 +1,165 @@
+.wrapper {
+  display: flex;
+}
+
+.page__form {
+  margin-top: 60px;
+  width: 50%;
+}
+
+.form__form-control {
+  margin-top: 15px;
+}
+
+.form__header {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
+
+.form__label {
+  padding: 5px 0;
+}
+
+.form-control__input {
+  padding: 10px 5px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  border-radius: 3px;
+  width: 300px;
+}
+
+.form__button {
+  width: 300px;
+  margin-top: 30px;
+  padding: 10px 25px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  border-radius: 3px;
+  font-weight: 500;
+  margin-bottom: 50px;
+}
+
+.form__button-remove {
+  width: fit-content;
+  padding: 10px 25px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.form__subcategory {
+  display: flex;
+}
+
+.form__select {
+  padding: 9px 5px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  margin-right: 10px;
+  width: 300px;
+}
+
+.list-categories__title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.list-categories__text {
+  padding: 5px;
+  list-style: square outside;
+}
+
+.dashboard__title {
+  margin-top: 40px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.dashboard__table {
+  margin-top: 20px;
+  width: 100%;
+  border-spacing: 0;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.table__th {
+  background: #4d4d4d;
+  color: white;
+  padding: 10px 20px;
+}
+
+.table__th, .table__td {
+  border-style: solid;
+  border-width: 0 1px 1px 0;
+  border-color: white;
+}
+
+.table__th:first-child, .table__th:nth-child(2), .table__td:first-child, .table__td:nth-child(2) {
+  text-align: left;
+}
+
+.table__th:first-child {
+  border-top-left-radius: 10px;
+}
+
+.table__th:last-child {
+  border-top-right-radius: 10px;
+  border-right: none;
+}
+
+.table__td {
+  padding: 10px 20px;
+  background: #efefef;
+  font-weight: 500;
+}
+
+.table__tr:last-child .table__td:first-child {
+  border-radius: 0 0 0 10px;
+}
+
+.table__tr:last-child .table__td:last-child {
+  border-radius: 0 0 10px 0;
+}
+
+.table__td:last-child {
+  border-right: none;
+}
+
+.table__tr:hover .table__td, .table__tr:hover {
+  background: #606060;
+  color: white;
+}
+
+.table__button {
+  font-weight: 600;
+}
+
+.table__button_edit {
+  color: darkgoldenrod;
+}
+
+.table__button_delete {
+  color: red;
+}
+
+.table__button-open-subcategory {
+  color: darkgoldenrod;
+  margin: 5px 10px;
+}
+
+.table__button-delete-subcategory {
+  color: red;
+  margin: 5px 10px 5px 0;
+}

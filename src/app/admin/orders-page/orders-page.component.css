@@ -1,0 +1,77 @@
+:host {
+  display: block;
+}
+
+.dashboard__title {
+  margin: 60px 20px 30px;
+  font-size: 18px;
+  font-weight: 500;
+  display: block;
+  width: fit-content;
+}
+
+.dashboard__table {
+  width: 100%;
+  border-spacing: 0;
+  text-align: center;
+}
+
+.table__th {
+  background: #4d4d4d;
+  color: white;
+  padding: 10px 20px;
+}
+
+.table__th, .table__td {
+  border-style: solid;
+  border-width: 0 1px 1px 0;
+  border-color: white;
+}
+
+.table__th:first-child {
+  border-top-left-radius: 10px;
+}
+
+.table__th:last-child {
+  border-top-right-radius: 10px;
+  border-right: none;
+}
+
+.table__td {
+  padding: 10px 20px;
+  background: #efefef;
+  line-height: 1.5;;
+}
+
+.table__tr:last-child .table__td:first-child {
+  border-radius: 0 0 0 10px;
+}
+
+.table__tr:last-child .table__td:last-child {
+  border-radius: 0 0 10px 0;
+}
+
+.table__td:last-child {
+  border-right: none;
+}
+
+.table__tr:hover .table__td, .table__tr:hover .table__button{
+  background: #4d4d4d;
+  color: white;
+}
+
+.table__button {
+  background-color: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.item__quantity {
+  font-weight: 500;
+}
+
+.item__payment {
+  font-weight: 500;
+}

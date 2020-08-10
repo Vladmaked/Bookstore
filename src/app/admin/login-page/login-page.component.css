@@ -1,0 +1,43 @@
+:host {
+  display: block;
+}
+
+.page__form {
+  margin: 150px auto;
+}
+
+.form {
+  max-width: 600px;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__header {
+  margin-bottom: 10px;
+}
+
+.form__label {
+  padding: 5px 0;
+}
+
+.form-control__input {
+  padding: 10px 5px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  border-radius: 3px
+}
+
+.form__button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px 25px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  border-radius: 3px;
+  font-weight: 500;
+}

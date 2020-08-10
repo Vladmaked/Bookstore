@@ -1,0 +1,25 @@
+.phone-icon {
+  position: relative;
+  top: 0.125em;
+  margin-right: 8px;
+  background-image: url("../../../../../assets/img/icons/phone.svg");
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.link:hover {
+  text-shadow: 0 0 .65px black, 0 0 .65px black;
+}
+
+.address-icon {
+  position: relative;
+  top: 0.125em;
+  margin-right: 8px;
+  background-image: url("../../../../../assets/img/icons/address-icon.svg");
+  height: 17px;
+  width: 12px;
+  display: inline-block;
+  flex-shrink: 0;
+}

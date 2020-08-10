@@ -1,0 +1,118 @@
+<div class="help-page__wrapper">
+    <div class="help-page__title-row">
+        <h1 class="help-page__title">Підтримка споживача</h1>
+        <hr class="help-page__header-line">
+    </div>
+    <div class="help-page__content content">
+        <h1 class="help-page__header">Питання щодо замовлення</h1>
+        <p class="help-page__content-text">
+            <small>* обов’язкові поля</small>
+        </p>
+
+        <form [formGroup]="formOrderQuestion" (ngSubmit)="sendQuestion()">
+
+            <div class="form__form-control form-control">
+                <label for="name" class="form-control__label">
+                    Ім'я *
+                </label>
+                <input type="text" name="name" id="name" formControlName="name" class="form-control__input">
+            </div>
+
+            <div class="form__form-control form-control">
+                <label for="email" class="form-control__label">
+                    Адреса електронної скриньки *
+                </label>
+                <input type="text" name="email" id="email" formControlName="email" class="form-control__input">
+            </div>
+
+            <div class="form__form-control form-control">
+                <label for="topic" class="form-control__label">
+                    Тема (Доставка / оплата / статус / уточнення / тощо...)*
+                </label>
+                <input type="text" name="topic" id="topic" formControlName="topic" class="form-control__input">
+            </div>
+
+            <div class="form__form-control form-control">
+                <label for="description" class="form-control__label">
+                    Опис * (Будь ласка, залиште своє звернення. Ми докладемо всіх зусиль для того, щоб надати відповідь якомога швидше.)
+                </label>
+                <textarea type="text" name="description" id="description" formControlName="description" class="form-control__textarea"></textarea>
+            </div>
+
+            <div class="form__form-control form-control">
+                <label for="orderNumber" class="form-control__label">
+                    Номер замовлення *
+                </label>
+                <input type="text" name="orderNumber" id="orderNumber" formControlName="orderNumber" class="form-control__input">
+            </div>
+
+            <div class="form__form-control form-control">
+                <label for="action" class="form-control__label">
+                    Що саме потрібно зробити? (Вкажіть, що саме необхідно зробити із замовленням, аби ми могли швидше і точніше надати відповідь.)
+                </label>
+                <input type="text" name="action" id="action" formControlName="action" class="form-control__input">
+            </div>
+
+            <div class="form__form-control form-control">
+                <label class="form-control__label" for="addFiles">
+                    Додати файли
+                </label>
+                <button class="btn btn_consumer-support-add" id="addFiles">Додати до 5 файлів</button>
+            </div>
+
+            <hr class="help-page__header-line">
+            <div class="content__btn">
+                <button class="btn btn_consumer-support">Надіслати</button>
+            </div>
+
+        </form>
+
+        <hr class="help-page__header-line">
+        <h1 class="help-page__header">отримати консультацію</h1>
+
+        <form [formGroup]="formGetAdvice" (ngSubmit)="getAdvice()">
+
+            <div class="form__form-control form-control">
+                <label for="formGetAdvice-name" class="form-control__label">
+                    Ім'я *
+                </label>
+                <input type="text" name="name" id="formGetAdvice-name" formControlName="name" class="form-control__input">
+            </div>
+
+            <div class="form__form-control form-control">
+                <label for="formGetAdvice-email" class="form-control__label">
+                    Адреса електронної скриньки *
+                </label>
+                <input type="text" name="email" id="formGetAdvice-email" formControlName="email" class="form-control__input">
+            </div>
+
+            <div class="form__form-control form-control">
+                <label for="formGetAdvice-topic" class="form-control__label">
+                    Тема (Доставка / оплата / статус / уточнення / тощо...)*
+                </label>
+                <input type="text" name="topic" id="formGetAdvice-topic" formControlName="topic" class="form-control__input">
+            </div>
+
+            <div class="form__form-control form-control">
+                <label for="formGetAdvice-description" class="form-control__label">
+                    Опис * (Будь ласка, залиште своє звернення. Ми докладемо всіх зусиль для того, щоб надати відповідь якомога швидше.)
+                </label>
+                <textarea type="text" name="description" id="formGetAdvice-description" formControlName="description" class="form-control__textarea"></textarea>
+            </div>
+
+            <div class="form__form-control form-control">
+                <label class="form-control__label" for="formGetAdvice-addFiles">
+                    Додати файли
+                </label>
+                <button class="btn btn_consumer-support-add" id="formGetAdvice-addFiles">Додати до 5 файлів</button>
+            </div>
+
+            <hr class="help-page__header-line">
+            <div class="content__btn">
+                <button class="btn btn_consumer-support">Надіслати</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>

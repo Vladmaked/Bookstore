@@ -1,0 +1,12 @@
+<div class="subcategories" *ngIf="subcategory; else loading">
+    <a [routerLink]="['/catalog', subcategory.categoryId, subcategory.id]" class="subcategories__image">
+        Місце для фото
+    </a>
+    <a [routerLink]="['/catalog', subcategory.categoryId, subcategory.id]" class="main-subcategories__name">
+        {{subcategory.name}}
+    </a>
+</div>
+
+<ng-template #loading>
+    <p>Завантаження...</p>
+</ng-template>

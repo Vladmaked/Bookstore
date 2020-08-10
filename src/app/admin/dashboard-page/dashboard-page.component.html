@@ -1,1 +1,49 @@
-<p>dashboard-page works!</p>
+<h2 class="dashboard__title">Панель керування товарами</h2>
+<div>
+    <input [(ngModel)]="productName"
+           type="text"
+           aria-label="Пошук товарів"
+           placeholder="Пошук товару..."
+           class="dashboard__search"
+           (focusout)="clearInput()">
+</div>
+<ng-container *ngIf="products; else empty">
+    <ng-container *ngIf="products.length; else loading">
+        <table class="dashboard__table table">
+            <thead>
+            <tr class="table__tr">
+                <th class="table__th">ID</th>
+                <th class="table__th">Назва</th>
+                <th class="table__th">Ціна</th>
+                <th class="table__th">Дата створення</th>
+                <th class="table__th">Відкрити (редагувати)</th>
+                <th class="table__th">Видалити</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="table__tr" *ngFor="let product of products | search : productName; let inx = index">
+                <td class="table__td">{{ inx + 1 }}</td>
+                <td class="table__td">{{ product.title }}</td>
+                <td class="table__td">{{ product.price | currency:'UAH':'symbol-narrow':'1.0-2':''}}</td>
+                <td class="table__td">{{ product.date | date: 'dd.MM.yyyy HH:mm:ss'}}</td>
+                <td class="table__td">
+                    <button class="table__button" [routerLink]="['/admin', 'product', product.id, 'edit']">Відкрити
+                                                                                                           (редагувати)
+                    </button>
+                </td>
+                <td class="table__td">
+                    <button class="table__button" (click)="removeProduct(product.id)">Видалити</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </ng-container>
+</ng-container>
+<ng-template #empty>
+    <p class="dashboard__text-empty">Поки що немає жодного товару</p>
+</ng-template>
+
+<ng-template #loading>
+    <p>Завантаження....</p>
+</ng-template>

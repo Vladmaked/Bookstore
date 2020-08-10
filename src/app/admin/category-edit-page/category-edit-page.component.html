@@ -1,0 +1,31 @@
+<div class="category-edit">
+    <ng-container *ngIf="formCategory; else loading">
+        <form [formGroup]="formCategory" class="category-edit__form" (ngSubmit)="editCategory()">
+            <label for="categoryName">
+                Категорія:
+            </label>
+
+            <input class="category-edit__input" type="text" id="categoryName" [value]="" autocomplete="off" formControlName="categoryName">
+
+            <ng-container *ngIf="formCategory.get('categoryName').touched && formCategory.get('categoryName').invalid">
+                <small class="validation" *ngIf="formCategory.get('categoryName').errors.required">
+                    Введіть назву категорії
+                </small>
+            </ng-container>
+
+            <button class="form__button-update btn"
+                    [ngClass]="{tooltip: formCategory.invalid}"
+                    data-title="Заповніть всі поля"
+                    type="submit"
+                    [disabled]="formCategory.invalid || submittedCategory">Оновити категорію
+            </button>
+
+            <button class="form__button-back btn" [routerLink]="['/admin', 'category-dashboard']">Повернутися до всих категорій</button>
+
+        </form>
+    </ng-container>
+
+    <ng-template #loading>
+        <p>Завантаження...</p>
+    </ng-template>
+</div>

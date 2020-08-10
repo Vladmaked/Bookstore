@@ -1,0 +1,126 @@
+<div class="wrapper">
+    <form class="page__form form" [formGroup]="formCategory" (ngSubmit)="addCategory()">
+        <h2 class="form__header">Додати категорію</h2>
+
+        <div class="form__form-control form-control">
+            <label class="form__label" for="name">
+                Категорія:
+            </label>
+
+            <input class="form-control__input" id="name" type="text" formControlName="name" autocomplete="off">
+
+            <ng-container *ngIf="formCategory.get('name').touched && formCategory.get('name').invalid">
+                <small class="validation" *ngIf="formCategory.get('name').errors.required">
+                    Введіть назву категорії
+                </small>
+            </ng-container>
+        </div>
+
+        <button class="form__button"
+                [ngClass]="{tooltip: formCategory.invalid}"
+                data-title="Заповніть всі поля"
+                type="submit"
+                [disabled]="formCategory.invalid || submittedCategory">Додати категорію
+        </button>
+    </form>
+
+    <form class="page__form form" [formGroup]="formSubcategory" (ngSubmit)="addSubcategory()">
+        <h2 class="form__header">
+            Додати підкатегорію
+        </h2>
+
+        <div class="form__subcategory">
+            <div class="form__form-control form-control form-control_category">
+                <label class="form__label" for="category">
+                    Категорія:
+                </label>
+                <select class="form__select" formControlName="category" id="category" (click)="getIdSelectedCategory()">
+                    <ng-container *ngIf="arrCategories">
+                        <option class="form__option" *ngFor="let category of arrCategories" [ngValue]="category">
+                            {{category.name}}
+                        </option>
+                    </ng-container>
+                </select>
+
+                <ng-container *ngIf="formSubcategory.get('category').touched && formSubcategory.get('category').invalid">
+                    <small class="validation" *ngIf="formSubcategory.get('category').errors.required">
+                        Оберіть категорію товару
+                    </small>
+                </ng-container>
+            </div>
+
+            <div class="form__form-control form-control">
+                <label class="form__label" for="subcategory">
+                    Підкатегорія:
+                </label>
+
+                <input class="form-control__input" id="subcategory" type="text" formControlName="subcategory" autocomplete="off">
+
+                <ng-container *ngIf="formSubcategory.get('subcategory').touched && formSubcategory.get('subcategory').invalid">
+                    <small class="validation" *ngIf="formSubcategory.get('subcategory').errors.required">
+                        Введіть назву підкатегорії
+                    </small>
+                </ng-container>
+            </div>
+
+        </div>
+
+        <button class="form__button"
+                [ngClass]="{tooltip: formSubcategory.invalid}"
+                data-title="Заповніть всі поля"
+                type="submit"
+                [disabled]="formSubcategory.invalid || submittedSubcategory">Додати підкатегорію
+        </button>
+    </form>
+</div>
+
+<ng-container *ngIf="arrCategories; else loading">
+    <h2 class="dashboard__title">
+        Панель керування категоріями
+    </h2>
+    <table class="dashboard__table table">
+        <thead>
+        <tr class="table__tr">
+            <th class="table__th">ID</th>
+            <th class="table__th">Назва</th>
+            <th class="table__th">Перегляд/редагування</th>
+            <th class="table__th">Видалення</th>
+            <th class="table__th">Підкатегорії (Перегляд/редагування)</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr class="table__tr" *ngFor="let category of arrCategories let inx = index">
+            <td class="table__td">{{ inx + 1 }}</td>
+            <td class="table__td">{{ category.name }}</td>
+            <td class="table__td">
+                <button class="table__button table__button_edit" [routerLink]="['/admin', 'category', category.id, 'edit']">
+                    Подивитися (Редагувати)
+                </button>
+            </td>
+            <td class="table__td">
+                <button class="table__button table__button_delete" (click)="deleteCategory(category.id)">
+                    Видалити
+                </button>
+            </td>
+            <td class="table__td">
+                <div *ngFor="let subcategory of arrSubcategories">
+                    <ng-container class="table__subcategory-text" *ngIf="category.id === subcategory.categoryId">
+                        {{subcategory.name}}
+                        <button class="table__button table__button-open-subcategory" [routerLink]="['/admin', 'subcategory', subcategory.id, 'edit']">
+                            Подивитися (Редагувати) /
+                        </button>
+                        <button class="table__button table__button-delete-subcategory" (click)="deleteSubcategory(subcategory.id)">
+                            Видалити
+                        </button>
+                    </ng-container>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</ng-container>
+
+<ng-template #loading>
+    <p>Завантаження....</p>
+</ng-template>

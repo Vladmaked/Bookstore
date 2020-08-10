@@ -1,0 +1,33 @@
+<div class="container">
+    <app-breadcrumb></app-breadcrumb>
+
+    <div class="main-categories__navigation navigation">
+        <div class="navigation__row">
+            <a class="link navigation__link">
+                Популярні категорії
+            </a>
+            <a class="link navigation__link">
+                Рекомендовані категорії
+            </a>
+            <a class="link navigation__link">
+                Бестселлери
+            </a>
+        </div>
+    </div>
+
+    <div class="main-categories__row">
+        <div class="main-categories__grid" *ngIf="arrCategories; else loading">
+            <app-category class="main-categories__cell"
+                          *ngFor="let category of arrCategories"
+                          [category]="category">
+            </app-category>
+        </div>
+    </div>
+
+
+    <ng-template #loading>
+        <p>
+            Завантаження...
+        </p>
+    </ng-template>
+</div>

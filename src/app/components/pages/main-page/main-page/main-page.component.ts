@@ -1,13 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
+import {routingAnimation} from '../../../../shared/animations/routing-animation';
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.css']
+  styleUrls: ['./main-page.component.css'],
+  animations: [routingAnimation]
 })
 export class MainPageComponent implements OnInit {
+  @HostBinding('@routingAnimation') private routing;
 
-  constructor() { }
+  constructor() {
+  }
 
   goods;
 

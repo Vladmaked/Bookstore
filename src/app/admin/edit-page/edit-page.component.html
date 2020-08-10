@@ -1,1 +1,131 @@
-<p>edit-page works!</p>
+<ng-container *ngIf="form; else loading">
+    <form class="page__form form" [formGroup]="form" (ngSubmit)="updateProduct()">
+
+        <h2 class="form__header">Оновити товар</h2>
+
+        <div class="form__category-row">
+
+            <div class="form__form-control form-control form-control_category">
+                <label class="form__label" for="category">
+                    Категорія:
+                </label>
+                <select class="form__select" formControlName="category" id="category" (click)="checkSubcategoryByCategoryId()">
+                    <ng-container *ngIf="arrCategories$ | async as arrCategories">
+                        <option class="form__option" *ngFor="let category of arrCategories" [value]="category.id">
+                            {{category.name}}
+                        </option>
+                    </ng-container>
+                </select>
+
+                <ng-container *ngIf="form.get('category').touched && form.get('category').invalid">
+                    <small class="validation" *ngIf="form.get('category').errors.required">
+                        Оберіть категорію товару
+                    </small>
+                </ng-container>
+            </div>
+
+
+            <div class="form__form-control form-control" *ngIf="iSubcategory">
+                <label class="form__label" for="subcategory">
+                    Підкатегорія:
+                </label>
+
+                <select class="form__select" formControlName="subcategory" id="subcategory">
+                    <ng-container *ngFor="let subcategory of arrSubcategories">
+                        <ng-container *ngIf="subcategory.categoryId === form.get('category').value">
+                            <option class="form__option" [value]="subcategory.id">
+                                {{subcategory.name}}
+                            </option>
+                        </ng-container>
+                    </ng-container>
+                </select>
+
+                <ng-container *ngIf="form.get('subcategory').touched && form.get('subcategory').invalid">
+                    <small class="validation" *ngIf="form.get('subcategory').errors.required">
+                        Оберіть підкатегорію товару
+                    </small>
+                </ng-container>
+            </div>
+
+        </div>
+
+        <div class="form__form-control form-control">
+            <label class="form__label" for="title">
+                Назва:
+            </label>
+
+            <input class="form-control__input" id="title" type="text" formControlName="title">
+
+            <ng-container *ngIf="form.get('title').touched && form.get('title').invalid">
+                <small class="validation" *ngIf="form.get('title').errors.required">
+                    Введіть назву товару
+                </small>
+            </ng-container>
+        </div>
+
+        <div class="form__form-control form-control">
+            <label class="form__label" for="author">
+                Автор:
+            </label>
+
+            <input class="form-control__input" id="author" type="text" formControlName="author">
+
+            <ng-container *ngIf="form.get('author').touched && form.get('author').invalid">
+                <small class="validation" *ngIf="form.get('author').errors.required">
+                    Введіть ім'я автора
+                </small>
+            </ng-container>
+        </div>
+
+        <div class="form__form-control form-control">
+            <label class="form__label">
+                Фото:
+            </label>
+
+            <quill-editor formControlName="photo"></quill-editor>
+
+            <ng-container *ngIf="form.get('photo').touched && form.get('photo').invalid">
+                <small class="validation" *ngIf="form.get('photo').errors.required">
+                    Додайте фото товару
+                </small>
+            </ng-container>
+        </div>
+
+        <div class="form__form-control form-control">
+            <label class="form__label">
+                Опис:
+            </label>
+
+            <quill-editor formControlName="info"></quill-editor>
+
+            <ng-container *ngIf="form.get('info').touched && form.get('info').invalid">
+                <small class="validation" *ngIf="form.get('info').errors.required">
+                    Введіть опис товару
+                </small>
+            </ng-container>
+        </div>
+
+        <div class="form__form-control form-control form-control_price">
+            <label class="form__label" for="price">
+                Ціна:
+            </label>
+
+            <input class="form-control__input" id="price" type="number" formControlName="price">
+
+            <ng-container *ngIf="form.get('price').touched && form.get('price').invalid">
+                <small class="validation" *ngIf="form.get('price').errors.required">
+                    Введіть ціну товару
+                </small>
+            </ng-container>
+        </div>
+
+        <button id="228" class="form__button"
+                type="submit"
+                [disabled]="form.invalid || submitted">Оновити
+        </button>
+
+    </form>
+</ng-container>
+<ng-template #loading>
+    <p>Загрузка....</p>
+</ng-template>

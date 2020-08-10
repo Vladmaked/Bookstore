@@ -1,36 +1,73 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ProductService} from '../../shared/services/product.service';
+import {Router} from '@angular/router';
+import {CategoryService} from '../../shared/services/category.service';
+import {Category, Subcategory} from '../../shared/interfaces';
+import {map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {log} from 'util';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
-  allCategory = [];
+  category;
+  arrCategories: Array<Category> = [];
+  arrSubcategories: Array<Subcategory> = [];
+  cSub;
+  sSub;
+  subcategory;
+  productName;
+  input;
 
-  constructor() {
+  constructor(
+    public productService: ProductService,
+    public router: Router,
+    private categoryService: CategoryService
+  ) {
   }
 
   ngOnInit() {
-    this.allCategory = [
-      { id: 1, name: 'Дитяча література', subcategory: ['Блокноти', 'Дошкільна', 'Енциклопедії', 'Ігри', 'Підліткова', 'Розмальовки, наклейки, наліпки'] },
-      { id: 2, name: 'Календарі' },
-      { name: 'Картографічна продукція',  subcategory: ['Енциклопедії країн світу', 'Карти', 'Карти доріг та споруд'] },
-      { name: 'Мініатюра' },
-      { name: 'Мистецтво', subcategory: ['Досуг', 'Малювання'] },
-      { name: 'Музична література', subcategory: ['Збірники пісень', 'Нотна продукція'] },
-      { name: 'ПДР'},
-      { name: 'Право', subcategory: ['Закони', 'Кодекси', 'Коментарі', 'Посібники'] },
-      { name: 'Психологія', subcategory: ['Класики психології', 'Мотивація', 'Психоаналіз', 'Психологія',
-          'Психологія світу', 'Психотерапія', 'Релігії світу', 'Самореалізація', 'Світові бестселери'] },
-      { name: 'Художня література', subcategory: ['Детективи', 'Класика', 'Різне', 'Сучасна література', 'Українська література', 'Фантастика'] },
-      { name: 'Дозвілля', subcategory: ['Бойові мистецтва', 'Кулінарія', 'Культура', 'Рибалка', 'Садівництво', 'Спорт'] },
-      { name: 'Історія', subcategory: ['Історія світу', 'Історія України'] },
-      { name: 'Книги українських письменників'},
-      { name: 'Медицина'},
-      { name: 'Навчально-методична література', subcategory: ['Дитяча навчальна', 'Ділове мовлення', 'Довідник (тести)', 'ЗНО', 'Методички', 'Правописи', 'Словники', 'Учбова'] },
-      { name: 'Публіцистика', subcategory: ['Біографії', 'Географія, історія'] }
-    ];
+    this.getAllSubcategories();
+    setTimeout(() => {
+      this.getAllCategories();
+    }, 100);
   }
+
+  getAllCategories() {
+    this.cSub = this.categoryService.getAllCategories()
+      .subscribe(categories => {
+        this.arrCategories = categories;
+      });
+  }
+
+  getAllSubcategories() {
+    this.sSub = this.categoryService.getAllSubcategories().subscribe(subcategories => {
+      this.arrSubcategories = subcategories;
+    });
+  }
+
+  search() {
+    this.productService.productName = this.productName;
+    this.router.navigate(['/catalog']);
+  }
+
+  clearInput() {
+    this.input = document.getElementsByClassName('search__input')[0];
+    this.input.value = '';
+    this.productName = '';
+  }
+
+  ngOnDestroy(): void {
+    if (this.cSub) {
+      this.cSub.unsubscribe();
+    }
+    if (this.sSub) {
+      this.sSub.unsubscribe();
+    }
+  }
+
 }

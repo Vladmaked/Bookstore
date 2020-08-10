@@ -1,0 +1,138 @@
+:host {
+  display: block;
+}
+
+.container {
+  min-height: 100vh;
+}
+
+.product {
+  display: flex;
+  padding-bottom: 100px;
+}
+
+.product__photo {
+  flex: 1;
+}
+
+.product__info {
+  flex: 2;
+  margin-left: 60px;
+}
+
+.product__title-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product__title {
+  font-weight: 500;
+  font-size: 36px;
+}
+
+.product__author {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #606060;
+}
+
+.product__purchase-line {
+  display: flex;
+  align-items: center;
+  margin-top: 48px;
+}
+
+.product__price {
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #f8f8f8;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  padding: 1rem 2rem;
+}
+
+.btn:hover {
+  background-color: #FFFFFF;
+  text-shadow: 0 0 .65px black, 0 0 .65px black;
+}
+
+.product__btn-add-to-cart {
+  margin-left: 40px;
+}
+
+.product__btn-add-to-cart {
+  background: url("../../../../assets/img/icons/shopping-cart_icon.png") no-repeat scroll 0 0 transparent;
+  height: 36px;
+  width: 43px;
+}
+
+.product__info-title {
+  margin-top: 50px;
+}
+
+.product__detail-info {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.product__specifications-title {
+  margin-top: 40px;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.product__specifications-table {
+  margin-top: 30px;
+}
+
+.product__specifications-table {
+  width: 100%;
+}
+
+.table__row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.table__header, .table__div {
+  padding: 10px 5px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.table__row:nth-child(2n + 1) {
+  background-color: #f2f2f2;
+  border-radius: 3px;
+}
+
+.table__row:hover {
+  text-shadow: 0 0 .65px black, 0 0 .65px black;
+}
+
+
+.product__info-text {
+  margin-top: 25px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  line-height: 1.42;
+
+}
+
+.detail {
+  -webkit-line-clamp: unset;
+}
+
+.btn-detail {
+  text-align: right;
+  margin-top: 10px;
+}

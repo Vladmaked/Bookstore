@@ -1,8 +1,25 @@
+@import "~quill/dist/quill.snow.css";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
 /* Указываем box sizing */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+/* Убираем линии обводки */
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: 0;
+}
+
+nav, footer, header, aside {
+  display: block;
 }
 
 /* Убираем внутренние отступы */
@@ -11,22 +28,10 @@ ol[class] {
   padding: 0;
 }
 
-/* Убираем внешние отступы */
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-ul[class],
-ol[class],
-li,
-figure,
-figcaption,
-blockquote,
-dl,
-dd {
+* {
   margin: 0;
+  padding: 0;
+  border: 0;
 }
 
 /* Выставляем основные настройки по-умолчанию для body */
@@ -34,9 +39,16 @@ body {
   min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
-  line-height: 1.5;
+  line-height: 1;
   font-family: 'Montserrat', sans-serif;
   letter-spacing: 0.045em;
+  font-size: 14px;
+  background: #F8F8F8;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
   font-size: 14px;
 }
 
@@ -53,7 +65,6 @@ a:not([class]) {
 
 /* Упрощаем работу с изображениями */
 img {
-  max-width: 100%;
   display: block;
 }
 
@@ -80,6 +91,45 @@ select {
   }
 }
 
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+  background-color: inherit;
+}
+
+.btn {
+  padding: 10px 25px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  border-radius: 3px;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+
 .active {
   text-shadow: 0 0 .65px black, 0 0 .65px black;
 }
@@ -87,9 +137,103 @@ select {
 .container {
   width: 100%;
   max-width: 1440px;
+  min-height: calc(100vh - 263px - 400px);
   padding: 0 15px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
+
+.link {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  transition: all .3s;
+  cursor: pointer;
+}
+
+.validation {
+  color: red;
+}
+
+
+.tooltip {
+  display: inline;
+  position: relative;
+}
+
+.tooltip:hover:after {
+  content: attr(data-title);
+  z-index: 999;
+  position: absolute;
+  min-width: 3em;
+  max-width: 21em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  bottom: 120%;
+  left: calc(50% - 100px);
+  padding: 1ch 1.5ch;
+  border-radius: .3ch;
+  background: #4d4d4d;
+  opacity: .8;
+  color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1em 2em -.5em rgba(0, 0, 0, 0.35);
+  animation: tooltips-vert 300ms ease-out forwards;
+}
+
+@keyframes tooltips-vert {
+  to {
+    opacity: .9;
+    transform: translate(0, 10%);
+  }
+}
+
+/* =====Начало===== Стиль для раздела help ========= */
+.help-page__wrapper {
+}
+
+.help-page__title-row {
+  position: relative;
+  right: 360px;
+  width: calc(100% + 360px);
+  margin-bottom: 30px;
+}
+
+.help-page__title {
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.help-page__header {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.help-page__content {
+  width: 100%;
+}
+
+.help-page__header-line {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.25);
+  margin-bottom: 30px;
+}
+
+.help-page__content-text {
+  margin-bottom: 20px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.help-page__strong {
+  font-weight: 600;
+}
+
+/* =====Конец===== Стиль для раздела help ========= */

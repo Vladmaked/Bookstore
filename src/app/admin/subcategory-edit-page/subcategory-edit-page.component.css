@@ -1,0 +1,33 @@
+.subcategory-edit {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+}
+
+.subcategory-edit__input {
+  margin-top: 10px;
+  padding: 10px 5px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  border-radius: 3px;
+  width: 300px;
+}
+
+.subcategory-edit__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__button-update {
+  width: 300px;
+  margin-top: 30px;
+  font-weight: 500;
+}
+
+.form__button-back {
+  width: 300px;
+  margin-top: 10px;
+  font-weight: 500;
+}

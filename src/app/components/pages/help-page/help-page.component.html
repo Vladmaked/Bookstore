@@ -1,0 +1,45 @@
+<div class="container">
+    <app-breadcrumb></app-breadcrumb>
+    <div class="help__wrapper">
+
+        <div class="help__navigation">
+            <nav class="navigation">
+                <a class="link link_navigation" [routerLink]="['/help', 'how-to-place-an-order']" routerLinkActive="active">
+                    Як оформити замовлення
+                </a>
+                <a class="link link_navigation" [routerLink]="['/help', 'delivery-and-payment']" routerLinkActive="active">
+                    Доставка та оплата
+                </a>
+                <a class="link link_navigation" [routerLink]="['/help', 'return-replacement']" routerLinkActive="active">
+                    Повернення / заміна
+                </a>
+                <a class="link link_navigation" [routerLink]="['/help', 'faq']" routerLinkActive="active">
+                    Питання-відповіді
+                </a>
+                <a class="link link_navigation" [routerLink]="['/help', 'prices-in-the-store']" routerLinkActive="active">
+                    Ціни в магазині
+                </a>
+                <a class="link link_navigation" [routerLink]="['/help', 'terms-and-conditions']" routerLinkActive="active">
+                    Умови та положення
+                </a>
+                <a class="link link_navigation" [routerLink]="['/help', 'consumer-support']" routerLinkActive="active">
+                    Підтримка споживача
+                </a>
+                <a class="link link_navigation" [routerLink]="['/help', 'claims']" routerLinkActive="active">
+                    Претензії
+                </a>
+                <a class="link link_navigation" [routerLink]="['/help', 'privacy-policy']" routerLinkActive="active">
+                    Політика конфіденційності
+                </a>
+                <a class="link link_navigation" [routerLink]="['/help', 'contacts']" routerLinkActive="active">
+                    Контакти
+                </a>
+            </nav>
+        </div>
+
+        <div class="router-outlet">
+            <router-outlet></router-outlet>
+        </div>
+
+    </div>
+</div>

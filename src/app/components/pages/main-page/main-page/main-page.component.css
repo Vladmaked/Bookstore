@@ -1,3 +1,7 @@
+:host {
+  display: block;
+}
+
 .goods-section {
   margin-top: 60px;
 }
@@ -41,7 +45,6 @@
 .main-goods__cell {
   width: 282px;
   background: #F8F8F8;
-  /*border: 1px solid #CBDAD3;*/
   border-top: 1px solid #CBDAD3;
   border-bottom: 1px solid #CBDAD3;
   border-right: 1px solid #CBDAD3;
@@ -77,7 +80,7 @@
   color: #000000;
 }
 
-.main-goods__author  {
+.main-goods__author {
   font-size: 14px;
   text-decoration: none;
   text-align: center;

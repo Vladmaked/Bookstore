@@ -1,0 +1,25 @@
+.page__navigation {
+  margin-top: 20px;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu {
+  display: flex;
+}
+
+.menu__item {
+  margin-left: 20px;
+}
+
+.link_header {
+  font-size: 36px;
+  font-family: 'Roboto Slab', sans-serif;
+}
+
+.link:hover {
+  text-shadow: 0 0 .65px black, 0 0 .65px black;
+}

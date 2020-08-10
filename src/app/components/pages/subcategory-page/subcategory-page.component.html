@@ -1,0 +1,23 @@
+<div class="container">
+    <app-breadcrumb></app-breadcrumb>
+    <div style="margin: 10px 0; padding: 20px; border: 1px solid lightblue">
+        <p>Місце для фільтрів</p>
+    </div>
+    <div class="main-goods">
+        <div class="main-goods__row">
+            <div class="main-goods__grid" *ngIf="products$ | async as products; else loading">
+                <ng-container *ngIf="products.length > 0; else empty">
+                    <app-product *ngFor="let product of products" [product]="product"
+                                 class="main-goods__cell">
+                    </app-product>
+                </ng-container>
+                <ng-template #empty>
+                    <p>В даній підкатегорії поки що немає книг.</p>
+                </ng-template>
+            </div>
+            <ng-template #loading>
+                <p>Завантаження...</p>
+            </ng-template>
+        </div>
+    </div>
+</div>

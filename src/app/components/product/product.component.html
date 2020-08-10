@@ -1,0 +1,20 @@
+<div class="goods" *ngIf="product">
+    <a [routerLink]="['/product', product.id]" class="catalog-goods__image">
+        <quill-view-html class="catalog-goods__image" [content]="product.photo"></quill-view-html>
+    </a>
+    <a [routerLink]="['/product', product.id]" class="main-goods__title" title="{{product.title}}">
+        {{product.title}}
+    </a>
+    <a href="" class="main-goods__author" title="{{product.author}}">
+        {{product.author}}
+    </a>
+    <div class="main-goods__buy-row">
+        <p class="main-goods__price">
+            {{product.price | currency:'UAH':'symbol-narrow':'1.0-2'}}
+<!--            <span class="main-goods__currency">₴</span>-->
+        </p>
+        <button class="add-product-to-cart" [routerLink]="['/cart']" title="Додати до кошика"
+                (click)="addProduct(product)"><img src="../../../assets/img/icons/buy_icon.svg" alt="">
+        </button>
+    </div>
+</div>

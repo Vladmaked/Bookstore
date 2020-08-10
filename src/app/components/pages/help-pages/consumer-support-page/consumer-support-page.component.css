@@ -1,0 +1,46 @@
+.btn_consumer-support {
+  margin-bottom: 30px;
+  background-color: white;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.content__btn {
+  text-align: right;
+}
+
+.form-control__input {
+  padding: 10px 5px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.form-control__textarea {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-control__label {
+  padding: 10px 0;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.btn_consumer-support-add {
+  margin-bottom: 20px;
+  background-color: inherit;
+  border: 1px dashed rgba(0, 0, 0, 0.25);
+  padding: 15px 45px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.75);
+  width: fit-content;
+}

@@ -1,12 +1,14 @@
-<div class="container">
-  <nav aria-label='breadcrumb' class="breadcrumb-row">
-    <ul class='breadcrumb'>
-      <li>
-        <a class="breadcrumb-link" href="">Книжковий інтернет-магазин</a><i class="arrow-right"></i>
-      </li>
-      <li>
-        <p class="breadcrumb-text">{{breadcrumb}}</p>
-      </li>
+<nav aria-label="breadcrumb" class="breadcrumb-row">
+    <ul class="breadcrumb">
+        <li class="breadcrumb__item">
+            <a class="breadcrumb__link" [routerLink]="'/'">
+                Книжковий інтернет-магазин
+            </a>
+        </li>
+        <li class="breadcrumb__item" *ngFor="let breadcrumb of breadcrumbs">
+            <a class="breadcrumb__link" [routerLink]="breadcrumb.url" routerLinkActive="router-link-active">
+                {{ breadcrumb.label }}
+            </a>
+        </li>
     </ul>
-  </nav>
-</div>
+</nav>

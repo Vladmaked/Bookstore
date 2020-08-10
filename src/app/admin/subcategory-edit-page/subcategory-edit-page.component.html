@@ -1,0 +1,32 @@
+<div class="subcategory-edit">
+    <ng-container *ngIf="formSubcategory; else loading">
+        <form [formGroup]="formSubcategory" class="subcategory-edit__form" (ngSubmit)="editSubcategory()">
+            <label for="subcategoryName">
+                Підкатегорія:
+            </label>
+
+            <input class="subcategory-edit__input" type="text" id="subcategoryName" [value]="" autocomplete="off" formControlName="subcategoryName">
+
+            <ng-container *ngIf="formSubcategory.get('subcategoryName').touched && formSubcategory.get('subcategoryName').invalid">
+                <small class="validation" *ngIf="formSubcategory.get('subcategoryName').errors.required">
+                    Введіть назву підкатегорії
+                </small>
+            </ng-container>
+
+            <button class="form__button-update btn"
+                    [ngClass]="{tooltip: formSubcategory.invalid}"
+                    data-title="Заповніть всі поля"
+                    type="submit"
+                    [disabled]="formSubcategory.invalid || submittedSubcategory">Оновити підкатегорію
+            </button>
+
+            <button class="form__button-back btn" [routerLink]="['/admin', 'category-dashboard']">Повернутися до всих категорій</button>
+
+
+        </form>
+    </ng-container>
+
+    <ng-template #loading>
+        <p>Завантаження...</p>
+    </ng-template>
+</div>
