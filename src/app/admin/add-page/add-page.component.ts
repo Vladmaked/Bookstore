@@ -14,7 +14,7 @@ import {Category, Product, Subcategory} from '../../shared/interfaces';
 })
 export class AddPageComponent implements OnInit, OnDestroy {
   @HostBinding('@routingAnimation') private routing;
-
+  // hello
   form: FormGroup;
   submitted = false;
   arrCategories: Array<Category> = [];
