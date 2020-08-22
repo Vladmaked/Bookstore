@@ -2,7 +2,42 @@
     <app-breadcrumb></app-breadcrumb>
     <div class="help__wrapper">
 
-        <div class="help__navigation">
+        <div class="help__navigation help__navigation_small" *ngIf="open">
+            <nav class="navigation">
+                <a class="link link_navigation" [routerLink]="['/help', 'how-to-place-an-order']" routerLinkActive="active" (click)="open = false">
+                    Як оформити замовлення
+                </a>
+                <a class="link link_navigation" [routerLink]="['/help', 'delivery-and-payment']" routerLinkActive="active" (click)="open = false">
+                    Доставка та оплата
+                </a>
+                <a class="link link_navigation" [routerLink]="['/help', 'return-replacement']" routerLinkActive="active" (click)="open = false">
+                    Повернення / заміна
+                </a>
+                <a class="link link_navigation" [routerLink]="['/help', 'faq']" routerLinkActive="active" (click)="open = false">
+                    Питання-відповіді
+                </a>
+                <a class="link link_navigation" [routerLink]="['/help', 'prices-in-the-store']" routerLinkActive="active" (click)="open = false">
+                    Ціни в магазині
+                </a>
+                <a class="link link_navigation" [routerLink]="['/help', 'terms-and-conditions']" routerLinkActive="active" (click)="open = false">
+                    Умови та положення
+                </a>
+                <a class="link link_navigation" [routerLink]="['/help', 'consumer-support']" routerLinkActive="active" (click)="open = false">
+                    Підтримка споживача
+                </a>
+                <a class="link link_navigation" [routerLink]="['/help', 'claims']" routerLinkActive="active" (click)="open = false">
+                    Претензії
+                </a>
+                <a class="link link_navigation" [routerLink]="['/help', 'privacy-policy']" routerLinkActive="active" (click)="open = false">
+                    Політика конфіденційності
+                </a>
+                <a class="link link_navigation" [routerLink]="['/help', 'contacts']" routerLinkActive="active" (click)="open = false">
+                    Контакти
+                </a>
+            </nav>
+        </div>
+
+        <div class="help__navigation help__navigation_large">
             <nav class="navigation">
                 <a class="link link_navigation" [routerLink]="['/help', 'how-to-place-an-order']" routerLinkActive="active">
                     Як оформити замовлення
@@ -37,9 +72,16 @@
             </nav>
         </div>
 
-        <div class="router-outlet">
-            <router-outlet></router-outlet>
+        <div class="router-outlet-row router-outlet-row_large">
+            <div class="router-outlet">
+                <router-outlet></router-outlet>
+            </div>
         </div>
-
+        <div class="router-outlet-row router-outlet-row_small">
+            <button class="router-outlet-row__btn" *ngIf="!open" (click)="open = true" [routerLink]="['/help']">Повернутися назад</button>
+            <div class="router-outlet" *ngIf="!open">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
     </div>
 </div>

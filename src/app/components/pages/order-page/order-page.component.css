@@ -384,3 +384,42 @@
 .city-postcode-row__postcode {
   width: 47%;
 }
+
+
+@media only screen and (max-width: 992px) {
+  .order__wrapper {
+    flex-direction: column;
+  }
+
+  .order__body {
+    margin-right: 0;
+  }
+
+  .order__body-delivery-method-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .order__body-delivery-method {
+    padding: 0 10px;
+  }
+
+  .body-delivery-method_margin {
+    margin-left: 15px;
+  }
+
+  .body-delivery-method__icon-currier {
+    margin-left: 15px;
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 576px) {
+  .order__summary {
+    padding: 0 10px 100px 10px;
+  }
+}

@@ -2,6 +2,12 @@
   background: none;
 }
 
+
+.breadcrumb-row {
+  margin: 20px 0;
+  display: inline-block;
+}
+
 .breadcrumb__link {
   color: #606060;
   font-weight: 500;
@@ -15,7 +21,8 @@
 .breadcrumb__item {
   list-style: none;
   float: left;
-  margin: 30px 10px 30px 0;
+  margin-right: 10px;
+  margin-bottom: 5px;
 }
 
 .breadcrumb__item:first-child {
@@ -38,4 +45,14 @@
 
 .breadcrumb__item:last-child::after {
   content: "";
+}
+
+@media only screen and (max-width: 576px) {
+  .breadcrumb-row {
+    margin: 10px 0;
+  }
+
+  .breadcrumb__link {
+    font-size: 13px;
+  }
 }

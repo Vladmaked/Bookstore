@@ -8,14 +8,15 @@
 }
 
 .navigation__item_margin-author {
-  margin-right: 120px;
+  /*margin-right: 8%;*/
 }
 
 .navigation__item_margin-info {
-  margin-left: 120px;
+  /*margin-left: 8%;*/
 }
 
 .navigation__link {
+  font-size: 18px;
   text-transform: uppercase;
 }
 
@@ -40,10 +41,31 @@
   z-index: 2;
 }
 
+.menu__sub-menu_small {
+  left: 0;
+  top: 0;
+  margin-top: 0;
+  z-index: 2;
+  height: 100vh;
+  width: 100%;
+  text-align: left;
+  position: fixed;
+}
+
 .sub-menu__sub-sub-menu {
   position: absolute;
   margin-top: -25px;
   left: 100%;
+}
+
+.sub-menu__sub-sub-menu_small {
+  margin-top: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  text-align: left;
+  height: 100vh;
+  z-index: 3;
 }
 
 .sub-menu, .sub-sub-menu {
@@ -78,8 +100,18 @@
   padding: 10px 0;
 }
 
+.sub-menu__item_display-flex {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px 0 0;
+}
+
+.sub-menu__btn-close {
+  font-size: 24px;
+}
+
 .link_padding {
-  padding: 9px 15px;
+  padding: 9px 20px;
 }
 
 .link:hover {
@@ -119,6 +151,17 @@
   height: 15px;
   width: 15px;
   display: inline-block;
+  flex-shrink: 0;
+}
+
+.phone-icon_small {
+  display: none;
+  position: relative;
+  top: 0.125em;
+  margin-right: 8px;
+  background-image: url("../../../assets/img/icons/phone_small.svg");
+  height: 25px;
+  width: 25px;
   flex-shrink: 0;
 }
 
@@ -190,4 +233,169 @@
 
 .search__button:hover {
   background: #FFFFFF;
+}
+
+.navigation__item_margin-logo {
+  width: 25%;
+  margin: 0 15%;
+}
+
+.navigation__item-logo {
+  width: 100%;
+}
+
+.navigation__menu_small {
+  display: none;
+}
+
+.menu_small__item_items {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.menu_small__item_logo {
+  width: 30%;
+  margin: 15px auto 30px;
+}
+
+@media only screen and (max-width: 2560px) {
+  .navigation__link {
+    font-size: 18px;
+  }
+
+  .navigation__item_margin-logo {
+    margin: 0 12%;
+  }
+}
+
+
+@media only screen and (max-width: 1920px) {
+  .navigation__link {
+    font-size: 14px;
+  }
+
+  .navigation__item_margin-logo {
+    margin: 0 10%;
+  }
+}
+
+
+@media only screen and (max-width: 1200px) {
+
+}
+
+@media only screen and (max-width: 992px) {
+
+  .menu {
+    display: none;
+  }
+
+  .navigation__menu_small {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+@media only screen and (max-width: 768px) {
+
+  .menu {
+    display: none;
+  }
+
+  .navigation__menu_small {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+
+  .menu {
+    display: none;
+  }
+
+  .menu_small__item_items {
+    margin: 0 auto;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .menu_small__item_items .navigation__item {
+    margin: 10px;
+  }
+
+  .menu_small__item_logo {
+    width: 50%;
+  }
+
+  .phone__link {
+    display: none
+  }
+
+  .phone-icon_small {
+    display: inline-block;
+  }
+
+  .action__menu {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .account-icon {
+    margin-right: 0;
+    background-image: url("../../../assets/img/icons/account_small.svg");
+    height: 25px;
+    width: 25px;
+  }
+
+  .shopping-cart-icon {
+    background-image: url("../../../assets/img/icons/shopping-cart_small.svg");
+    height: 25px;
+    width: 27px;
+  }
+
+  .header__search {
+    margin: 20px 0;
+  }
+
+  .search__input {
+    height: 40px;
+    background: #f8f8f8 url("../../../assets/img/icons/search_small.svg") no-repeat 7px center;
+    width: calc(100% - 85px);
+    padding: 0 10px 0 27px;
+  }
+
+  .search__input:focus {
+    background: #Ffffff url("../../../assets/img/icons/search_small.svg") no-repeat 7px center;
+  }
+
+  .search__input:hover {
+    background: #Ffffff url("../../../assets/img/icons/search_small.svg") no-repeat 7px center;
+  }
+
+  .search__button {
+    width: 85px;
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+.sub-sub-menu__header {
+  margin: 15px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.header-line {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.25);
+  /*margin-bottom: 30px;*/
+  margin: 0 30px 10px 15px;
+}
+
+.link_font-size {
+  font-size: 16px;
+  padding: 9px 15px;
 }

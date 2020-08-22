@@ -6,15 +6,122 @@
                 <span></span>
                 <span></span>
             </div>
+            <div class="navigation__menu_small menu_small">
+                <div class="menu_small__item menu_small__item_logo">
+                    <a [routerLink]="['']" class="navigation__link link">
+                        <img class="navigation__item-logo" src="../../../assets/img/logo/logo.png" alt="logo">
+                    </a>
+                </div>
+                <div class="menu_small__item_items">
+                    <div class="navigation__item navigation__item_margin-category">
+                        <a class="link navigation__link" routerLinkActive="active" (click)="subMenu = true">
+                            Каталог
+                        </a>
+                        <ul class="menu__sub-menu sub-menu menu__sub-menu_small" *ngIf="subMenu">
+                            <li class="sub-menu__item sub-menu__item_display-flex">
+                                <a class="link link_padding link_font-size" [routerLink]="['/catalog', 'categories']" routerLinkActive="active"
+                                   (click)="subMenu = false">
+                                    Всі категорії
+                                </a>
+                                <button class="sub-menu__btn-close" (click)="subMenu = false">X</button>
+                            </li>
+                            <li class="sub-menu__item sub-menu__item_display-flex">
+                                <a class="link link_padding link_font-size" [routerLink]="['/catalog']" routerLinkActive="active" (click)="subMenu = false">
+                                    Всі книги
+                                </a>
+                            </li>
+                            <li class="sub-menu__item"
+                                *ngFor="let category of arrCategories">
+                                <a class="sub-menu__link link link_padding" routerLinkActive="active"
+                                   *ngIf="category.iSubcategory !== true"
+                                   [routerLink]="['/catalog', category.id]"
+                                   [routerLinkActiveOptions]="{exact: true}"
+                                   (click)="subMenu = false">
+                                    {{category.name}}
+                                </a>
+                                <a class="sub-menu__link link link_padding"
+                                   *ngIf="category.iSubcategory === true"
+                                   (click)="subSubMenu = true">
+                                    {{category.name}}
+                                </a>
+                                <em *ngIf="category.iSubcategory === true" class="arrow-right"></em>
+                                <ul class="sub-menu__sub-sub-menu sub-sub-menu sub-menu__sub-sub-menu_small"
+                                    *ngIf="arrSubcategories && subSubMenu">
+                                    <li class="sub-menu__item_display-flex">
+                                        <h2 class="sub-sub-menu__header">
+                                            {{category.name}}
+                                        </h2>
+                                        <button class="sub-menu__btn-close" (click)="subSubMenu = false; subMenu = true">X</button>
+                                    </li>
+                                    <hr class="header-line">
+
+                                    <li class="sub-menu__item sub-menu__item_display-flex">
+                                        <a class="link link_padding link_font-size" [routerLink]="['/catalog', category.id]" routerLinkActive="active"
+                                           [routerLinkActiveOptions]="{exact: true}"
+                                           (click)="subSubMenu = false; subMenu = false">
+                                            Всі книги данної категорії
+                                        </a>
+                                    </li>
+                                    <li class="sub-sub-menu__item" *ngIf="category.iSubcategory" routerLinkActive="active"
+                                        [routerLinkActiveOptions]="{exact: true}">
+                                        <a class="sub-menu__link link link_padding link_font-size" [routerLink]="['/catalog', category.id, 'subcategories']"
+                                           (click)="subSubMenu = false; subMenu = false">
+                                            Всі підкатегорії
+                                        </a>
+                                    </li>
+                                    <ng-container *ngFor="let subcategory of arrSubcategories">
+                                        <li class="sub-sub-menu__item" *ngIf="subcategory.categoryId === category.id" routerLinkActive="active"
+                                            [routerLinkActiveOptions]="{exact: true}">
+                                            <a class="sub-menu__link link link_padding" [routerLink]="['/catalog', category.id, subcategory.id]"
+                                               (click)="subSubMenu = false; subMenu = false">
+                                                {{subcategory.name}}
+                                            </a>
+                                        </li>
+                                    </ng-container>
+
+                                    <li class="sub-sub-menu__item" *ngIf="category.iSubcategory" routerLinkActive="active"
+                                        [routerLinkActiveOptions]="{exact: true}">
+                                        <a class="sub-menu__link link link_padding link_font-size" [routerLink]="['/catalog', category.id, 'subcategories']"
+                                           (click)="subSubMenu = false; subMenu = false">
+                                            Всі підкатегорії
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="sub-menu__item">
+                                <a class="link link_padding link_font-size" [routerLink]="['/catalog', 'categories']" routerLinkActive="active"
+                                   (click)="subMenu = !subMenu">
+                                    Всі категорії
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class=" navigation__item navigation__item_margin-author">
+                        <a [routerLink]="['/catalog-author']" class="link navigation__link" routerLinkActive="active">
+                            всі автори
+                        </a>
+                    </div>
+                    <div class="navigation__item navigation__item_margin-info" routerLinkActive="active">
+                        <a [routerLink]="['/help', 'delivery-and-payment']" class="navigation__link link">
+                            доставка та оплата
+                        </a>
+                    </div>
+                    <div class="navigation__item">
+                        <a [routerLink]="['/help', 'contacts']" class="navigation__link link" routerLinkActive="active">
+                            контакти
+                        </a>
+                    </div>
+                </div>
+            </div>
             <ul class="navigation__menu menu">
                 <li class="navigation__item navigation__item_margin-category">
                     <a [routerLink]="['/catalog']" class="link navigation__link" routerLinkActive="active"
                        [routerLinkActiveOptions]="{exact: true}">
-                        Всі книги
+                        Каталог
                     </a>
                     <ul class="menu__sub-menu sub-menu">
                         <li class="sub-menu__item">
-                            <a class="link link_padding" [routerLink]="['/catalog', 'categories']" routerLinkActive="active">
+                            <a class="link link_padding link_font-size" [routerLink]="['/catalog', 'categories']" routerLinkActive="active">
                                 Всі категорії
                             </a>
                         </li>
@@ -29,7 +136,7 @@
 
                                 <li class="sub-sub-menu__item" *ngIf="category.iSubcategory" routerLinkActive="active"
                                     [routerLinkActiveOptions]="{exact: true}">
-                                    <a class="sub-menu__link link link_padding" [routerLink]="['/catalog', category.id, 'subcategories']">
+                                    <a class="sub-menu__link link link_padding link_font-size" [routerLink]="['/catalog', category.id, 'subcategories']">
                                         Всі підкатегорії
                                     </a>
                                 </li>
@@ -44,14 +151,14 @@
 
                                 <li class="sub-sub-menu__item" *ngIf="category.iSubcategory" routerLinkActive="active"
                                     [routerLinkActiveOptions]="{exact: true}">
-                                    <a class="sub-menu__link link link_padding" [routerLink]="['/catalog', category.id, 'subcategories']">
+                                    <a class="sub-menu__link link link_padding link_font-size" [routerLink]="['/catalog', category.id, 'subcategories']">
                                         Всі підкатегорії
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li class="sub-menu__item">
-                            <a class="link link_padding" [routerLink]="['/catalog', 'categories']" routerLinkActive="active">
+                            <a class="link link_padding link_font-size" [routerLink]="['/catalog', 'categories']" routerLinkActive="active">
                                 Всі категорії
                             </a>
                         </li>
@@ -64,7 +171,7 @@
                 </li>
                 <li class="navigation__item navigation__item_margin-logo">
                     <a [routerLink]="['']" class="navigation__link link">
-                        <img src="../../../assets/img/logo/logo.png" alt="logo">
+                        <img class="navigation__item-logo" src="../../../assets/img/logo/logo.png" alt="logo">
                     </a>
                 </li>
                 <li class="navigation__item navigation__item_margin-info" routerLinkActive="active">
@@ -86,6 +193,10 @@
                 </a>
             </div>
             <ul class="action__menu">
+                <li class="action__item">
+                    <a class="phone__link_small link" href="tel:+380472360337"><em class="phone-icon_small"></em>
+                    </a>
+                </li>
                 <li class="action__item">
                     <a [routerLink]="['account-page']" class="link">
                         <em class="account-icon"></em>

@@ -14,8 +14,10 @@
   outline: none;
 }
 
-a:focus, a:active {
+a:focus, a:active, button:focus, button:active {
   outline: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
 }
 
 nav, footer, header, aside {
@@ -137,7 +139,6 @@ h1, h2, h3, h4, h5, h6 {
 .container {
   width: 100%;
   max-width: 1440px;
-  min-height: calc(100vh - 263px - 400px);
   padding: 0 15px;
   margin: 0 auto;
   display: flex;
@@ -196,9 +197,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .help-page__title-row {
-  position: relative;
-  right: 360px;
-  width: calc(100% + 360px);
   margin-bottom: 30px;
 }
 
@@ -237,3 +235,42 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* =====Конец===== Стиль для раздела help ========= */
+
+
+@media only screen and (max-width: 1920px) {
+  .container {
+    max-width: 1440px;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .container {
+    max-width: 960px;
+  }
+
+}
+
+@media only screen and (max-width: 992px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+
+@media only screen and (max-width: 576px) {
+  .container {
+    max-width: 100%;
+  }
+}

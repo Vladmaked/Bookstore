@@ -3,13 +3,17 @@
     <ng-container *ngIf="product$; else empty">
         <ng-container *ngIf="product$ | async as product; else loading">
             <div class="product">
+                <div class="product__title-row product__title-row_small">
+                    <h2 class="product__title">{{product.title}}</h2>
+
+                    <button class="product__btn-back btn" [routerLink]="['/catalog']">Назад до категорії</button>
+                </div>
                 <div class="product__photo">
-                    <quill-view-html class="product__image" [content]="product.photo"></quill-view-html>
+                    <div class="product__image" [innerHTML]="product.photo"></div>
                 </div>
                 <div class="product__info">
                     <div class="product__title-row">
                         <h2 class="product__title">{{product.title}}</h2>
-
                         <button class="product__btn-back btn" [routerLink]="['/catalog']">Назад до категорії</button>
                     </div>
                     <div>

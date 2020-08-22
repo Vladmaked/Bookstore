@@ -47,6 +47,8 @@ import { TermsAndConditionsPageComponent } from './components/pages/help-pages/t
 import { ConsumerSupportPageComponent } from './components/pages/help-pages/consumer-support-page/consumer-support-page.component';
 import { ClaimsPageComponent } from './components/pages/help-pages/claims-page/claims-page.component';
 import { PrivacyPolicyPageComponent } from './components/pages/help-pages/privacy-policy-page/privacy-policy-page.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -93,7 +95,8 @@ import { PrivacyPolicyPageComponent } from './components/pages/help-pages/privac
     BrowserAnimationsModule,
     QuillModule.forRoot(),
     AdminModule,
-    FormsModule
+    FormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     {

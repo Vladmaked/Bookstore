@@ -3,9 +3,6 @@ import {ProductService} from '../../shared/services/product.service';
 import {Router} from '@angular/router';
 import {CategoryService} from '../../shared/services/category.service';
 import {Category, Subcategory} from '../../shared/interfaces';
-import {map} from 'rxjs/operators';
-import {Observable} from 'rxjs';
-import {log} from 'util';
 
 @Component({
   selector: 'app-header',
@@ -22,6 +19,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   subcategory;
   productName;
   input;
+  subMenu = false;
+  subSubMenu = false;
 
   constructor(
     public productService: ProductService,

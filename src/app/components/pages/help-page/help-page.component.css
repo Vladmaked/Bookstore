@@ -9,7 +9,7 @@
 
 .help__navigation {
   margin-top: 70px;
-  width: 350px;
+  min-width: 230px;
   margin-right: 100px;
 }
 
@@ -37,4 +37,65 @@
 
 .router-outlet {
   width: 100%;
+}
+
+.router-outlet-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.router-outlet-row__btn {
+  margin-bottom: 40px;
+  font-size: 18px;
+  text-align: left;
+  font-weight: 500;
+  display: none;
+}
+
+.help__navigation_small {
+  display: none;
+}
+
+.router-outlet-row_small {
+  display: none;
+}
+
+.help__navigation_large {
+  display: flex;
+}
+
+@media only screen and (max-width: 992px) {
+
+  .help__navigation {
+    margin-right: 50px;
+  }
+}
+
+
+
+@media only screen and (max-width: 768px) {
+
+  .help__navigation {
+    margin-top: 0;
+    margin-right: 50px;
+    display: none;
+  }
+
+  .help__navigation_small {
+    display: flex;
+  }
+
+  .help__navigation_large {
+    display: none;
+  }
+
+  .router-outlet-row__btn {
+    display: flex;
+  }
+  .router-outlet-row_large {
+    display: none;
+  }
+  .router-outlet-row_small {
+    display: flex;
+  }
 }

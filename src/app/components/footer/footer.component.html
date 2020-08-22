@@ -2,25 +2,42 @@
     <div class="container">
         <div class="footer__row">
             <div class="footer__column">
-                <div class="footer__info">
-                    <a [routerLink]="['/help', 'delivery-and-payment']">
+                <div class="footer__navigation navigation">
+                    <a class="navigation__item" [routerLink]="['/help', 'delivery-and-payment']">
                         Доставка та оплата
                     </a>
-                    <a [routerLink]="['/help', 'return-replacement']">
+                    <a class="navigation__item" [routerLink]="['/help', 'return-replacement']">
                         Повернення / Заміна
                     </a>
-                    <a [routerLink]="['/help', 'consumer-support']">
+                    <a class="navigation__item" [routerLink]="['/help', 'consumer-support']">
                         Підтримка споживача
                     </a>
                 </div>
+
+                <div class="footer__subscribe_small-screen subscribe">
+                    <div class="subscribe__wrapper">
+                        <form action="#" class="subscribe__form">
+                            <div class="subscribe__input">
+                                <div class="subscribe__label">
+                                    <label for="subscribe-email_small-screen">Підписатися на наші новини</label>
+                                </div>
+                                <input id="subscribe-email_small-screen" type="text" name="subscribe-email" placeholder="ваш e-mail">
+                                <button class="subscribe-button" type="submit">
+                                    <img src="../../../assets/img/icons/arrow_subscribe.png" alt="submit">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
                 <div class="footer__contacts contacts">
-                    <p>
+                    <p class="contacts__item">
                         svitoch@.gmail.com
                     </p>
-                    <a class="contacts__phone link" href="tel:+380472360337"><em class="phone-icon"></em>
+                    <a class="contacts__item contacts__phone link" href="tel:+380472360337"><em class="phone-icon"></em>
                         +380 (472) 36-03-37
                     </a>
-                    <p><em class="address-icon"></em>
+                    <p class="contacts__item contacts__item_line-height"><em class="address-icon"></em>
                         м. Черкаси, вул. Байди Вишнівецького, 38
                     </p>
                 </div>
@@ -28,21 +45,19 @@
                     <p>© 2020 svitoch - всі права захищені </p>
                 </div>
             </div>
-            <div class="footer__column">
-                <div class="subscribe">
-                    <div class="subscribe__container">
-                        <form action="#" class="subscribe__form">
-                            <div class="subscribe__input">
-                                <div class="subscribe__label">
-                                    <label for="subscribe-email">Підписатися на наші новини</label>
-                                </div>
-                                <input id="subscribe-email" type="text" name="subscribe-email" placeholder="ваш e-mail">
-                                <button class="subscribe-button" type="submit">
-                                    <img src="../../../assets/img/icons/arrow_subscribe.png" alt="submit">
-                                </button>
+            <div class="footer__subscribe subscribe">
+                <div class="subscribe__wrapper">
+                    <form action="#" class="subscribe__form">
+                        <div class="subscribe__input">
+                            <div class="subscribe__label">
+                                <label for="subscribe-email">Підписатися на наші новини</label>
                             </div>
-                        </form>
-                    </div>
+                            <input id="subscribe-email" type="text" name="subscribe-email" placeholder="ваш e-mail">
+                            <button class="subscribe-button" type="submit">
+                                <img src="../../../assets/img/icons/arrow_subscribe.png" alt="submit">
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

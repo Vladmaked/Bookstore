@@ -11,7 +11,7 @@
                 <div class="cart__product product" *ngFor="let cartItem of productList">
                     <div class="product__body">
                         <div class="product__image">
-                            <quill-view-html [content]="cartItem.product.photo"></quill-view-html>
+                            <div [innerHTML]="cartItem.product.photo"></div>
                         </div>
 
                         <div class="product__info info">
