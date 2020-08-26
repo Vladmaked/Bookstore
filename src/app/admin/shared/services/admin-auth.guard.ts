@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
-import {AuthService} from './services/auth.service';
+import {AdminAuthService} from './admin-auth.service';
 
 @Injectable()
 
-export class AuthGuard implements CanActivate {
+export class AdminAuthGuard implements CanActivate {
 
-  constructor(private auth: AuthService,
+  constructor(private auth: AdminAuthService,
               private route: Router) {
   }
 
@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
       return true;
     } else {
       this.auth.logout();
-      this.route.navigate(['/login-registration'], {
+      this.route.navigate(['/admin', 'login'], {
         queryParams: {
           loginAgain: true
         }

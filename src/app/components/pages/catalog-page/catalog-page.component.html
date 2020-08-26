@@ -7,16 +7,20 @@
         <div class="main-goods">
             <div class="main-goods__row">
                 <div class="main-goods__grid" *ngIf="product$ | async as products; else loading">
-                    <ng-container *ngIf="products | search : productService.productName">
-                        <app-product class="main-goods__cell"
-                                     *ngFor="let product of products | search : productService.productName"
-                                     [product]="product">
-                        </app-product>
+                    <app-product class="main-goods__cell"
+                                 *ngFor="let product of products | search : productService.productName"
+                                 [product]="product">
+                    </app-product>
+
+                    <ng-container *ngIf="productService.isEmpty">
+                        <p>
+                            За результатом пошуку <span class="help-page__strong">"{{productService.productName}}"</span> нічого не знайдено.
+                        </p>
                     </ng-container>
-                    <ng-template #empty></ng-template>
                 </div>
             </div>
         </div>
+
 
         <ng-template #loading>
             <p>Завантаження...</p>

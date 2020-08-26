@@ -36,7 +36,7 @@
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  width: 520px;
+  max-width: 520px;
   bottom: auto;
   background-color: white;
   z-index: 999;
@@ -47,6 +47,35 @@
   overscroll-behavior-y: contain;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+.popup-information {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  bottom: auto;
+  background-color: white;
+  z-index: 1000;
+  padding: 25px 40px 40px 40px;
+  min-width: fit-content;
+  max-width: 100%;
+  min-height: fit-content;
+  max-height: 100vh;
+  box-sizing: border-box;
+  overscroll-behavior-y: contain;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  font-size: 18px;
+}
+
+.popup-information__text {
+  margin-bottom: 20px;
 }
 
 .popup-container {
@@ -82,7 +111,7 @@
   background-color: #f8f8f8;
   border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 3px;
-  padding: 1rem 2rem;
+  padding: 10px 20px;
   font-weight: 600;
   font-size: 16px;
 }
@@ -363,6 +392,10 @@
   color: black;
 }
 
+.order__body-delivery-method-info {
+  display: flex;
+}
+
 .order-form__input:hover {
   border-bottom: 1px solid black;
 }
@@ -377,11 +410,7 @@
   justify-content: space-between;
 }
 
-.city-postcode-row__city {
-  width: 47%;
-}
-
-.city-postcode-row__postcode {
+.city-postcode-row__city, .city-postcode-row__postcode {
   width: 47%;
 }
 
@@ -414,12 +443,34 @@
 
 }
 
-@media only screen and (max-width: 768px) {
 
+@media only screen and (max-width: 992px) {
+  .popup {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .popup {
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 576px) {
   .order__summary {
     padding: 0 10px 100px 10px;
+  }
+
+  .order__body-delivery-method-info {
+    font-size: 12px;
+  }
+
+  .order-form__city-postcode-row {
+    flex-direction: column;
+    justify-content: inherit;
+  }
+
+  .city-postcode-row__city, .city-postcode-row__postcode {
+    width: 100%;
   }
 }

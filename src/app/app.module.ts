@@ -36,19 +36,21 @@ import {SubcategoriesPageComponent} from './components/pages/subcategories-page/
 import {SubcategoryPageComponent} from './components/pages/subcategory-page/subcategory-page.component';
 import {CategoryComponent} from './components/category/category.component';
 import {SubcategoryComponent} from './components/subcategory/subcategory.component';
-import { DeliveryAndPaymentPageComponent } from './components/pages/help-pages/delivery-and-payment-page/delivery-and-payment-page.component';
-import { HelpPageComponent } from './components/pages/help-page/help-page.component';
-import { ContactsPageComponent } from './components/pages/help-pages/contacts-page/contacts-page.component';
-import { HowToPlaceAnOrderPageComponent } from './components/pages/help-pages/how-to-place-an-order-page/how-to-place-an-order-page.component';
-import { ReturnReplacementPageComponent } from './components/pages/help-pages/return-replacement-page/return-replacement-page.component';
-import { FAQPageComponent } from './components/pages/help-pages/faq-page/faq-page.component';
-import { PricesInTheStorePageComponent } from './components/pages/help-pages/prices-in-the-store-page/prices-in-the-store-page.component';
-import { TermsAndConditionsPageComponent } from './components/pages/help-pages/terms-and-conditions-page/terms-and-conditions-page.component';
-import { ConsumerSupportPageComponent } from './components/pages/help-pages/consumer-support-page/consumer-support-page.component';
-import { ClaimsPageComponent } from './components/pages/help-pages/claims-page/claims-page.component';
-import { PrivacyPolicyPageComponent } from './components/pages/help-pages/privacy-policy-page/privacy-policy-page.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
+import {DeliveryAndPaymentPageComponent} from './components/pages/help-pages/delivery-and-payment-page/delivery-and-payment-page.component';
+import {HelpPageComponent} from './components/pages/help-page/help-page.component';
+import {ContactsPageComponent} from './components/pages/help-pages/contacts-page/contacts-page.component';
+import {HowToPlaceAnOrderPageComponent} from './components/pages/help-pages/how-to-place-an-order-page/how-to-place-an-order-page.component';
+import {ReturnReplacementPageComponent} from './components/pages/help-pages/return-replacement-page/return-replacement-page.component';
+import {FAQPageComponent} from './components/pages/help-pages/faq-page/faq-page.component';
+import {PricesInTheStorePageComponent} from './components/pages/help-pages/prices-in-the-store-page/prices-in-the-store-page.component';
+import {TermsAndConditionsPageComponent} from './components/pages/help-pages/terms-and-conditions-page/terms-and-conditions-page.component';
+import {ConsumerSupportPageComponent} from './components/pages/help-pages/consumer-support-page/consumer-support-page.component';
+import {ClaimsPageComponent} from './components/pages/help-pages/claims-page/claims-page.component';
+import {PrivacyPolicyPageComponent} from './components/pages/help-pages/privacy-policy-page/privacy-policy-page.component';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {environment} from '../environments/environment';
+import {SharedModule} from './shared/shared.module';
+import {AuthService} from './shared/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -96,7 +98,8 @@ import { environment } from '../environments/environment';
     QuillModule.forRoot(),
     AdminModule,
     FormsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    SharedModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [
     {
@@ -107,7 +110,8 @@ import { environment } from '../environments/environment';
     {
       provide: LOCALE_ID,
       useValue: 'uk'
-    }
+    },
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

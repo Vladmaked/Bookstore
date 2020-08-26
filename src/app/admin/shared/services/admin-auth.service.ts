@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {FbAuthResponse, User} from '../../../shared/interfaces';
 import {Observable, Subject, throwError} from 'rxjs';
+import {environment} from '../../../../environments/environment';
 import {catchError, tap} from 'rxjs/operators';
-import {FbAuthResponse, User} from '../interfaces';
-import {environment} from '../../../environments/environment';
 
 @Injectable()
 
-export class AuthService {
+export class AdminAuthService {
 
   public error$: Subject<string> = new Subject<string>();
 

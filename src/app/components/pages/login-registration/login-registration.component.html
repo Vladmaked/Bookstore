@@ -1,1 +1,102 @@
-<p>login-registration works!</p>
+<div class="container">
+    <div class="wrapper">
+
+        <div class="login">
+
+            <app-breadcrumb></app-breadcrumb>
+
+            <div class="login__wrapper">
+                <h2 class="login__header">
+                    Вже зареєстровані?
+                </h2>
+
+                <form action="" class="login__login-form login-form">
+
+                    <div class="form__input-wrapper" *ngIf="!create">
+                        <label>
+                            <input type="text" class="form__input" placeholder="Адреса електронної скриньки">
+                        </label>
+
+                        <label>
+                            <input type="text" class="form__input login-form__input-password" placeholder="Пароль">
+                        </label>
+                    </div>
+
+                    <button class="login-form__btn btn" (click)="create = false">
+                        Вхід
+                    </button>
+                </form>
+
+                <button class="login__btn-popup">
+                    Я забув пароль
+                </button>
+            </div>
+        </div>
+
+        <div class="registration">
+
+            <div class="registration__wrapper">
+                <h2 class="registration__header">
+                    Реєстрація
+                </h2>
+
+                <form action="" class="registration__registration-form registration-form">
+
+                    <div class="form__input-wrapper" *ngIf="create">
+                        <label>
+                            <input type="text" class="form__input" placeholder="Адреса електронної скриньки">
+                        </label>
+
+                        <div class="form__input-initials">
+                            <label class="registration-form__label-first-name">
+                                <input type="text" class="form__input" placeholder="Ім'я">
+                            </label>
+
+                            <label class="registration-form__label-last-name">
+                                <input type="text" class="form__input" placeholder="Прізвище">
+                            </label>
+                        </div>
+
+                        <label>
+                            <input type="text" class="form__input registration-form__input-password" placeholder="Пароль">
+                        </label>
+
+                        <label class="registration-form__input-checkbox">
+                            <input type="checkbox">
+                            Так, я хочу підписатися на розсилку (опціонально)
+                        </label>
+                    </div>
+
+                    <button class="registration-form__btn btn" (click)="create = true">
+                        Створити обліковий запис
+                    </button>
+                </form>
+
+                <div class="registration-form__benefits benefits" *ngIf="!create">
+                    <h3 class="benefits__header">
+                        Переваги
+                    </h3>
+
+                    <p class="benefits__info">
+                        - Зручний спосіб відстеження свого замовлення
+                    </p>
+
+                    <p class="benefits__info">
+                        - Легкий доступ до історії замовлень
+                    </p>
+
+                    <p class="benefits__info">
+                        - Вигідна система накопичення бонусів
+                    </p>
+                </div>
+
+                <p class="registration-form__info" *ngIf="create">
+                    Натискаючи на кнопку "Створити обліковий запис", Ви приймаєте умови
+                    <a [routerLink]="['/help', 'privacy-policy']" class="link registration-form__link">Політики конфіденційності</a>,
+                    <a [routerLink]="['/help', 'terms-and-conditions']" class="link registration-form__link">Правила і умови використання сайту</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>

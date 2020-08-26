@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-registration.component.css']
 })
 export class LoginRegistrationComponent implements OnInit {
+  create = false;
 
   constructor() { }
 

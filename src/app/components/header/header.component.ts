@@ -57,7 +57,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   clearInput() {
     this.input = document.getElementsByClassName('search__input')[0];
     this.input.value = '';
-    this.productName = '';
+    // this.productName = '';
   }
 
   ngOnDestroy(): void {

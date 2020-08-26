@@ -10,7 +10,7 @@
                 <span class="radio-icon">1</span> Спосіб доставки
             </h3>
 
-            <div class="order__body-delivery-method body-delivery-method" (click)="popup = !popup">
+            <div class="order__body-delivery-method body-delivery-method" (click)="popup = !popup; body.style.position = 'fixed'">
                 <div class="radio-icon radio-icon_btn"></div>
                 <span class="body-delivery-method__icon-currier"></span>
                 <div class="order__body-delivery-method-info">
@@ -57,7 +57,7 @@
                 </p>
             </div>
 
-            <button class="btn btn_order" (click)="popup = !popup">
+            <button class="btn btn_order" (click)="popup = !popup; body.style.position = 'fixed'">
                 Оформити замовлення
             </button>
 
@@ -121,7 +121,7 @@
                         <h3 class="popup__header">
                             Додати спосіб доставки
                         </h3>
-                        <button class="btn_close" (click)="popup = !popup">X</button>
+                        <button class="btn_close" (click)="popup = !popup; body.style.position = ''">X</button>
                     </div>
 
                     <form [formGroup]="form" (ngSubmit)="submit()">
@@ -238,6 +238,14 @@
                         </button>
                     </form>
                 </div>
+            </div>
+            <div class="popup-information" *ngIf="popupInformation">
+                <p class="popup-information__text">
+                    Замовлення оформлено
+                </p>
+                <button class="btn" (click)="popupInformation = false; body.style.position = ''">
+                    Ок
+                </button>
             </div>
 
         </div>

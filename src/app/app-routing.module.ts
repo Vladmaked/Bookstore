@@ -18,6 +18,7 @@ import {SubcategoryPageComponent} from './components/pages/subcategory-page/subc
 import {DeliveryAndPaymentPageComponent} from './components/pages/help-pages/delivery-and-payment-page/delivery-and-payment-page.component';
 import {HelpPageComponent} from './components/pages/help-page/help-page.component';
 import {ContactsPageComponent} from './components/pages/help-pages/contacts-page/contacts-page.component';
+// tslint:disable-next-line:max-line-length
 import {HowToPlaceAnOrderPageComponent} from './components/pages/help-pages/how-to-place-an-order-page/how-to-place-an-order-page.component';
 import {ReturnReplacementPageComponent} from './components/pages/help-pages/return-replacement-page/return-replacement-page.component';
 import {FAQPageComponent} from './components/pages/help-pages/faq-page/faq-page.component';
@@ -26,6 +27,7 @@ import {TermsAndConditionsPageComponent} from './components/pages/help-pages/ter
 import {ConsumerSupportPageComponent} from './components/pages/help-pages/consumer-support-page/consumer-support-page.component';
 import {ClaimsPageComponent} from './components/pages/help-pages/claims-page/claims-page.component';
 import {PrivacyPolicyPageComponent} from './components/pages/help-pages/privacy-policy-page/privacy-policy-page.component';
+import {AuthGuard} from './shared/auth.guard';
 
 const routes: Routes = [
     {
@@ -146,7 +148,14 @@ const routes: Routes = [
             }
           ]
         },
-        {path: 'search', component: SearchResultComponent}
+        {path: 'search', component: SearchResultComponent},
+        {path: 'login-registration', component: LoginRegistrationComponent, data: {breadcrumb: 'Вхід та реєстрація'}},
+        {
+          path: 'account',
+          component: AccountPageComponent,
+          data: {breadcrumb: 'Особистий кабінет'},
+          canActivate: [AuthGuard]
+        }
       ]
     },
     {
@@ -158,7 +167,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule {
 }

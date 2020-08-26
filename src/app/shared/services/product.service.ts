@@ -11,6 +11,7 @@ import {Observable} from 'rxjs';
 export class ProductService {
 
   productName;
+  isEmpty;
 
   constructor(private http: HttpClient) {
   }

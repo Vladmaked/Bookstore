@@ -7,16 +7,9 @@
   padding-bottom: 10px;
 }
 
-.navigation__item_margin-author {
-  /*margin-right: 8%;*/
-}
-
-.navigation__item_margin-info {
-  /*margin-left: 8%;*/
-}
-
 .navigation__link {
   font-size: 18px;
+  font-weight: 600;
   text-transform: uppercase;
 }
 
@@ -39,6 +32,7 @@
   position: absolute;
   margin-top: 10px;
   z-index: 2;
+  text-transform: uppercase;
 }
 
 .menu__sub-menu_small {
@@ -56,6 +50,7 @@
   position: absolute;
   margin-top: -25px;
   left: 100%;
+  text-transform: none;
 }
 
 .sub-menu__sub-sub-menu_small {
@@ -111,7 +106,7 @@
 }
 
 .link_padding {
-  padding: 9px 20px;
+  padding: 9px 25px;
 }
 
 .link:hover {
@@ -141,6 +136,10 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+}
+
+.action__phone {
+  margin-bottom: 10px;
 }
 
 .phone-icon {
@@ -227,7 +226,7 @@
   border-radius: 0 3px 3px 0;
   outline: none;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 18px;
 }
 
@@ -396,6 +395,6 @@
 }
 
 .link_font-size {
-  font-size: 16px;
+  font-size: 14px;
   padding: 9px 15px;
 }

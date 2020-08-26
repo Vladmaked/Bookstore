@@ -1,6 +1,14 @@
 <form class="page__form form" [formGroup]="form" (ngSubmit)="submit()">
 
-    <h2 class="form__h2">Ввійти як адміністратор</h2>
+    <h2 class="form__header">Ввійти як адміністратор</h2>
+
+    <div class="form__error validation" *ngIf="auth.error$ | async as error">
+        {{error}}
+    </div>
+
+    <div class="form__error validation" *ngIf="message">
+        {{message}}
+    </div>
 
     <div class="form-control">
         <label class="form__label" for="email">

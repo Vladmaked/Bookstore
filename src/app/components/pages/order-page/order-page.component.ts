@@ -18,10 +18,11 @@ export class OrderPageComponent implements OnInit {
 
   form: FormGroup;
   submitted = false;
-  alertDeliveryFramed = '';
 
   popup = false;
+  popupInformation = false;
   orderListIsOpen = false;
+  body;
 
   constructor(private orderService: OrderService,
               private productService: ProductService,
@@ -36,6 +37,8 @@ export class OrderPageComponent implements OnInit {
     if (this.productList.length < 1) {
       this.route.navigate(['/catalog']);
     }
+
+    this.body = document.querySelector('body');
   }
 
   total() {
@@ -77,10 +80,9 @@ export class OrderPageComponent implements OnInit {
     };
     this.orderService.create(order).subscribe(() => {
       this.form.reset();
-      this.alertDeliveryFramed = 'Доставка оформлена';
       this.submitted = false;
       this.popup = false;
-      alert(this.alertDeliveryFramed);
+      this.popupInformation = true;
     });
   }
 }

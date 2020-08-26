@@ -25,7 +25,6 @@ export class MainSliderComponent implements OnInit {
 
       if (el.querySelector('img')) {
 
-        console.log(el);
         (el as HTMLElement).style.backgroundImage = 'url(' + el.querySelector('img').getAttribute('src') + ')';
       }
     });

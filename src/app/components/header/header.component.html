@@ -9,7 +9,7 @@
             <div class="navigation__menu_small menu_small">
                 <div class="menu_small__item menu_small__item_logo">
                     <a [routerLink]="['']" class="navigation__link link">
-                        <img class="navigation__item-logo" src="../../../assets/img/logo/logo.png" alt="logo">
+                        <img class="navigation__item-logo" src="../../../assets/img/logo/logo.svg" alt="logo">
                     </a>
                 </div>
                 <div class="menu_small__item_items">
@@ -171,7 +171,7 @@
                 </li>
                 <li class="navigation__item navigation__item_margin-logo">
                     <a [routerLink]="['']" class="navigation__link link">
-                        <img class="navigation__item-logo" src="../../../assets/img/logo/logo.png" alt="logo">
+                        <img class="navigation__item-logo" src="../../../assets/img/logo/logo.svg" alt="logo">
                     </a>
                 </li>
                 <li class="navigation__item navigation__item_margin-info" routerLinkActive="active">
@@ -198,7 +198,7 @@
                     </a>
                 </li>
                 <li class="action__item">
-                    <a [routerLink]="['account-page']" class="link">
+                    <a [routerLink]="['/account']" class="link">
                         <em class="account-icon"></em>
                     </a>
                 </li>
@@ -212,12 +212,13 @@
         <div class="header__search search">
             <form class="search__form" action="#">
                 <input [(ngModel)]="productName"
+                       (focusout)="clearInput()"
                        class="search__input"
                        type="text"
                        name="search-input"
                        aria-label="Пошук товарів"
                        autocomplete="off"
-                       placeholder="Введіть ключове слово, прізвище автора, ISBN, назву книги" (ngModelChange)="search()" (focusout)="clearInput()">
+                       placeholder="Введіть ключове слово, прізвище автора, ISBN, назву книги">
                 <button class="search__button" (click)="search()">
                     Знайти
                 </button>

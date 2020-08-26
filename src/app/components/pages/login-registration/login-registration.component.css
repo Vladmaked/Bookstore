@@ -1,0 +1,144 @@
+.wrapper {
+  display: flex;
+  min-height: 200px;
+}
+
+.login__wrapper {
+  text-align: center;
+  margin: 100px 0;
+}
+
+.registration__wrapper {
+  text-align: center;
+  margin: 159px 0 100px;
+}
+
+.login {
+  flex: 50%;
+}
+
+.registration {
+  flex: 50%;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.login__header, .registration__header {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.form__input-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 410px;
+  margin: 0 auto;
+}
+
+.form__input {
+  margin-bottom: 20px;
+
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+
+  width: 100%;
+
+  padding: 15px 20px;
+}
+
+.login-form__btn, .registration-form__btn {
+  font-weight: 500;
+  width: 410px;
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+
+.login-form__input-password {
+  margin-bottom: 40px;
+}
+
+.login__btn-popup {
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.registration-form__input-password {
+  margin-bottom: 40px;
+}
+
+.registration-form__info {
+  max-width: 440px;
+  line-height: 17px;
+  margin: 0 auto;
+}
+
+.registration-form__input-checkbox {
+  margin-bottom: 40px;
+  line-height: 17px;
+}
+
+.registration-form__link {
+  text-decoration: underline;
+}
+
+.form__input-initials {
+  display: flex;
+  justify-content: space-between;
+}
+
+.registration-form__label-first-name, .registration-form__label-last-name {
+  width: 49%;
+}
+
+.registration-form__benefits {
+  max-width: 410px;
+  margin: 20px auto 0;
+  padding: 0 20px;
+}
+
+.benefits__header {
+  color: #545454;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.benefits__info {
+  font-weight: 500;
+  line-height: 25px;
+  padding: 0 20px;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+@media only screen and (max-width: 992px) {
+  .wrapper {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+
+  .login-form__btn, .registration-form__btn, .form__input-wrapper {
+    max-width: 95%;
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+
+  .form__input-initials {
+    flex-direction: column;
+  }
+
+  .registration-form__label-first-name, .registration-form__label-last-name {
+    width: 100%;
+  }
+
+  .registration-form__info {
+    max-width: 95%;
+  }
+}
+
