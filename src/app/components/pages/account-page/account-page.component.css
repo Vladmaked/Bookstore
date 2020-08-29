@@ -1,0 +1,95 @@
+.container {
+  padding-bottom: 100px;
+}
+
+.account__wrapper {
+  margin-top: 20px;
+  display: flex;
+}
+
+.account__navigation {
+  /*margin-top: 70px;*/
+  min-width: 230px;
+  margin-right: 100px;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+}
+
+.link_navigation {
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.75);
+  margin-bottom: 20px;
+}
+
+.navigation__sign-out {
+  text-align: left;
+}
+
+.breadcrumb-container {
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 15px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.router-outlet {
+  width: 100%;
+}
+
+.router-outlet-row {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.router-outlet-row__btn {
+  margin-bottom: 40px;
+  font-size: 18px;
+  text-align: left;
+  font-weight: 500;
+  display: none;
+}
+
+.account__navigation_small {
+  display: none;
+}
+
+.account__navigation_large {
+  display: flex;
+}
+
+@media only screen and (max-width: 992px) {
+
+  .account__navigation {
+    margin-right: 50px;
+  }
+}
+
+
+@media only screen and (max-width: 768px) {
+
+  .account__navigation {
+    margin-top: 0;
+    margin-right: 50px;
+    display: none;
+  }
+
+  .account__navigation_small {
+    display: flex;
+  }
+
+  .account__navigation_large {
+    display: none;
+  }
+
+  .router-outlet-row__btn {
+    display: flex;
+  }
+}

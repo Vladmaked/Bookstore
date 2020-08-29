@@ -1,0 +1,96 @@
+<div class="help-page__wrapper">
+    <div class="help-page__title-row">
+        <h1 class="help-page__title">Моя адреса</h1>
+        <hr class="help-page__header-line">
+    </div>
+    <div class="help-page__content content">
+        <h1 class="help-page__header">Моя адреса</h1>
+        <p class="help-page__content-text">
+            <small>* обов’язкові поля</small>
+        </p>
+
+        <form [formGroup]="myAddressForm" (ngSubmit)="saveChange()">
+
+            <div class="form-control_two-column">
+                <div class="form__form-control form-control">
+                    <label for="firstName" class="form-control__label">
+                        Ім'я *
+                    </label>
+                    <input type="text" name="firstName" id="firstName" formControlName="firstName" class="form-control__input">
+                </div>
+
+                <div class="form__form-control form-control">
+                    <label for="lastName" class="form-control__label">
+                        Прізвище *
+                    </label>
+                    <input type="text" name="lastName" id="lastName" formControlName="lastName" class="form-control__input">
+                </div>
+            </div>
+
+
+            <div class="form-control_two-column">
+                <div class="form__form-control form-control">
+                    <label for="phoneNumber" class="form-control__label">
+                        Номер телефону *
+                    </label>
+                    <input type="text" name="phoneNumber" id="phoneNumber" formControlName="phoneNumber" class="form-control__input">
+                </div>
+
+                <div class="form__form-control form-control">
+                    <label for="email" class="form-control__label">
+                        Адреса електронної скриньки *
+                    </label>
+                    <input type="text" name="email" id="email" formControlName="email" class="form-control__input">
+                </div>
+            </div>
+
+            <div class="form-control_two-column">
+                <div class="form__form-control form-control">
+                    <label for="street" class="form-control__label">
+                        Вулиця *
+                    </label>
+                    <input type="text" name="street" id="street" formControlName="street" class="form-control__input">
+                </div>
+
+                <div class="form__form-control form-control">
+                    <label for="houseNumber" class="form-control__label">
+                        Номер будинку *
+                    </label>
+                    <input type="text" name="houseNumber" id="houseNumber" formControlName="houseNumber" class="form-control__input">
+                </div>
+            </div>
+
+            <div class="form-control_two-column">
+                <div class="form__form-control form-control">
+                    <label for="city" class="form-control__label">
+                        Місто *
+                    </label>
+                    <input type="text" name="city" id="city" formControlName="city" class="form-control__input">
+                </div>
+
+                <div class="form__form-control form-control">
+                    <label for="postcode" class="form-control__label">
+                        Поштовий індекс *
+                    </label>
+                    <input type="text" name="postcode" id="postcode" formControlName="postcode" class="form-control__input">
+                </div>
+            </div>
+
+            <div class="form__form-control form-control">
+                <label for="additionalInformation" class="form-control__label">
+                    Додаткова інформація
+                </label>
+                <input type="text" name="additionalInformation" id="additionalInformation" formControlName="additionalInformation" class="form-control__input">
+            </div>
+
+
+            <hr class="help-page__header-line">
+            <div class="content__btn">
+                <button class="btn btn_my-address" type="submit">Зберегти зміни</button>
+            </div>
+
+        </form>
+
+
+    </div>
+</div>

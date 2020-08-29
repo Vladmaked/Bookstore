@@ -1,0 +1,42 @@
+.btn_my-address {
+  margin-bottom: 30px;
+  background-color: white;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.content__btn {
+  text-align: right;
+}
+
+.form-control__input {
+  padding: 10px 5px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  width: 250px;
+  margin-bottom: 20px;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  margin-right: 15px;
+}
+
+.form-control_two-column {
+  display: flex;
+}
+
+.form-control__label {
+  padding: 10px 0;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+@media only screen and (max-width: 576px) {
+  .form-control_two-column {
+    flex-direction: column;
+  }
+  .form-control__input {
+    width: 100%;
+  }
+}

@@ -104,10 +104,17 @@ button {
 
 .btn {
   padding: 15px 25px;
-  background: #FFFFFF;
+  background-color: inherit;
   border: 1px solid rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
   border-radius: 3px;
+}
+
+.btn:hover {
+  text-shadow: 0 0 .65px black, 0 0 .65px black;
+
+  background-color: inherit;
+  border: 1px solid black;
 }
 
 button::-moz-focus-inner {

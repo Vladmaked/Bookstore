@@ -10,19 +10,53 @@
                     Вже зареєстровані?
                 </h2>
 
-                <form action="" class="login__login-form login-form">
+                <form class="login__login-form login-form" [formGroup]="loginForm" (ngSubmit)="login()">
 
-                    <div class="form__input-wrapper" *ngIf="!create">
-                        <label>
-                            <input type="text" class="form__input" placeholder="Адреса електронної скриньки">
-                        </label>
 
-                        <label>
-                            <input type="text" class="form__input login-form__input-password" placeholder="Пароль">
-                        </label>
+                    <div class="form__input-wrapper" *ngIf="loginWrapper">
+
+                        <div class="form__error validation" *ngIf="auth.error$ | async as error">
+                            {{error}}
+                        </div>
+
+<!--                        <div class="form__error validation" *ngIf="message">-->
+<!--                            {{message}}-->
+<!--                        </div>-->
+
+                        <div class="form__control">
+                            <label class="form__label">
+                                <input type="email" class="form__input" placeholder="Адреса електронної скриньки" formControlName="email">
+                            </label>
+                            <div class="form__validation" *ngIf="loginForm.get('email').touched && loginForm.get('email').invalid">
+                                <small class="validation" *ngIf="loginForm.get('email').errors.required">Введіть Email</small>
+                                <small class="validation" *ngIf="loginForm.get('email').errors.email">Введіть вірний Email</small>
+                            </div>
+                        </div>
+
+
+                        <div class="form__control">
+                            <label class="form__label login-form__label-password">
+                                <input type="text" class="form__input" placeholder="Пароль" formControlName="password">
+                            </label>
+                            <div class="form__validation" *ngIf="loginForm.get('password').touched && loginForm.get('password').invalid">
+                                <small class="validation" *ngIf="loginForm.get('password').errors.required">Введіть пароль</small>
+                                <small class="validation" *ngIf="loginForm.get('password').errors.minlength">
+                                    Пароль має містити мінімум {{loginForm.get('password').errors.minlength.requiredLength}} символів.
+                                    Зараз {{loginForm.get('password').errors.minlength.actualLength}}
+                                </small>
+                            </div>
+                        </div>
                     </div>
 
-                    <button class="login-form__btn btn" (click)="create = false">
+                    <button class="login-form__btn btn" *ngIf="!loginWrapper" (click)="registrationWrapper = false; loginWrapper = true">
+                        Вхід
+                    </button>
+
+                    <button class="login-form__btn btn" *ngIf="loginWrapper"
+                            type="submit"
+                            [ngClass]="{tooltip: loginForm.invalid}"
+                            data-title="Заповніть всі поля"
+                            [disabled]="loginForm.invalid || submitted">
                         Вхід
                     </button>
                 </form>
@@ -40,39 +74,83 @@
                     Реєстрація
                 </h2>
 
-                <form action="" class="registration__registration-form registration-form">
+                <form class="registration__registration-form registration-form" [formGroup]="registrationForm" (ngSubmit)="registration()">
 
-                    <div class="form__input-wrapper" *ngIf="create">
-                        <label>
-                            <input type="text" class="form__input" placeholder="Адреса електронної скриньки">
-                        </label>
+                    <div class="form__input-wrapper" *ngIf="registrationWrapper">
 
-                        <div class="form__input-initials">
-                            <label class="registration-form__label-first-name">
-                                <input type="text" class="form__input" placeholder="Ім'я">
-                            </label>
-
-                            <label class="registration-form__label-last-name">
-                                <input type="text" class="form__input" placeholder="Прізвище">
-                            </label>
+                        <div class="form__error validation" *ngIf="auth.error$ | async as error">
+                            {{error}}
                         </div>
 
-                        <label>
-                            <input type="text" class="form__input registration-form__input-password" placeholder="Пароль">
-                        </label>
+<!--                        <div class="form__error validation" *ngIf="message">-->
+<!--                            {{message}}-->
+<!--                        </div>-->
 
-                        <label class="registration-form__input-checkbox">
-                            <input type="checkbox">
-                            Так, я хочу підписатися на розсилку (опціонально)
-                        </label>
+                        <div class="form__control">
+                            <label class="form__label">
+                                <input type="email" class="form__input" placeholder="Адреса електронної скриньки" formControlName="email">
+                            </label>
+                            <div class="form__validation" *ngIf="registrationForm.get('email').touched && registrationForm.get('email').invalid">
+                                <small class="validation" *ngIf="registrationForm.get('email').errors.required">Введіть Email</small>
+                                <small class="validation" *ngIf="registrationForm.get('email').errors.email">Введіть вірний Email</small>
+                            </div>
+                        </div>
+
+                        <div class="form__input-initials">
+                            <div class="form__control registration-form__first-name">
+                                <label class="form__label">
+                                    <input type="text" class="form__input" placeholder="Ім'я" formControlName="firstName">
+                                </label>
+                                <div class="form__validation" *ngIf="registrationForm.get('firstName').touched && registrationForm.get('firstName').invalid">
+                                    <small class="validation" *ngIf="registrationForm.get('firstName').errors.required">Введіть ім'я</small>
+                                </div>
+                            </div>
+
+                            <div class="form__control registration-form__last-name">
+                                <label class="form__label ">
+                                    <input type="text" class="form__input" placeholder="Прізвище" formControlName="lastName">
+                                </label>
+                                <div class="form__validation" *ngIf="registrationForm.get('lastName').touched && registrationForm.get('lastName').invalid">
+                                    <small class="validation" *ngIf="registrationForm.get('lastName').errors.required">Введіть прізвище</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form__control registration-form__input-password">
+                            <label class="form__label">
+                                <input type="text" class="form__input" placeholder="Пароль" formControlName="password">
+                            </label>
+                            <div class="form__validation" *ngIf="registrationForm.get('password').touched && registrationForm.get('password').invalid">
+                                <small class="validation" *ngIf="registrationForm.get('password').errors.required">Введіть пароль</small>
+                                <small class="validation" *ngIf="registrationForm.get('password').errors.minlength">
+                                    Пароль має містити мінімум {{registrationForm.get('password').errors.minlength.requiredLength}} символів.
+                                    Зараз {{registrationForm.get('password').errors.minlength.actualLength}}
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form__control">
+                            <label class="registration-form__input-checkbox">
+                                <input type="checkbox" formControlName="subscribeCheckbox">
+                                Так, я хочу підписатися на розсилку (опціонально)
+                            </label>
+                        </div>
                     </div>
 
-                    <button class="registration-form__btn btn" (click)="create = true">
+                    <button class="registration-form__btn btn" *ngIf="!registrationWrapper" (click)="registrationWrapper = true; loginWrapper = false">
+                        Створити обліковий запис
+                    </button>
+
+                    <button class="registration-form__btn btn" *ngIf="registrationWrapper"
+                            type="submit"
+                            [ngClass]="{tooltip: registrationForm.invalid}"
+                            data-title="Заповніть всі поля"
+                            [disabled]="registrationForm.invalid || submitted">
                         Створити обліковий запис
                     </button>
                 </form>
 
-                <div class="registration-form__benefits benefits" *ngIf="!create">
+                <div class="registration-form__benefits benefits" *ngIf="!registrationWrapper">
                     <h3 class="benefits__header">
                         Переваги
                     </h3>
@@ -90,7 +168,7 @@
                     </p>
                 </div>
 
-                <p class="registration-form__info" *ngIf="create">
+                <p class="registration-form__info" *ngIf="registrationWrapper">
                     Натискаючи на кнопку "Створити обліковий запис", Ви приймаєте умови
                     <a [routerLink]="['/help', 'privacy-policy']" class="link registration-form__link">Політики конфіденційності</a>,
                     <a [routerLink]="['/help', 'terms-and-conditions']" class="link registration-form__link">Правила і умови використання сайту</a>

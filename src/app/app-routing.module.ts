@@ -28,6 +28,11 @@ import {ConsumerSupportPageComponent} from './components/pages/help-pages/consum
 import {ClaimsPageComponent} from './components/pages/help-pages/claims-page/claims-page.component';
 import {PrivacyPolicyPageComponent} from './components/pages/help-pages/privacy-policy-page/privacy-policy-page.component';
 import {AuthGuard} from './shared/auth.guard';
+import {MyOrdersPageComponent} from './components/pages/account-pages/my-orders-page/my-orders-page.component';
+import {MyReturnsPageComponent} from './components/pages/account-pages/my-returns-page/my-returns-page.component';
+import {MyDataPageComponent} from './components/pages/account-pages/my-data-page/my-data-page.component';
+import {MyAddressPageComponent} from './components/pages/account-pages/my-address-page/my-address-page.component';
+import {PaymentAccountDataPageComponent} from './components/pages/account-pages/payment-account-data-page/payment-account-data-page.component';
 
 const routes: Routes = [
     {
@@ -154,7 +159,24 @@ const routes: Routes = [
           path: 'account',
           component: AccountPageComponent,
           data: {breadcrumb: 'Особистий кабінет'},
-          canActivate: [AuthGuard]
+          canActivate: [AuthGuard],
+          children: [
+            {
+              path: 'my-orders', component: MyOrdersPageComponent, data: {breadcrumb: 'Мої замовлення'}
+            },
+            {
+              path: 'my-returns', component: MyReturnsPageComponent, data: {breadcrumb: 'Мої повернення'}
+            },
+            {
+              path: 'my-data', component: MyDataPageComponent, data: {breadcrumb: 'Мої дані'}
+            },
+            {
+              path: 'my-address', component: MyAddressPageComponent, data: {breadcrumb: 'Моя адреса'}
+            },
+            {
+              path: 'payment-account-data', component: PaymentAccountDataPageComponent, data: {breadcrumb: 'Дані рахунку'}
+            },
+          ]
         }
       ]
     },

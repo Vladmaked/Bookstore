@@ -1,4 +1,60 @@
 <div class="container">
     <app-breadcrumb></app-breadcrumb>
-    <button (click)="logout($event)">Вихід</button>
+
+    <div class="account__wrapper">
+
+        <div class="account__navigation account__navigation_small" *ngIf="open">
+            <nav class="navigation">
+                <a class="link link_navigation" [routerLink]="['/account', 'my-orders']" routerLinkActive="active" (click)="open = false">
+                    Мої замовлення
+                </a>
+                <a class="link link_navigation" [routerLink]="['/account', 'my-returns']" routerLinkActive="active" (click)="open = false">
+                    Мої повернення
+                </a>
+                <a class="link link_navigation" [routerLink]="['/account', 'my-data']" routerLinkActive="active" (click)="open = false">
+                    Мої дані
+                </a>
+                <a class="link link_navigation" [routerLink]="['/account', 'my-address']" routerLinkActive="active" (click)="open = false">
+                    Моя адреса
+                </a>
+                <a class="link link_navigation" [routerLink]="['/account', 'payment-account-data']" routerLinkActive="active" (click)="open = false">
+                    Дані рахунку
+                </a>
+
+                <button class="link link_navigation navigation__sign-out" (click)="logout($event)">Вихід</button>
+            </nav>
+        </div>
+
+        <div class="account__navigation account__navigation_large">
+            <nav class="navigation">
+                <a class="link link_navigation" [routerLink]="['/account', 'my-orders']" routerLinkActive="active" (click)="open = false">
+                    Мої замовлення
+                </a>
+                <a class="link link_navigation" [routerLink]="['/account', 'my-returns']" routerLinkActive="active" (click)="open = false">
+                    Мої повернення
+                </a>
+                <a class="link link_navigation" [routerLink]="['/account', 'my-data']" routerLinkActive="active" (click)="open = false">
+                    Мої дані
+                </a>
+                <a class="link link_navigation" [routerLink]="['/account', 'my-address']" routerLinkActive="active" (click)="open = false">
+                    Моя адреса
+                </a>
+                <a class="link link_navigation" [routerLink]="['/account', 'payment-account-data']" routerLinkActive="active" (click)="open = false">
+                    Дані рахунку
+                </a>
+
+                <button class="link link_navigation navigation__sign-out" (click)="logout($event)">Вихід</button>
+            </nav>
+        </div>
+
+        <div class="router-outlet-row">
+            <button class="router-outlet-row__btn" *ngIf="!open" (click)="open = true" [routerLink]="['/account']">
+                Повернутися назад
+            </button>
+
+            <div class="router-outlet" *ngIf="!open">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
 </div>

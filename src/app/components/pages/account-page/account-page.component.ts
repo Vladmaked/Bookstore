@@ -9,6 +9,8 @@ import {Router} from '@angular/router';
 })
 export class AccountPageComponent implements OnInit {
 
+  open = false;
+
   constructor(private auth: AuthService,
               private router: Router) {
   }

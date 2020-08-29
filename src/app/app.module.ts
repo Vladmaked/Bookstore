@@ -51,6 +51,11 @@ import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {SharedModule} from './shared/shared.module';
 import {AuthService} from './shared/services/auth.service';
+import {MyOrdersPageComponent} from './components/pages/account-pages/my-orders-page/my-orders-page.component';
+import {MyDataPageComponent} from './components/pages/account-pages/my-data-page/my-data-page.component';
+import {MyAddressPageComponent} from './components/pages/account-pages/my-address-page/my-address-page.component';
+import {MyReturnsPageComponent} from './components/pages/account-pages/my-returns-page/my-returns-page.component';
+import {PaymentAccountDataPageComponent} from './components/pages/account-pages/payment-account-data-page/payment-account-data-page.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +92,12 @@ import {AuthService} from './shared/services/auth.service';
     TermsAndConditionsPageComponent,
     ConsumerSupportPageComponent,
     ClaimsPageComponent,
-    PrivacyPolicyPageComponent
+    PrivacyPolicyPageComponent,
+    MyOrdersPageComponent,
+    MyDataPageComponent,
+    MyAddressPageComponent,
+    MyReturnsPageComponent,
+    PaymentAccountDataPageComponent
   ],
   imports: [
     BrowserModule,

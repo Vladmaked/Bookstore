@@ -21,7 +21,6 @@ export class CatalogPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProducts$();
-    this.productService.productName = '';
   }
 
   getProducts$() {

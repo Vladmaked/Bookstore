@@ -73,7 +73,10 @@
         </div>
 
         <div class="router-outlet-row">
-            <button class="router-outlet-row__btn" *ngIf="!open" (click)="open = true" [routerLink]="['/help']">Повернутися назад</button>
+            <button class="router-outlet-row__btn" *ngIf="!open" (click)="open = true" [routerLink]="['/help']">
+                Повернутися назад
+            </button>
+
             <div class="router-outlet" *ngIf="!open">
                 <router-outlet></router-outlet>
             </div>

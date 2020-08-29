@@ -1,0 +1,117 @@
+<div class="help-page__wrapper">
+    <div class="help-page__title-row">
+        <h1 class="help-page__title">Мої дані</h1>
+        <hr class="help-page__header-line">
+    </div>
+    <div class="help-page__content content">
+        <h1 class="help-page__header">Мої дані</h1>
+        <p class="help-page__content-text">
+            <small>* обов’язкові поля</small>
+        </p>
+
+        <form [formGroup]="myDataForm" (ngSubmit)="saveChange()">
+
+            <div class="form-control_two-column">
+                <div class="form__form-control form__radio-input">
+                    <input type="radio" name="gender" id="genderFemale" formControlName="gender" value="female">
+                    <label for="genderFemale" class="form-control__label">
+                        Жінка
+                    </label>
+                </div>
+                <div class="form__form-control">
+                    <input type="radio" name="gender" id="genderMale" formControlName="gender" value="male">
+                    <label for="genderMale" class="form-control__label">
+                        Чоловік
+                    </label>
+                </div>
+            </div>
+
+
+            <div class="form-control_two-column">
+                <div class="form__form-control form-control">
+                    <label for="firstName" class="form-control__label">
+                        Ім'я *
+                    </label>
+                    <input type="text" name="firstName" id="firstName" formControlName="firstName" class="form-control__input">
+                </div>
+
+                <div class="form__form-control form-control">
+                    <label for="lastName" class="form-control__label">
+                        Прізвище *
+                    </label>
+                    <input type="text" name="lastName" id="lastName" formControlName="lastName" class="form-control__input">
+                </div>
+            </div>
+
+
+            <div class="form-control_two-column">
+                <div class="form__form-control form-control">
+                    <label for="phoneNumber" class="form-control__label">
+                        Номер телефону *
+                    </label>
+                    <input type="text" name="phoneNumber" id="phoneNumber" formControlName="phoneNumber" class="form-control__input">
+                </div>
+
+                <div class="form__form-control form-control">
+                    <label for="email" class="form-control__label">
+                        Адреса електронної скриньки *
+                    </label>
+                    <input type="text" name="email" id="email" formControlName="email" class="form-control__input">
+                </div>
+            </div>
+
+            <div class="form__form-control form-control">
+                <label for="dateOfBirth" class="form-control__label">
+                    Дата народження
+                </label>
+                <input type="text" name="dateOfBirth" id="dateOfBirth" formControlName="dateOfBirth" class="form-control__input">
+            </div>
+
+            <hr class="help-page__header-line">
+
+            <h1 class="help-page__header">Змінити пароль</h1>
+
+            <div class="form__form-control form-control">
+                <label for="currentPassword" class="form-control__label">
+                    Поточний пароль
+                </label>
+                <input type="text" name="currentPassword" id="currentPassword" formControlName="currentPassword" class="form-control__input">
+            </div>
+
+            <div class="form__form-control form-control">
+                <label for="newPassword" class="form-control__label">
+                    Новий пароль
+                </label>
+                <input type="text" name="newPassword" id="newPassword" formControlName="newPassword" class="form-control__input">
+            </div>
+
+            <div class="form__form-control form-control">
+                <label for="confirmedPassword" class="form-control__label">
+                    Підтвердіть пароль
+                </label>
+                <input type="text" name="confirmedPassword" id="confirmedPassword" formControlName="confirmedPassword" class="form-control__input">
+            </div>
+
+            <hr class="help-page__header-line">
+
+
+            <h1 class="help-page__header">Новини</h1>
+
+            <div class="form__control form__input-checkbox">
+                <label>
+                    <input type="checkbox" formControlName="subscribeCheckbox">
+                    Я бажаю отримувати повідомлення про нові продукти та рекламні акції. Я погоджуюся на обробку моїх персональних даних в маркетингових цілях
+                    компанією Світоч.
+                </label>
+            </div>
+
+            <hr class="help-page__header-line">
+            <div class="content__btn">
+                <button class="btn btn_my-data" type="submit">Зберегти зміни</button>
+            </div>
+
+        </form>
+
+
+    </div>
+</div>

@@ -32,6 +32,15 @@ export class AuthService {
       );
   }
 
+  registration(user: User): Observable<any> {
+    user.returnSecureToken = true;
+    return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.apiKey}`, user)
+      .pipe(
+        tap(this.setToken),
+        catchError(this.handleError.bind(this))
+      );
+  }
+
   logout() {
     this.setToken(null);
   }
@@ -51,6 +60,9 @@ export class AuthService {
         break;
       case 'INVALID_PASSWORD':
         this.error$.next('Невірний пароль.');
+        break;
+      case 'EMAIL_EXISTS':
+        this.error$.next('Адреса електронної пошти вже використовується іншим аккаунтом.');
         break;
     }
     return throwError(error);

@@ -211,10 +211,13 @@
 
 .search__input:focus {
   background: #Ffffff url("../../../assets/img/icons/search.svg") no-repeat 15px center;
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .search__input:hover {
   background: #Ffffff url("../../../assets/img/icons/search.svg") no-repeat 15px center;
+
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .search__button {
@@ -232,6 +235,9 @@
 
 .search__button:hover {
   background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+
+  text-shadow: 0 0 .65px black, 0 0 .65px black;
 }
 
 .navigation__item_margin-logo {
