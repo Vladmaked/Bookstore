@@ -14,7 +14,7 @@ import {CatalogPageComponent} from './components/pages/catalog-page/catalog-page
 import {MainPageComponent} from './components/pages/main-page/main-page/main-page.component';
 import {MainSliderComponent} from './components/pages/main-page/main-slider/main-slider.component';
 import {ProductPageComponent} from './components/pages/product-page/product-page.component';
-import {LoginRegistrationComponent} from './components/pages/login-registration/login-registration.component';
+import {LoginRegistrationPageComponent} from './components/pages/login-registration-page/login-registration-page.component';
 import {AccountPageComponent} from './components/pages/account-page/account-page.component';
 import {SearchResultComponent} from './components/pages/search-result/search-result.component';
 import {ErrorPageComponent} from './components/pages/error-page/error-page.component';
@@ -66,7 +66,7 @@ import {PaymentAccountDataPageComponent} from './components/pages/account-pages/
     MainPageComponent,
     MainSliderComponent,
     ProductPageComponent,
-    LoginRegistrationComponent,
+    LoginRegistrationPageComponent,
     AccountPageComponent,
     SearchResultComponent,
     ErrorPageComponent,

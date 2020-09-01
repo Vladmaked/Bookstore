@@ -44,7 +44,7 @@
                                    (click)="subSubMenu = true">
                                     {{category.name}}
                                 </a>
-                                <em *ngIf="category.iSubcategory === true" class="arrow-right"></em>
+                                <em *ngIf="category.iSubcategory === true" class="fas fa-chevron-right"></em>
                                 <ul class="sub-menu__sub-sub-menu sub-sub-menu sub-menu__sub-sub-menu_small"
                                     *ngIf="arrSubcategories && subSubMenu">
                                     <li class="sub-menu__item_display-flex">
@@ -131,7 +131,7 @@
                                [routerLinkActiveOptions]="{exact: true}">
                                 {{category.name}}
                             </a>
-                            <em *ngIf="category.iSubcategory === true" class="arrow-right"></em>
+                            <em *ngIf="category.iSubcategory === true" class="fas fa-chevron-right"></em>
                             <ul class="sub-menu__sub-sub-menu sub-sub-menu" *ngIf="arrSubcategories">
 
                                 <li class="sub-sub-menu__item" *ngIf="category.iSubcategory" routerLinkActive="active"
@@ -148,19 +148,7 @@
                                         </a>
                                     </li>
                                 </ng-container>
-
-                                <li class="sub-sub-menu__item" *ngIf="category.iSubcategory" routerLinkActive="active"
-                                    [routerLinkActiveOptions]="{exact: true}">
-                                    <a class="sub-menu__link link link_padding link_font-size" [routerLink]="['/catalog', category.id, 'subcategories']">
-                                        Всі підкатегорії
-                                    </a>
-                                </li>
                             </ul>
-                        </li>
-                        <li class="sub-menu__item">
-                            <a class="link link_padding link_font-size" [routerLink]="['/catalog', 'categories']" routerLinkActive="active">
-                                Всі категорії
-                            </a>
                         </li>
                     </ul>
                 </li>

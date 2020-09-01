@@ -21,7 +21,7 @@ export class AccountPageComponent implements OnInit {
   logout(event) {
     event.preventDefault();
     this.auth.logout();
-    this.router.navigate(['login-registration']);
+    this.router.navigate(['login-registration-page']);
   }
 
 }

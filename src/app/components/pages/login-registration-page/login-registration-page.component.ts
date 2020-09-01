@@ -6,10 +6,10 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-registration',
-  templateUrl: './login-registration.component.html',
-  styleUrls: ['./login-registration.component.css']
+  templateUrl: './login-registration-page.component.html',
+  styleUrls: ['./login-registration-page.component.css']
 })
-export class LoginRegistrationComponent implements OnInit {
+export class LoginRegistrationPageComponent implements OnInit {
 
   registrationWrapper = false;
   loginWrapper = true;

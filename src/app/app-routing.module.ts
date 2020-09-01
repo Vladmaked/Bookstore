@@ -4,7 +4,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {CatalogPageComponent} from './components/pages/catalog-page/catalog-page.component';
 import {AccountPageComponent} from './components/pages/account-page/account-page.component';
 import {ErrorPageComponent} from './components/pages/error-page/error-page.component';
-import {LoginRegistrationComponent} from './components/pages/login-registration/login-registration.component';
+import {LoginRegistrationPageComponent} from './components/pages/login-registration-page/login-registration-page.component';
 import {MainPageComponent} from './components/pages/main-page/main-page/main-page.component';
 import {MainLayoutComponent} from './shared/main-layout/main-layout.component';
 import {ProductPageComponent} from './components/pages/product-page/product-page.component';
@@ -154,7 +154,7 @@ const routes: Routes = [
           ]
         },
         {path: 'search', component: SearchResultComponent},
-        {path: 'login-registration', component: LoginRegistrationComponent, data: {breadcrumb: 'Вхід та реєстрація'}},
+        {path: 'login-registration-page', component: LoginRegistrationPageComponent, data: {breadcrumb: 'Вхід та реєстрація'}},
         {
           path: 'account',
           component: AccountPageComponent,

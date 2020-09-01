@@ -5,10 +5,8 @@ import {Product} from '../interfaces';
   name: 'sorting'
 })
 export class SortingPipe implements PipeTransform {
-  transform(products: Product[], category?: string, subcategory?: string): any {
-    return products.filter(product => {
-      return category ? product.category === category : subcategory ? product.subcategory === subcategory : false;
-    });
+  transform(products: Product[]): Product[] {
+    return products.reverse();
   }
 
 }

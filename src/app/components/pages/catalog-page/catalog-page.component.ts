@@ -1,6 +1,7 @@
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, HostBinding, HostListener, Input, OnInit, ViewChild} from '@angular/core';
 import {ProductService} from '../../../shared/services/product.service';
 import {routingAnimation} from '../../../shared/animations/routing-animation';
+import {CategoryService} from '../../../shared/services/category.service';
 
 @Component({
   selector: 'app-catalog',
@@ -11,19 +12,42 @@ import {routingAnimation} from '../../../shared/animations/routing-animation';
 export class CatalogPageComponent implements OnInit {
   @HostBinding('@routingAnimation') private routing;
 
-  product$;
-  category;
+  products$;
+  category$;
+  filtersItem: any = false;
 
   constructor(
-    public productService: ProductService
+    public productService: ProductService,
+    public categoryService: CategoryService
   ) {
+  }
+
+  @ViewChild('filters') el: ElementRef;
+
+  @HostListener('document:click', ['$event'])
+  onClick(event: Event) {
+    if (!this.el.nativeElement.contains(event.target)) {
+      this.filtersItem = false;
+    }
+    //     else {
+    //     // Logic for click inside
+    //     this.filtersItem = !this.filtersItem;
+    //   }
   }
 
   ngOnInit(): void {
     this.getProducts$();
+    this.getCategories$();
   }
 
+
   getProducts$() {
-    this.product$ = this.productService.getAllProducts();
+    this.products$ = this.productService.getAllProducts();
+  }
+
+  getCategories$() {
+    this.category$ = this.categoryService.getAllCategories();
   }
 }
+
+

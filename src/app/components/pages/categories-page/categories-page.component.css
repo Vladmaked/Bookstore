@@ -97,7 +97,7 @@
   }
 }
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 576px) and (min-width: 320px) {
   .main-categories__cell {
     width: 50%;
   }
@@ -131,5 +131,51 @@
     display: flex;
     text-align: center;
     flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .main-categories__cell {
+    width: 100%;
+  }
+
+  .main-categories__cell:nth-child(1n+1) {
+    border-left: 1px solid #CBDAD3;
+  }
+
+  .main-categories__cell:nth-child(-n+1) {
+    border-top: 1px solid #CBDAD3;
+  }
+
+  .main-goods__image {
+    margin: 15px auto 10px;
+    width: 128px;
+    height: 190px;
+  }
+
+  .navigation__link:first-child {
+    padding-top: 10px;
+  }
+
+  .navigation__link {
+    font-size: 14px;
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .navigation__link:last-child {
+    padding-bottom: 10px;
+  }
+
+  .navigation__link:nth-child(2) {
+    padding: 0;
+    margin: 15px auto;
+  }
+
+  .navigation__row {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    width: 100%;
   }
 }
