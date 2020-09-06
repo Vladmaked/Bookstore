@@ -21,31 +21,28 @@
                 </button>
             </div>
             <div class="main-goods__row">
-                <ul class="main-goods__grid sales-hits">
-                    <div class="main-goods__grid" *ngIf="product$ | async as products; else loading">
-                        <ng-container *ngIf="selectedTab === 'best'">
-                            <app-product class="main-goods__cell"
-                                         *ngFor="let product of products"
-                                         [product]="product">
-                            </app-product>
-                        </ng-container>
-                        <ng-container *ngIf="selectedTab === 'rec'">
-                            <app-product class="main-goods__cell"
-                                         *ngFor="let product of products"
-                                         [product]="product">
-                            </app-product>
-                        </ng-container>
-                        <ng-container *ngIf="selectedTab === 'disc'">
-                            <app-product class="main-goods__cell"
-                                         *ngFor="let product of products"
-                                         [product]="product">
-                            </app-product>
-                        </ng-container>
-                    </div>
-                    <ng-template #loading>
-                        <p>Завантаження...</p>
-                    </ng-template>
+                <ul class="main-goods__grid" *ngIf="product$ | async as products; else loading">
+                    <ng-container *ngIf="selectedTab === 'best'">
+                        <app-product class="main-goods__cell" *ngFor="let product of products"
+                                     [product]="product">
+                        </app-product>
+                    </ng-container>
+                    <ng-container *ngIf="selectedTab === 'rec'">
+                        <app-product class="main-goods__cell"
+                                     *ngFor="let product of products"
+                                     [product]="product">
+                        </app-product>
+                    </ng-container>
+                    <ng-container *ngIf="selectedTab === 'disc'">
+                        <app-product class="main-goods__cell"
+                                     *ngFor="let product of products"
+                                     [product]="product">
+                        </app-product>
+                    </ng-container>
                 </ul>
+                <ng-template #loading>
+                    <p>Завантаження...</p>
+                </ng-template>
             </div>
         </div>
     </div>

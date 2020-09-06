@@ -8,62 +8,72 @@
 
                     <button class="product__btn-back btn" [routerLink]="['/catalog']">Назад до категорії</button>
                 </div>
-                <div class="product__photo">
-                    <div class="product__image" [innerHTML]="product.photo"></div>
+
+                <div class="product__title-row">
+                    <h2 class="product__title">{{product.title}}</h2>
                 </div>
-                <div class="product__info">
-                    <div class="product__title-row">
-                        <h2 class="product__title">{{product.title}}</h2>
-                        <button class="product__btn-back btn" [routerLink]="['/catalog']">Назад до категорії</button>
+                <div class="product__detail">
+                    <div class="product__photo">
+                        <div class="product__image" [innerHTML]="product.photo"></div>
                     </div>
-                    <div>
-                        <p class="product__author">{{product.author}}</p>
-                    </div>
-                    <div class="product__purchase-line">
-                        <p class="product__price">{{product.price | currency:'UAH':'symbol-narrow':'1.0-2'}}</p>
-                        <button class="product__btn-add-to-cart" title="Додати до кошика" [routerLink]="['/cart']" (click)="addProduct(product)">
-                        </button>
-                    </div>
-                    <div class="product__detail-info">
-                        <p class="product__info-title">Про що книга</p>
-                        <div class="product__info-text"
-                             [innerHTML]="product.info"
-                             [ngClass]="{detail:isDetail}">
+                    <div class="product__info">
+                        <div style="    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;">
+                            <div>
+                                <p class="product__author-label">Автор:</p>
+                                <p class="product__author">{{product.author}}</p>
+                            </div>
+                            <button class="product__btn-back btn" [routerLink]="['/catalog']">Назад до категорії</button>
                         </div>
-                        <button class="btn-detail" (click)="isDetail = !isDetail">Детальніше</button>
-                    </div>
-                    <div class="product__specifications">
-                        <p class="product__specifications-title">Характеристики</p>
-                        <table class="product__specifications-table">
-                            <tr class="table__row">
-                                <th class="table__header">Автор:</th>
-                                <td class="table__div">{{product.author}}</td>
-                            </tr>
-                            <tr class="table__row">
-                                <th class="table__header">Видавництво:</th>
-                                <td class="table__div">Форс</td>
-                            </tr>
-                            <tr class="table__row">
-                                <th class="table__header">Рік видання:</th>
-                                <td class="table__div">2020</td>
-                            </tr>
-                            <tr class="table__row">
-                                <th class="table__header">Палітурка:</th>
-                                <td class="table__div">Тверда</td>
-                            </tr>
-                            <tr class="table__row">
-                                <th class="table__header">ISBN:</th>
-                                <td class="table__div">978-5-04-110057-5</td>
-                            </tr>
-                            <tr class="table__row">
-                                <th class="table__header">Кількість сторінок:</th>
-                                <td class="table__div">208</td>
-                            </tr>
-                            <tr class="table__row">
-                                <th class="table__header">Мова:</th>
-                                <td class="table__div">Російська</td>
-                            </tr>
-                        </table>
+                        <div class="product__purchase-line">
+                            <p class="product__price">{{product.price | currency:'UAH':'symbol-narrow':'1.0-2'}}</p>
+                            <p style="margin: 10px 0;">Кількість</p><input type="text" style="padding: 10px 20px; border: 1px solid black; width: 50%">
+                            <button class="btn btn-add-to-cart" title="Додати до кошика" [routerLink]="['/cart']" (click)="addProduct(product)">
+                                Додати до кошика
+                            </button>
+                        </div>
+                        <div class="product__detail-info">
+                            <p class="product__info-title">Про що книга</p>
+                            <div class="product__info-text"
+                                 [innerHTML]="product.info"
+                                 [ngClass]="{detail:isDetail}">
+                            </div>
+                            <button class="btn-detail" (click)="isDetail = !isDetail">Детальніше</button>
+                        </div>
+                        <div class="product__specifications">
+                            <p class="product__specifications-title">Характеристики</p>
+                            <table class="product__specifications-table">
+                                <tr class="table__row">
+                                    <th class="table__header">Автор:</th>
+                                    <td class="table__div">{{product.author}}</td>
+                                </tr>
+                                <tr class="table__row">
+                                    <th class="table__header">Видавництво:</th>
+                                    <td class="table__div">Форс</td>
+                                </tr>
+                                <tr class="table__row">
+                                    <th class="table__header">Рік видання:</th>
+                                    <td class="table__div">2020</td>
+                                </tr>
+                                <tr class="table__row">
+                                    <th class="table__header">Палітурка:</th>
+                                    <td class="table__div">Тверда</td>
+                                </tr>
+                                <tr class="table__row">
+                                    <th class="table__header">ISBN:</th>
+                                    <td class="table__div">978-5-04-110057-5</td>
+                                </tr>
+                                <tr class="table__row">
+                                    <th class="table__header">Кількість сторінок:</th>
+                                    <td class="table__div">208</td>
+                                </tr>
+                                <tr class="table__row">
+                                    <th class="table__header">Мова:</th>
+                                    <td class="table__div">Російська</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

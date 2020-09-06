@@ -56,6 +56,7 @@ import {MyDataPageComponent} from './components/pages/account-pages/my-data-page
 import {MyAddressPageComponent} from './components/pages/account-pages/my-address-page/my-address-page.component';
 import {MyReturnsPageComponent} from './components/pages/account-pages/my-returns-page/my-returns-page.component';
 import {PaymentAccountDataPageComponent} from './components/pages/account-pages/payment-account-data-page/payment-account-data-page.component';
+import { FiltersComponent } from './components/pages/filters/filters.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +98,8 @@ import {PaymentAccountDataPageComponent} from './components/pages/account-pages/
     MyDataPageComponent,
     MyAddressPageComponent,
     MyReturnsPageComponent,
-    PaymentAccountDataPageComponent
+    PaymentAccountDataPageComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,
