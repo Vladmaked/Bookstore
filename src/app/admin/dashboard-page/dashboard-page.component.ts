@@ -13,7 +13,7 @@ import {Product} from '../../shared/interfaces';
 export class DashboardPageComponent implements OnInit, OnDestroy {
   @HostBinding('@routingAnimation') private routing;
 
-  products: Array<Product> = [];
+  products: Product[] = [];
   pSub: Subscription;
   rSub: Subscription;
   productName;
@@ -32,16 +32,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
-    if (this.pSub) {
-      this.pSub.unsubscribe();
-    }
-
-    if (this.rSub) {
-      this.rSub.unsubscribe();
-    }
-  }
-
   removeProduct(id) {
     this.rSub = this.productService.removeProduct(id).subscribe(() => {
       this.products = this.products.filter(product => product.id !== id);
@@ -52,5 +42,16 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     this.input = document.getElementsByClassName('dashboard__search')[0];
     this.input.value = '';
     this.productName = '';
+  }
+
+
+  ngOnDestroy() {
+    if (this.pSub) {
+      this.pSub.unsubscribe();
+    }
+
+    if (this.rSub) {
+      this.rSub.unsubscribe();
+    }
   }
 }

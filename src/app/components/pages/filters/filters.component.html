@@ -1,0 +1,175 @@
+<div class="filters-row">
+    <form [formGroup]="filtersForm" (ngSubmit)="filter()">
+        <ul class="filters-list" #filters>
+            <li class="filters-list__item">
+                <label class="filters-list__title" (click)="this.filtersItem === 'category' ? this.filtersItem = false : this.filtersItem = 'category'">
+                    Категорія
+                    <i class="filters-list__icon fas" [ngClass]="filtersItem === 'category' ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                </label>
+
+                <ul class="filters-list__sublist filters-sublist" *ngIf="filtersItem === 'category'">
+                    <li class="filters-sublist__item" *ngFor="let category of arrCategories">
+                        <label class="filters-sublist__title">{{category.name}}
+                            <input class="checkbox" type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <div class="btn-wrapper">
+                        <button class="btn btn-filter" type="submit">
+                            Фільтрувати
+                        </button>
+                    </div>
+                </ul>
+            </li>
+
+            <li class="filters-list__item">
+                <label class="filters-list__title" (click)="this.filtersItem === 'author' ? this.filtersItem = false : this.filtersItem = 'author'">
+                    Автор
+                    <i class="filters-list__icon fas" [ngClass]="filtersItem === 'author' ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                </label>
+
+                <ul class="filters-list__sublist filters-sublist" *ngIf="filtersItem === 'author'">
+                    <li class="filters-sublist__item" *ngFor="let category of arrCategories">
+                        <label class="filters-sublist__title">{{category.name}}
+                            <input class="checkbox" type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <div class="btn-wrapper">
+                        <button class="btn btn-filter">
+                            Фільтрувати
+                        </button>
+                    </div>
+                </ul>
+            </li>
+
+            <li class="filters-list__item">
+                <label class="filters-list__title"
+                       (click)="this.filtersItem === 'publication' ? this.filtersItem = false : this.filtersItem = 'publication'">
+                    Видавництво
+                    <i class="filters-list__icon fas" [ngClass]="filtersItem === 'publication' ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                </label>
+
+                <ul class="filters-list__sublist filters-sublist" *ngIf="filtersItem === 'publication'">
+                    <li class="filters-sublist__item" *ngFor="let category of arrCategories">
+                        <label class="filters-sublist__title">{{category.name}}
+                            <input class="checkbox" type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <div class="btn-wrapper">
+                        <button class="btn btn-filter">
+                            Фільтрувати
+                        </button>
+                    </div>
+                </ul>
+            </li>
+
+            <li class="filters-list__item">
+                <label class="filters-list__title" (click)="this.filtersItem === 'yearOfPublication' ? this.filtersItem = false : this.filtersItem
+                        = 'yearOfPublication'">
+                    Рік видання
+                    <i class="filters-list__icon fas" [ngClass]="filtersItem === 'yearOfPublication' ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                </label>
+
+                <ul class="filters-list__sublist filters-sublist" *ngIf="filtersItem === 'yearOfPublication'">
+                    <li class="filters-sublist__item" *ngFor="let category of arrCategories">
+                        <label class="filters-sublist__title">{{category.name}}
+                            <input class="checkbox" type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <div class="btn-wrapper">
+                        <button class="btn btn-filter">
+                            Фільтрувати
+                        </button>
+                    </div>
+                </ul>
+            </li>
+
+            <li class="filters-list__item">
+                <label class="filters-list__title" (click)="this.filtersItem === 'binding' ? this.filtersItem = false : this.filtersItem = 'binding'">
+                    Палітурка
+                    <i class="filters-list__icon fas" [ngClass]="filtersItem === 'binding' ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                </label>
+
+                <ul class="filters-list__sublist filters-sublist" *ngIf="filtersItem === 'binding'">
+                    <li class="filters-sublist__item" *ngFor="let category of arrCategories">
+                        <label class="filters-sublist__title">{{category.name}}
+                            <input class="checkbox" type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <div class="btn-wrapper">
+                        <button class="btn btn-filter">
+                            Фільтрувати
+                        </button>
+                    </div>
+                </ul>
+            </li>
+
+            <li class="filters-list__item">
+                <label class="filters-list__title" (click)="this.filtersItem === 'language' ? this.filtersItem = false : this.filtersItem = 'language'">
+                    Мова
+                    <i class="filters-list__icon fas" [ngClass]="filtersItem === 'language' ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                </label>
+
+                <ul class="filters-list__sublist filters-sublist" *ngIf="filtersItem === 'language'">
+                    <li class="filters-sublist__item" *ngFor="let category of arrCategories">
+                        <label class="filters-sublist__title">{{category.name}}
+                            <input class="checkbox" type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <div class="btn-wrapper">
+                        <button class="btn btn-filter">
+                            Фільтрувати
+                        </button>
+                    </div>
+                </ul>
+            </li>
+
+            <li class="filters-list__item">
+                <label class="filters-list__title" (click)="this.filtersItem === 'series' ? this.filtersItem = false : this.filtersItem = 'series'">
+                    Серія
+                    <i class="filters-list__icon fas" [ngClass]="filtersItem === 'series' ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                </label>
+
+                <ul class="filters-list__sublist filters-sublist" *ngIf="filtersItem === 'series'">
+                    <li class="filters-sublist__item" *ngFor="let category of arrCategories">
+                        <label class="filters-sublist__title">{{category.name}}
+                            <input class="checkbox" type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <div class="btn-wrapper">
+                        <button class="btn btn-filter">
+                            Фільтрувати
+                        </button>
+                    </div>
+                </ul>
+            </li>
+
+            <li class="filters-list__item">
+                <label class="filters-list__title" (click)="this.filtersItem === 'price' ? this.filtersItem = false : this.filtersItem = 'price'">
+                    Ціна
+                    <i class="filters-list__icon fas" [ngClass]="filtersItem === 'price' ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                </label>
+
+                <ul class="filters-list__sublist filters-sublist" *ngIf="filtersItem === 'price'">
+                    <li class="filters-sublist__item" *ngFor="let category of arrCategories">
+                        <label class="filters-sublist__title">{{category.name}}
+                            <input class="checkbox" type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <div class="btn-wrapper">
+                        <button class="btn btn-filter">
+                            Фільтрувати
+                        </button>
+                    </div>
+                </ul>
+            </li>
+        </ul>
+    </form>
+</div>
