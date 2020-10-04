@@ -4,9 +4,14 @@ import Product from '../models/productsModel';
 import catchAsync from '../utils/catchAsync';
 import { AppError } from '../utils/AppError';
 import { getCustomLabel, USER_MESSAGES } from '../labels';
+import APIFeatures from '../utils/ApiFeatures';
 
 export const getAllProducts = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-  const products = await Product.find({});
+  const apiFeatures = new APIFeatures(Product.find({}), req.query);
+
+  apiFeatures.filter().sort().paginate().specifyFields();
+
+  const products = await apiFeatures.query;
 
   res.status(200).json({ status: 'success', data: products });
 });

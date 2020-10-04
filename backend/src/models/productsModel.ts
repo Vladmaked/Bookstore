@@ -7,7 +7,7 @@ export interface IProduct extends Document {
   author?: string;
   photo?: string;
   info?: string;
-  price?: string;
+  price?: number;
   date?: Date;
   id?: string;
   quantityInStock?: number;
@@ -20,7 +20,7 @@ const productSchema: Schema = new Schema({
   author: String,
   photo: String,
   info: String,
-  price: String,
+  price: Number,
   date: Date,
   id: String,
   quantityInStock: Number,
