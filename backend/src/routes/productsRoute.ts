@@ -1,13 +1,7 @@
 import { Router } from 'express';
-import {
-  getAllProducts,
-  createProduct,
-  updateProduct,
-  getProduct,
-  deleteProduct,
-} from '../controllers/productsController';
+import { getAllProducts, createProduct, updateProduct, getProduct, deleteProduct } from '../controllers';
 
-export const getProductsRouter = () => {
+export const getProductsRouter = (): Router => {
   const router = Router();
 
   router.route('/').get(getAllProducts).post(createProduct);

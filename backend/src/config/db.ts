@@ -17,4 +17,5 @@ export const MONGO_URI_CLOUD = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_HOS
 export const MONGO_OPTIONS: ConnectionOptions = {
   useUnifiedTopology: true,
   useNewUrlParser: true,
+  useFindAndModify: false,
 };
