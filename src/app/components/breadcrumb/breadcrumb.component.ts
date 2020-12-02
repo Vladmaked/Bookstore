@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router, NavigationEnd} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {IBreadCrumb} from '../../shared/interfaces';
 import {distinctUntilChanged, filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-breadcrumb',
   templateUrl: './breadcrumb.component.html',
-  styleUrls: ['./breadcrumb.component.scss']
+  styleUrls: ['./breadcrumb.component.css']
 })
 export class BreadcrumbComponent implements OnInit {
   public breadcrumbs: IBreadCrumb[];
@@ -27,13 +27,18 @@ export class BreadcrumbComponent implements OnInit {
     });
   }
 
+
   /*
    * Recursively build breadcrumb according to activated route.
    * @param route
    * @param url
    * @param breadcrumbs
    */
-  buildBreadCrumb(route: ActivatedRoute, url: string = '', breadcrumbs: IBreadCrumb[] = []): IBreadCrumb[] {
+  buildBreadCrumb(
+    route: ActivatedRoute,
+    url: string = '',
+    breadcrumbs: IBreadCrumb[] = []
+  ): IBreadCrumb[] {
     // ... implementation of buildBreadCrumb
     let label =
       route.routeConfig && route.routeConfig.data
@@ -47,6 +52,7 @@ export class BreadcrumbComponent implements OnInit {
       const paramName = lastRoutePart.split(':')[1];
       path = path.replace(lastRoutePart, route.snapshot.params[paramName]);
       label = route.snapshot.params[paramName];
+
     }
     const nextUrl = path ? `${url}/${path}` : url;
 

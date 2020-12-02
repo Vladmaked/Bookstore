@@ -1,20 +1,28 @@
-<div class="goods" *ngIf="product">
-    <a [routerLink]="['/product', product.id]">
+<div class="product" *ngIf="product">
+    <a [routerLink]="['/product', product.id]" class="product__link">
         <div class="catalog-goods__image" [innerHTML]="product.photo"></div>
     </a>
-    <a [routerLink]="['/product', product.id]" class="main-goods__title" title="{{product.title}}">
-        {{product.title}}
-    </a>
-    <a href="" class="main-goods__author" title="{{product.author}}">
-        {{product.author}}
-    </a>
-    <div class="main-goods__buy-row">
-        <p class="main-goods__price">
-            {{product.price | currency:'UAH':'symbol-narrow':'1.0-2'}}
-            <!--            <span class="main-goods__currency">₴</span>-->
-        </p>
-        <button class="add-product-to-cart" [routerLink]="['/cart']" title="Додати до кошика"
-                (click)="addProduct(product)"><img src="../../../assets/img/icons/buy_icon.svg" alt="">
-        </button>
+    <div class="product__description">
+        <div>
+            <a [routerLink]="['/product', product.id]" class="main-goods__title" title="{{product.title}}">
+                {{product.title}}
+            </a>
+            <a href="" class="main-goods__author" title="{{product.author}}">
+                {{product.author}}
+            </a>
+        </div>
+        <div class="main-goods__buy-row">
+            <p class="main-goods__price">
+                {{product.price | currency:'UAH':'symbol-narrow':'1.0-2'}}
+                <!--            <span class="main-goods__currency">₴</span>-->
+            </p>
+            <button data-btn class="btn__add-product-to-cart" title="Додати до кошика"
+                    (click)="addProduct(product)">
+                <svg class="shopping-cart-icon">
+                    <use xlink:href="#shopping-cart-icon"></use>
+                </svg>
+                <span class="add-product-to-cart__description">В кошик</span>
+            </button>
+        </div>
     </div>
 </div>

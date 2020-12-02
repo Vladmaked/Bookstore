@@ -1,125 +1,137 @@
 <div class="container">
-    <div class="cart__wrapper" *ngIf="productList.length > 0; else empty">
-        <div class="cart__body">
-            <div class="breadcrumb">
-                <app-breadcrumb></app-breadcrumb>
-            </div>
-            <h2 class="cart__title">
-                Кошик <em class="arrow-right"></em><span class="cart__title_fz">{{total()}} шт.</span>
-            </h2>
-            <div class="cart__info">
-                <div class="cart__product product" *ngFor="let cartItem of productList">
-                    <div class="product__body">
-                        <div class="product__image">
-                            <div [innerHTML]="cartItem.product.photo"></div>
-                        </div>
-
-                        <div class="product__info info">
-                            <div class="info-top">
-                                <p class="product__title">
-                                    {{cartItem.product.title}}
-                                </p>
-                                <p class="product__author">
-                                    Автор: {{cartItem.product.author}}
-                                </p>
-                            </div>
-                            <div class="info-quantity">
-                                <div *ngIf="cartItem">
-                                    <label>
-                                        <input type="number"
-                                               class="info-quantity__input"
-                                               [(ngModel)]="cartItem.quantity" min="0"
-                                               (ngModelChange)="modelChanged()"/>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="product__action">
-                            <button class="btn_delete" (click)="delete(cartItem)">
-                                <em class="product__delete"></em>
-                            </button>
-                            <p class="product__price">
-                                {{cartItem.product.price * cartItem.quantity | currency:'UAH':'symbol-narrow':'1.0-2':'uk'}}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="horizontal-line"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="cart__summary summary">
-
-            <button class="btn btn_back" [routerLink]="['/catalog']">Назад до каталога</button>
-
-            <div class="summary__info">
-                <div class="summary__align">
-                    <p>
-                        ВАРТІСТЬ ТОВАРІВ:
-                    </p>
-                    <p>
-                        {{this.totalPrice | currency:'UAH':'symbol-narrow':'1.0-2':''}}
-                    </p>
-                </div>
-                <div class="summary__align summary__deliver">
-                    <p>
-                        ДОСТАВКА
-                    </p>
-                    <p>
-                        Безкоштовно
-                    </p>
-                </div>
+  <div class="cart__wrapper" *ngIf="productList.length > 0; else empty">
+    <div class="cart__body">
+      <div class="breadcrumb">
+        <app-breadcrumb></app-breadcrumb>
+      </div>
+      <h2 class="cart__title">
+        Кошик
+        <svg class="arrow_right_thick-icon">
+          <use xlink:href="#arrow_right_thick-icon"></use>
+        </svg>
+        <span class="cart__title_fz">{{total()}} шт.</span>
+      </h2>
+      <div class="cart__info">
+        <div class="cart__product product" *ngFor="let cartItem of productList">
+          <div class="product__body">
+            <div class="product__image">
+              <div [innerHTML]="cartItem.product.photo"></div>
             </div>
 
-            <div class="horizontal-line"></div>
-
-            <div class="summary__align summary__deliver">
-                <p>
-                    <b>ВСЬОГО</b> з ПДВ
+            <div class="product__info info">
+              <div class="info-top">
+                <p class="product__title">
+                  {{cartItem.product.title}}
                 </p>
-                <p>
-                    <b>{{this.totalPrice * 1.2 | currency:'UAH':'symbol-narrow':'1.0-2':''}}</b>
+                <p class="product__author">
+                  Автор: {{cartItem.product.author}}
                 </p>
+              </div>
+              <div class="info-quantity">
+                <div *ngIf="cartItem">
+                  <label>
+                    <input type="number"
+                           class="info-quantity__input"
+                           [(ngModel)]="cartItem.quantity" min="0"
+                           (ngModelChange)="modelChanged()"/>
+                  </label>
+                </div>
+              </div>
             </div>
 
-            <button class="btn btn_order" [routerLink]="['/order']">Перейти до оформлення</button>
-
-
-            <p class="summary__terms-and-Conditions">
-                Оформляючи замовлення на svitoch.com.ua, Ви погоджуєтесь з нашими
-                <a class="link" href="#">
-                    Умовами та положеннями
-                </a>
-            </p>
-
-            <p class="summary__payment-methods payment-methods">СПОСОБИ ОПЛАТИ</p>
-            <p class="payment-methods__cash">
-                <em class="payment-methods__cash-icon"></em>
-                Готівковий розрахунок
-            </p>
-            <p class="summary__return-rules">
-                <em class="payment-methods__check-mark-icon"></em>
-                30 днів на повернення
-            </p>
-            <p class="summary__delivery-price">
-                <em class="payment-methods__check-mark-icon"></em>
-                Безкоштовна доставка від 950 грн
-            </p>
+            <div class="product__action">
+              <button class="btn_delete" (click)="delete(cartItem)">
+                <svg class="trash-icon">
+                  <use xlink:href="#trash-icon"></use>
+                </svg>
+              </button>
+              <p class="product__price">
+                {{cartItem.product.price * cartItem.quantity | currency:'UAH':'symbol-narrow':'1.0-2':'uk'}}
+              </p>
+            </div>
+          </div>
+          <div class="horizontal-line"></div>
         </div>
+      </div>
     </div>
 
-    <ng-template #empty>
+    <div class="cart__summary summary">
 
-        <app-breadcrumb></app-breadcrumb>
+      <button class="btn btn_back" [routerLink]="['/catalog']">Назад до каталога</button>
 
-        <h2 class="cart__empty-title">Ваш кошик порожній</h2>
-        <p class="cart__empty-text">Якщо ви додали товари в кошик під час минулого візиту,<br> спробуйте увійти в ваш акаунт.</p>
-        <p class="cart__empty-text">АБО ПРОДОВЖУЙТЕ ПОКУПКИ</p>
-        <div class="cart__empty-menu empty-menu">
-            <a class="empty-menu__item link" [routerLink]="['/catalog']">Популярні категорії</a>
-            <a class="empty-menu__item link" [routerLink]="['/catalog']">Бестселлери</a>
-            <a class="empty-menu__item link" [routerLink]="['/catalog']">Книги зі знижками</a>
+      <div class="summary__info">
+        <div class="summary__align">
+          <p>
+            ВАРТІСТЬ ТОВАРІВ:
+          </p>
+          <p>
+            {{this.totalPrice | currency:'UAH':'symbol-narrow':'1.0-2':''}}
+          </p>
         </div>
-    </ng-template>
+        <div class="summary__align summary__deliver">
+          <p>
+            ДОСТАВКА
+          </p>
+          <p>
+            Безкоштовно
+          </p>
+        </div>
+      </div>
+
+      <div class="horizontal-line"></div>
+
+      <div class="summary__align summary__deliver">
+        <p>
+          <b>ВСЬОГО</b> з ПДВ
+        </p>
+        <p>
+          <b>{{this.totalPrice | currency:'UAH':'symbol-narrow':'1.0-2':''}}</b>
+        </p>
+      </div>
+
+      <button class="btn btn_order" [routerLink]="['/order']">Перейти до оформлення</button>
+
+
+      <p class="summary__terms-and-Conditions">
+        Оформляючи замовлення на svitoch.com.ua, Ви погоджуєтесь з нашими
+        <a class="link" href="#">
+          Умовами та положеннями
+        </a>
+      </p>
+
+      <p class="summary__payment-methods payment-methods">СПОСОБИ ОПЛАТИ</p>
+      <p class="payment-methods__cash">
+        <svg class="cash-in-hand-icon">
+          <use xlink:href="#cash-in-hand-icon"></use>
+        </svg>
+        Готівковий розрахунок
+      </p>
+      <p class="summary__return-rules">
+        <svg class="check-mark-icon">
+          <use xlink:href="#check-mark-icon"></use>
+        </svg>
+        30 днів на повернення
+      </p>
+      <p class="summary__delivery-price">
+        <svg class="check-mark-icon">
+          <use xlink:href="#check-mark-icon"></use>
+        </svg>
+        Безкоштовна доставка від 950 грн
+      </p>
+    </div>
+  </div>
+
+  <ng-template #empty>
+
+    <app-breadcrumb></app-breadcrumb>
+
+    <h2 class="cart__empty-title">Ваш кошик порожній</h2>
+    <p class="cart__empty-text">Якщо ви додали товари в кошик під час минулого візиту,<br> спробуйте увійти в ваш акаунт.</p>
+    <p class="cart__empty-text">АБО ПРОДОВЖУЙТЕ ПОКУПКИ</p>
+    <div class="cart__empty-menu empty-menu">
+      <a class="empty-menu__item link" [routerLink]="['/catalog']">Популярні категорії</a>
+      <a class="empty-menu__item link" [routerLink]="['/catalog']">Бестселлери</a>
+      <a class="empty-menu__item link" [routerLink]="['/catalog']">Книги зі знижками</a>
+    </div>
+  </ng-template>
 </div>

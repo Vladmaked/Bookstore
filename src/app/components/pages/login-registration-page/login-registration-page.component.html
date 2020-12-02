@@ -36,7 +36,7 @@
 
                         <div class="form__control">
                             <label class="form__label login-form__label-password">
-                                <input type="text" class="form__input" placeholder="Пароль" formControlName="password">
+                                <input type="password" class="form__input" placeholder="Пароль" formControlName="password">
                             </label>
                             <div class="form__validation" *ngIf="loginForm.get('password').touched && loginForm.get('password').invalid">
                                 <small class="validation" *ngIf="loginForm.get('password').errors.required">Введіть пароль</small>

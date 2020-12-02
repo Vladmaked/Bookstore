@@ -1,254 +1,258 @@
 <div class="container">
 
-    <div class="order__wrapper" *ngIf="productList.length > 0">
-        <div class="order__body">
-            <div class="breadcrumb">
-                <app-breadcrumb></app-breadcrumb>
-            </div>
+  <div class="order__wrapper" *ngIf="productList.length > 0">
+    <div class="order__body">
+      <div class="breadcrumb">
+        <app-breadcrumb></app-breadcrumb>
+      </div>
 
-            <h3 class="order__header-delivery-method header-delivery-method">
-                <span class="radio-icon">1</span> Спосіб доставки
-            </h3>
+      <h3 class="order__header-delivery-method header-delivery-method">
+        <span class="radio-icon">1</span> Спосіб доставки
+      </h3>
 
-            <div class="order__body-delivery-method body-delivery-method" (click)="popup = !popup; body.style.position = 'fixed'">
-                <div class="radio-icon radio-icon_btn"></div>
-                <span class="body-delivery-method__icon-currier"></span>
-                <div class="order__body-delivery-method-info">
-                    <p class="body-delivery-method__currier-method body-delivery-method_margin">Курьер</p>
-                    <p class="body-delivery-method__delivery-time body-delivery-method_margin">Доставка від 3 днів</p>
-                    <p class="body-delivery-method__delivery-price body-delivery-method_margin">Доставка безкоштовна</p>
-                </div>
-            </div>
+      <div class="order__body-delivery-method body-delivery-method" (click)="popup = !popup; body.style.position = 'fixed'">
+        <div class="radio-icon radio-icon_btn"></div>
+        <svg class="delivery-icon">
+          <use xlink:href="#delivery-icon"></use>
+        </svg>
+        <div class="order__body-delivery-method-info">
+          <p class="body-delivery-method__currier-method body-delivery-method_margin">Курьер</p>
+          <p class="body-delivery-method__delivery-time body-delivery-method_margin">Доставка від 3 днів</p>
+          <p class="body-delivery-method__delivery-price body-delivery-method_margin">Доставка безкоштовна</p>
         </div>
-
-        <div class="order__summary summary">
-
-            <button class="btn btn_back" [routerLink]="['/cart']">
-                Назад до кошика
-            </button>
-
-            <div class="summary__info">
-                <div class="summary__align">
-                    <p>
-                        ВАРТІСТЬ ТОВАРІВ:
-                    </p>
-                    <p>
-                        {{this.totalPrice | currency:'UAH':'symbol-narrow':'1.0-2':''}}
-                    </p>
-                </div>
-                <div class="summary__align summary__deliver">
-                    <p>
-                        ДОСТАВКА
-                    </p>
-                    <p>
-                        Безкоштовно
-                    </p>
-                </div>
-            </div>
-
-            <div class="horizontal-line"></div>
-
-            <div class="summary__align summary__deliver">
-                <p>
-                    <b>ВСЬОГО</b> з ПДВ
-                </p>
-                <p>
-                    <b>{{this.totalPrice * 1.2 | currency:'UAH':'symbol-narrow':'1.0-2':''}}</b>
-                </p>
-            </div>
-
-            <button class="btn btn_order" (click)="popup = !popup; body.style.position = 'fixed'">
-                Оформити замовлення
-            </button>
-
-
-            <p class="summary__terms-and-Conditions">
-                Оформляючи замовлення на svitoch.com.ua, Ви погоджуєтесь з нашими
-                <a class="link" href="#">
-                    Умовами та положеннями
-                </a>
-            </p>
-
-
-            <div class="order__order-header order-header" (click)="orderListIsOpen = !orderListIsOpen">
-                <p class="order-header__title">
-                    Ваше замовлення
-                    <em class="arrow-right"></em>
-                    <span class="order__title_fz">{{total()}} шт.</span>
-                </p>
-                <div>
-                    <em [ngClass]="{'arrow-bottom': !orderListIsOpen, 'arrow-top': orderListIsOpen}"></em>
-                </div>
-            </div>
-            <div class="order__info" *ngIf="orderListIsOpen">
-                <div class="order__product product" *ngFor="let cartItem of productList">
-                    <div class="product__body">
-                        <div class="product__image" [innerHTML]="cartItem.product.photo">
-                        </div>
-
-                        <div class="product__info info">
-                            <div class="info-top">
-                                <p class="product__title">
-                                    {{cartItem.product.title}}
-                                </p>
-                                <p class="product__author">
-                                    Автор: {{cartItem.product.author}}
-                                </p>
-                            </div>
-                            <div class="info-summary-row">
-                                <div *ngIf="cartItem">
-                                    <p>
-                                        {{cartItem.quantity}} шт.
-                                    </p>
-                                </div>
-
-                                <div class="product__action">
-                                    <p class="product__price">
-                                        {{cartItem.product.price * cartItem.quantity | currency:'UAH':'symbol-narrow':'1.0-2':'uk'}}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="horizontal-line"></div>
-                </div>
-            </div>
-
-            <div *ngIf="popup" class="popup-container">
-                <div *ngIf="popup" class="popup">
-
-                    <div class="popup__header-row">
-                        <h3 class="popup__header">
-                            Додати спосіб доставки
-                        </h3>
-                        <button class="btn_close" (click)="popup = !popup; body.style.position = ''">X</button>
-                    </div>
-
-                    <form [formGroup]="form" (ngSubmit)="submit()">
-                        <div>
-                            <label for="name">
-
-                            </label>
-                            <input class="order-form__input" type="text" id="name" formControlName="name" placeholder="Ім'я">
-                            <div *ngIf="form.get('name').touched && form.get('name').invalid">
-                                <small *ngIf="form.get('name').errors.required" class="validation">
-                                    Введіть ваше ім'я!
-                                </small>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label for="surname">
-
-                            </label>
-                            <input class="order-form__input" type="text" id="surname" formControlName="surname" placeholder="Прізвище">
-                            <div *ngIf="form.get('surname').touched && form.get('surname').invalid">
-                                <small *ngIf="form.get('surname').errors.required" class="validation">
-                                    Введіть ваше прізвище!
-                                </small>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label for="phone">
-
-                            </label>
-                            <input class="order-form__input" type="text" id="phone" formControlName="phone" placeholder="Номер телефону">
-                            <div *ngIf="form.get('phone').touched && form.get('phone').invalid">
-                                <small *ngIf="form.get('phone').errors.required" class="validation">
-                                    Введіть ваш номер телефону!
-                                </small>
-                            </div>
-                        </div>
-
-                        <div class="order-form__city-postcode-row city-postcode-row">
-                            <div class="city-postcode-row__city">
-                                <label for="city">
-
-                                </label>
-                                <input class="order-form__input order-form__input_city" type="text" id="city" formControlName="city" placeholder="Місто">
-                                <div *ngIf="form.get('city').touched && form.get('city').invalid">
-                                    <small *ngIf="form.get('city').errors.required" class="validation">
-                                        Введіть назву міста!
-                                    </small>
-                                </div>
-                            </div>
-
-                            <div class="city-postcode-row__postcode">
-                                <label for="postcode">
-
-                                </label>
-                                <input class="order-form__input order-form__input_postcode" type="text" id="postcode" formControlName="postcode"
-                                       placeholder="Поштовий індекс">
-                                <div *ngIf="form.get('postcode').touched && form.get('postcode').invalid">
-                                    <small *ngIf="form.get('postcode').errors.required" class="validation">
-                                        Введіть номер поштового індексу!
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label for="street0">
-
-                            </label>
-                            <input class="order-form__input" type="text" id="street0" formControlName="street0" placeholder="Вулиця">
-                            <div *ngIf="form.get('street0').touched && form.get('street0').invalid">
-                                <small *ngIf="form.get('street0').errors.required" class="validation">
-                                    Введіть назву вулиці!
-                                </small>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label for="street1">
-
-                            </label>
-                            <input class="order-form__input" type="text" id="street1" formControlName="street1" placeholder="Номер будинку">
-                            <div *ngIf="form.get('street1').touched && form.get('street1').invalid">
-                                <small *ngIf="form.get('street1').errors.required" class="validation">
-                                    Введіть номер будинку!
-                                </small>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label for="additionalInformation">
-
-                            </label>
-                            <input class="order-form__input" type="text" id="additionalInformation" formControlName="additionalInformation"
-                                   placeholder="Додаткова інформація (не обов'язково)">
-                        </div>
-
-
-                        <!--                        <div>-->
-                        <!--                            <label for="payment">-->
-                        <!--                                Спосіб оплати-->
-                        <!--                            </label>-->
-                        <!--                            <select id="payment" formControlName="payment">-->
-                        <!--                                <option value="cash">Готівка</option>-->
-                        <!--                                <option value="card">Картка</option>-->
-                        <!--                            </select>-->
-                        <!--                        </div>-->
-
-                        <button class="btn btn-save" type="submit"
-                                [ngClass]="{tooltip: form.invalid}"
-                                data-title="Заповніть всі поля"
-                                [disabled]="form.invalid || submitted">Зберегти
-                        </button>
-                    </form>
-                </div>
-            </div>
-            <div class="popup-information" *ngIf="popupInformation">
-                <p class="popup-information__text">
-                    Замовлення оформлено
-                </p>
-                <button class="btn" (click)="popupInformation = false; body.style.position = ''">
-                    Ок
-                </button>
-            </div>
-
-        </div>
+      </div>
     </div>
+
+    <div class="order__summary summary">
+
+      <button class="btn btn_back" [routerLink]="['/cart']">
+        Назад до кошика
+      </button>
+
+      <div class="summary__info">
+        <div class="summary__align">
+          <p>
+            ВАРТІСТЬ ТОВАРІВ:
+          </p>
+          <p>
+            {{this.totalPrice | currency:'UAH':'symbol-narrow':'1.0-2':''}}
+          </p>
+        </div>
+        <div class="summary__align summary__deliver">
+          <p>
+            ДОСТАВКА
+          </p>
+          <p>
+            Безкоштовно
+          </p>
+        </div>
+      </div>
+
+      <div class="horizontal-line"></div>
+
+      <div class="summary__align summary__deliver">
+        <p>
+          <b>ВСЬОГО</b> з ПДВ
+        </p>
+        <p>
+          <b>{{this.totalPrice * 1.2 | currency:'UAH':'symbol-narrow':'1.0-2':''}}</b>
+        </p>
+      </div>
+
+      <button class="btn btn_order" (click)="popup = !popup; body.style.position = 'fixed'">
+        Оформити замовлення
+      </button>
+
+
+      <p class="summary__terms-and-Conditions">
+        Оформляючи замовлення на svitoch.com.ua, Ви погоджуєтесь з нашими
+        <a class="link" href="#">
+          Умовами та положеннями
+        </a>
+      </p>
+
+
+      <div class="order__order-header order-header" (click)="orderListIsOpen = !orderListIsOpen">
+        <p class="order-header__title">
+          Ваше замовлення
+          <svg class="arrow_right_thick-icon">
+            <use xlink:href="#arrow_right_thick-icon"></use>
+          </svg>
+          <span class="order__title_fz">{{total()}} шт.</span>
+        </p>
+        <svg [ngClass]="{'chevron_down-icon': !orderListIsOpen, 'chevron_up-icon': orderListIsOpen}">
+          <use xlink:href="#chevron_down-icon"></use>
+        </svg>
+      </div>
+      <div class="order__info" *ngIf="orderListIsOpen">
+        <div class="order__product product" *ngFor="let cartItem of productList">
+          <div class="product__body">
+            <div class="product__image" [innerHTML]="cartItem.product.photo">
+            </div>
+
+            <div class="product__info info">
+              <div class="info-top">
+                <p class="product__title">
+                  {{cartItem.product.title}}
+                </p>
+                <p class="product__author">
+                  Автор: {{cartItem.product.author}}
+                </p>
+              </div>
+              <div class="info-summary-row">
+                <div *ngIf="cartItem">
+                  <p>
+                    {{cartItem.quantity}} шт.
+                  </p>
+                </div>
+
+                <div class="product__action">
+                  <p class="product__price">
+                    {{cartItem.product.price * cartItem.quantity | currency:'UAH':'symbol-narrow':'1.0-2':'uk'}}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="horizontal-line"></div>
+        </div>
+      </div>
+
+      <div *ngIf="popup" class="popup-container">
+        <div *ngIf="popup" class="popup">
+
+          <div class="popup__header-row">
+            <h3 class="popup__header">
+              Додати спосіб доставки
+            </h3>
+            <button class="btn_close" (click)="popup = !popup; body.style.position = ''">X</button>
+          </div>
+
+          <form [formGroup]="form" (ngSubmit)="submit()">
+            <div>
+              <label for="name">
+
+              </label>
+              <input class="order-form__input" type="text" id="name" formControlName="name" placeholder="Ім'я">
+              <div *ngIf="form.get('name').touched && form.get('name').invalid">
+                <small *ngIf="form.get('name').errors.required" class="validation">
+                  Введіть ваше ім'я!
+                </small>
+              </div>
+            </div>
+
+            <div>
+              <label for="surname">
+
+              </label>
+              <input class="order-form__input" type="text" id="surname" formControlName="surname" placeholder="Прізвище">
+              <div *ngIf="form.get('surname').touched && form.get('surname').invalid">
+                <small *ngIf="form.get('surname').errors.required" class="validation">
+                  Введіть ваше прізвище!
+                </small>
+              </div>
+            </div>
+
+            <div>
+              <label for="phone">
+
+              </label>
+              <input class="order-form__input" type="text" id="phone" formControlName="phone" placeholder="Номер телефону">
+              <div *ngIf="form.get('phone').touched && form.get('phone').invalid">
+                <small *ngIf="form.get('phone').errors.required" class="validation">
+                  Введіть ваш номер телефону!
+                </small>
+              </div>
+            </div>
+
+            <div class="order-form__city-postcode-row city-postcode-row">
+              <div class="city-postcode-row__city">
+                <label for="city">
+
+                </label>
+                <input class="order-form__input order-form__input_city" type="text" id="city" formControlName="city" placeholder="Місто">
+                <div *ngIf="form.get('city').touched && form.get('city').invalid">
+                  <small *ngIf="form.get('city').errors.required" class="validation">
+                    Введіть назву міста!
+                  </small>
+                </div>
+              </div>
+
+              <div class="city-postcode-row__postcode">
+                <label for="postcode">
+
+                </label>
+                <input class="order-form__input order-form__input_postcode" type="text" id="postcode" formControlName="postcode"
+                       placeholder="Поштовий індекс">
+                <div *ngIf="form.get('postcode').touched && form.get('postcode').invalid">
+                  <small *ngIf="form.get('postcode').errors.required" class="validation">
+                    Введіть номер поштового індексу!
+                  </small>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label for="street0">
+
+              </label>
+              <input class="order-form__input" type="text" id="street0" formControlName="street0" placeholder="Вулиця">
+              <div *ngIf="form.get('street0').touched && form.get('street0').invalid">
+                <small *ngIf="form.get('street0').errors.required" class="validation">
+                  Введіть назву вулиці!
+                </small>
+              </div>
+            </div>
+
+            <div>
+              <label for="street1">
+
+              </label>
+              <input class="order-form__input" type="text" id="street1" formControlName="street1" placeholder="Номер будинку">
+              <div *ngIf="form.get('street1').touched && form.get('street1').invalid">
+                <small *ngIf="form.get('street1').errors.required" class="validation">
+                  Введіть номер будинку!
+                </small>
+              </div>
+            </div>
+
+            <div>
+              <label for="additionalInformation">
+
+              </label>
+              <input class="order-form__input" type="text" id="additionalInformation" formControlName="additionalInformation"
+                     placeholder="Додаткова інформація (не обов'язково)">
+            </div>
+
+
+            <!--                        <div>-->
+            <!--                            <label for="payment">-->
+            <!--                                Спосіб оплати-->
+            <!--                            </label>-->
+            <!--                            <select id="payment" formControlName="payment">-->
+            <!--                                <option value="cash">Готівка</option>-->
+            <!--                                <option value="card">Картка</option>-->
+            <!--                            </select>-->
+            <!--                        </div>-->
+
+            <button class="btn btn-save" type="submit"
+                    [ngClass]="{tooltip: form.invalid}"
+                    data-title="Заповніть всі поля"
+                    [disabled]="form.invalid || submitted">Зберегти
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="popup-information" *ngIf="popupInformation">
+        <p class="popup-information__text">
+          Замовлення оформлено
+        </p>
+        <button class="btn" (click)="popupInformation = false; body.style.position = ''">
+          Ок
+        </button>
+      </div>
+
+    </div>
+  </div>
 
 </div>

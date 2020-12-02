@@ -1,11 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule, LOCALE_ID} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import {registerLocaleData} from '@angular/common';
 import localeUk from '@angular/common/locales/uk';
-
-registerLocaleData(localeUk, 'uk');
-
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './components/app.component';
 import {HeaderComponent} from './components/header/header.component';
@@ -56,7 +52,10 @@ import {MyDataPageComponent} from './components/pages/account-pages/my-data-page
 import {MyAddressPageComponent} from './components/pages/account-pages/my-address-page/my-address-page.component';
 import {MyReturnsPageComponent} from './components/pages/account-pages/my-returns-page/my-returns-page.component';
 import {PaymentAccountDataPageComponent} from './components/pages/account-pages/payment-account-data-page/payment-account-data-page.component';
-import { FiltersComponent } from './components/pages/filters/filters.component';
+import {FiltersComponent} from './components/pages/filters/filters.component';
+
+registerLocaleData(localeUk, 'uk');
+
 
 @NgModule({
   declarations: [

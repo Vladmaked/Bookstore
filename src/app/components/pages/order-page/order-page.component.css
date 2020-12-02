@@ -43,7 +43,6 @@
   padding: 25px 40px 40px 40px;
   min-height: 250px;
   max-height: 100vh;
-  box-sizing: border-box;
   overscroll-behavior-y: contain;
   overflow-x: hidden;
   overflow-y: auto;
@@ -167,7 +166,7 @@
   height: 180px;
 }
 
-.product__info {
+.product__info-wrapper {
   margin-left: 20px;
   display: flex;
   flex-direction: column;
@@ -201,14 +200,6 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-}
-
-.product__delete {
-  background: url("../../../../assets/img/icons/trash.svg") no-repeat;
-  height: 26px;
-  width: 16px;
-  display: inline-block;
-  flex-shrink: 0;
 }
 
 .summary__info {
@@ -247,24 +238,6 @@
   margin-top: 5px;
 }
 
-.payment-methods__cash-icon {
-  background: url("../../../../assets/img/icons/icons_cash_in_hand.svg") no-repeat;
-  width: 24px;
-  height: 24px;
-  display: inline-block;
-  flex-shrink: 0;
-  position: relative;
-  top: 5px;
-}
-
-.payment-methods__check-mark-icon {
-  background: url("../../../../assets/img/icons/check-mark.svg") no-repeat;
-  width: 11px;
-  height: 8px;
-  display: inline-block;
-  flex-shrink: 0;
-}
-
 .info-quantity__input {
   width: 75px;
   padding: 5px;
@@ -277,32 +250,36 @@
   height: 75px;
 }
 
-.arrow-right {
-  background: url("../../../../assets/img/icons/arrow_right.svg") no-repeat;
-  display: inline-block;
-  height: 10px;
+.arrow_right_thick-icon {
+  fill: #606060;
   width: 10px;
+  height: 10px;
   margin-right: 10px;
   margin-left: 10px;
   margin-top: 3px;
 }
 
-.arrow-bottom {
-  background: url("../../../../assets/img/icons/arrow_to_down.svg") no-repeat;
-  display: inline-block;
-
-  transition: transform 0.2s ease-in 0s;
-  width: 14px;
-  height: 8px;
+.chevron_down-icon {
+  width: 12px;
+  height: 12px;
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke: currentColor;
+  fill: currentColor;
+  transition: transform 0.3s;
 }
 
-.arrow-top {
-  background: url("../../../../assets/img/icons/arrow_to_down.svg") no-repeat;
-  display: inline-block;
+.chevron_up-icon {
+  width: 12px;
+  height: 12px;
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke: currentColor;
+  fill: currentColor;
   transform: rotate(180deg);
-  transition: transform 0.2s ease-in 0s;
-  width: 14px;
-  height: 8px;
+  transition: transform 0.3s;
 }
 
 .order__header-delivery-method {
@@ -354,12 +331,11 @@
 
 }
 
-.body-delivery-method__icon-currier {
-  background-image: url('../../../../assets/img/icons/delivery_icon.svg');
+.delivery-icon {
   width: 32px;
   height: 32px;
-  display: inline-block;
   margin-left: 45px;
+  fill: #545454;
 }
 
 .body-delivery-method__currier-method {

@@ -1,8 +1,6 @@
 <div class="container">
     <app-breadcrumb></app-breadcrumb>
-    <div style="margin: 10px 0; padding: 20px; border: 1px solid lightblue">
-        <p>Місце для фільтрів</p>
-    </div>
+    <app-filters></app-filters>
     <div class="main-goods">
         <div class="main-goods__row">
             <div class="main-goods__grid" *ngIf="products$ | async as products; else loading">
@@ -12,7 +10,7 @@
                     </app-product>
                 </ng-container>
                 <ng-template #empty>
-                    <p>В даній категорії поки що немає книг.</p>
+                    <p class="empty">В даній категорії поки що немає книг.</p>
                 </ng-template>
             </div>
             <ng-template #loading>

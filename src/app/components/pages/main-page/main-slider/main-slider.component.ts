@@ -54,7 +54,7 @@ export class MainSliderComponent implements OnInit {
     for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(' active', '');
     }
-    (slides[this.slideIndex - 1] as HTMLElement).style.display = 'block';
+    (slides[this.slideIndex - 1] as HTMLElement).style.display = 'flex';
     dots[this.slideIndex - 1].className += ' active';
   }
 

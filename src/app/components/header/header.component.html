@@ -1,216 +1,238 @@
-<div class="container">
-    <header class="header">
-        <nav class="header__navigation navigation">
-            <div class="icon-navigation navigation__icon">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="navigation__menu_small menu_small">
-                <div class="menu_small__item menu_small__item_logo">
-                    <a [routerLink]="['']" class="navigation__link link">
-                        <img class="navigation__item-logo" src="../../../assets/img/logo/logo.svg" alt="logo">
-                    </a>
-                </div>
-                <div class="menu_small__item_items">
-                    <div class="navigation__item navigation__item_margin-category">
-                        <a class="link navigation__link" routerLinkActive="active" (click)="subMenu = true">
-                            Каталог
-                        </a>
-                        <ul class="menu__sub-menu sub-menu menu__sub-menu_small" *ngIf="subMenu">
-                            <li class="sub-menu__item sub-menu__item_display-flex">
-                                <a class="link link_padding link_font-size" [routerLink]="['/catalog', 'categories']" routerLinkActive="active"
-                                   (click)="subMenu = false">
+<header class="header">
+    <div class="substrate" *ngIf="isOpenMenuBooks || isOpenMenuAuthors"></div>
+    <div class="top-navigation">
+        <div class="container">
+            <div class="top-navigation__body">
+                <div class="top-navigation__btn-menu-wrapper btn-menu" [ngClass]="{'btn-menu-active': isOpenMenuBooks}"
+								     #firstMenuLevel1 (click)="isOpenMenuBooks = !isOpenMenuBooks; isOpenMenuAuthors =false">
+          <span class="btn-menu__description">
+            Книги
+          </span>
+                    <svg class="chevron_down-icon">
+                        <use xlink:href="#chevron-icon"></use>
+                    </svg>
+                    <div class="menu__sub-menu-wrapper" [ngClass]="{'open': isOpenMenuBooks}">
+                        <ul class="menu__sub-menu sub-menu">
+                            <li class="sub-menu__item">
+                                <a class="sub-menu__link sub-menu__link_font-color"
+                                   [routerLink]="['/catalog', 'categories']">
                                     Всі категорії
-                                </a>
-                                <button class="sub-menu__btn-close" (click)="subMenu = false">X</button>
-                            </li>
-                            <li class="sub-menu__item sub-menu__item_display-flex">
-                                <a class="link link_padding link_font-size" [routerLink]="['/catalog']" routerLinkActive="active" (click)="subMenu = false">
-                                    Всі книги
                                 </a>
                             </li>
                             <li class="sub-menu__item"
                                 *ngFor="let category of arrCategories">
-                                <a class="sub-menu__link link link_padding" routerLinkActive="active"
-                                   *ngIf="category.iSubcategory !== true"
-                                   [routerLink]="['/catalog', category.id]"
-                                   [routerLinkActiveOptions]="{exact: true}"
-                                   (click)="subMenu = false">
+                                <a [routerLink]="['/catalog', category.id]" class="sub-menu__link link">
                                     {{category.name}}
                                 </a>
-                                <a class="sub-menu__link link link_padding"
-                                   *ngIf="category.iSubcategory === true"
-                                   (click)="subSubMenu = true">
-                                    {{category.name}}
-                                </a>
-                                <em *ngIf="category.iSubcategory === true" class="fas fa-chevron-right"></em>
-                                <ul class="sub-menu__sub-sub-menu sub-sub-menu sub-menu__sub-sub-menu_small"
-                                    *ngIf="arrSubcategories && subSubMenu">
-                                    <li class="sub-menu__item_display-flex">
-                                        <h2 class="sub-sub-menu__header">
-                                            {{category.name}}
-                                        </h2>
-                                        <button class="sub-menu__btn-close" (click)="subSubMenu = false; subMenu = true">X</button>
-                                    </li>
-                                    <hr class="header-line">
-
-                                    <li class="sub-menu__item sub-menu__item_display-flex">
-                                        <a class="link link_padding link_font-size" [routerLink]="['/catalog', category.id]" routerLinkActive="active"
-                                           [routerLinkActiveOptions]="{exact: true}"
-                                           (click)="subSubMenu = false; subMenu = false">
-                                            Всі книги данної категорії
-                                        </a>
-                                    </li>
-                                    <li class="sub-sub-menu__item" *ngIf="category.iSubcategory" routerLinkActive="active"
-                                        [routerLinkActiveOptions]="{exact: true}">
-                                        <a class="sub-menu__link link link_padding link_font-size" [routerLink]="['/catalog', category.id, 'subcategories']"
-                                           (click)="subSubMenu = false; subMenu = false">
+                                <svg *ngIf="category.iSubcategory === true" class="chevron_right-icon">
+                                    <use xlink:href="#chevron-icon"></use>
+                                </svg>
+                                <ul class="sub-menu__sub-sub-menu sub-sub-menu" *ngIf="arrSubcategories">
+                                    <li class="sub-sub-menu__item" *ngIf="category.iSubcategory">
+                                        <a class="sub-sub-menu__link link sub-menu__link_font-color"
+                                           [routerLink]="['/catalog', category.id, 'subcategories']">
                                             Всі підкатегорії
                                         </a>
                                     </li>
                                     <ng-container *ngFor="let subcategory of arrSubcategories">
-                                        <li class="sub-sub-menu__item" *ngIf="subcategory.categoryId === category.id" routerLinkActive="active"
-                                            [routerLinkActiveOptions]="{exact: true}">
-                                            <a class="sub-menu__link link link_padding" [routerLink]="['/catalog', category.id, subcategory.id]"
-                                               (click)="subSubMenu = false; subMenu = false">
+                                        <li class="sub-sub-menu__item" *ngIf="subcategory.categoryId === category.id">
+                                            <a class="sub-sub-menu__link link"
+                                               [routerLink]="['/catalog', category.id, subcategory.id]">
                                                 {{subcategory.name}}
                                             </a>
                                         </li>
                                     </ng-container>
-
-                                    <li class="sub-sub-menu__item" *ngIf="category.iSubcategory" routerLinkActive="active"
-                                        [routerLinkActiveOptions]="{exact: true}">
-                                        <a class="sub-menu__link link link_padding link_font-size" [routerLink]="['/catalog', category.id, 'subcategories']"
-                                           (click)="subSubMenu = false; subMenu = false">
-                                            Всі підкатегорії
-                                        </a>
-                                    </li>
                                 </ul>
-                            </li>
-                            <li class="sub-menu__item">
-                                <a class="link link_padding link_font-size" [routerLink]="['/catalog', 'categories']" routerLinkActive="active"
-                                   (click)="subMenu = !subMenu">
-                                    Всі категорії
-                                </a>
                             </li>
                         </ul>
                     </div>
-                    <div class=" navigation__item navigation__item_margin-author">
-                        <a [routerLink]="['/catalog-author']" class="link navigation__link" routerLinkActive="active">
-                            всі автори
+                </div>
+                <div class="top-navigation__btn-menu-wrapper btn-menu"
+                     [ngClass]="{'btn-menu-active': isOpenMenuAuthors}"
+								     #secondMenuLevel1
+                     (click)="isOpenMenuAuthors = !isOpenMenuAuthors; isOpenMenuBooks = false">
+          <span class="btn-menu__description">
+            Автори
+          </span>
+                    <svg class="chevron_down-icon">
+                        <use xlink:href="#chevron-icon"></use>
+                    </svg>
+                    <div class="menu__sub-menu-wrapper" [ngClass]="{'open': isOpenMenuAuthors}">
+                        <ul class="menu__sub-menu sub-menu">
+                            <li class="sub-menu__item">
+                                <a class="sub-menu__link sub-menu__link_font-color"
+                                   [routerLink]="['/catalog', 'categories']">
+                                    Всі категорії
+                                </a>
+                            </li>
+                            <li class="sub-menu__item"
+                                *ngFor="let category of arrCategories">
+                                <a [routerLink]="['/catalog', category.id]" class="sub-menu__link link">
+                                    {{category.name}}
+                                </a>
+                                <svg *ngIf="category.iSubcategory === true" class="chevron_right-icon">
+                                    <use xlink:href="#chevron-icon"></use>
+                                </svg>
+                                <ul class="sub-menu__sub-sub-menu sub-sub-menu" *ngIf="arrSubcategories">
+
+                                    <li class="sub-sub-menu__item" *ngIf="category.iSubcategory">
+                                        <a class="sub-sub-menu__link link sub-menu__link_font-color"
+                                           [routerLink]="['/catalog', category.id, 'subcategories']">
+                                            Всі підкатегорії
+                                        </a>
+                                    </li>
+                                    <ng-container *ngFor="let subcategory of arrSubcategories">
+                                        <li class="sub-sub-menu__item" *ngIf="subcategory.categoryId === category.id">
+                                            <a class="sub-sub-menu__link link"
+                                               [routerLink]="['/catalog', category.id, subcategory.id]">
+                                                {{subcategory.name}}
+                                            </a>
+                                        </li>
+                                    </ng-container>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="top-navigation__icon-nav">
+                    <svg class="icon-menu-icon">
+                        <use xlink:href="#icon-menu-icon"></use>
+                    </svg>
+                </div>
+                <div class="search__wrapper">
+                    <div class="search"
+                         [ngClass]="{focused: isFocus && searchField.value !== '' && searchField.value !== null}">
+                        <button class="search__btn">
+                            <svg class="search-icon">
+                                <use xlink:href="#search-icon"></use>
+                            </svg>
+                        </button>
+                        <div class="search__input-row">
+                            <label>
+                                <input (focusin)="isFocus = true"
+                                       (focusout)="isFocus = false"
+                                       class="search__input"
+                                       id="searchInput"
+                                       type="text"
+                                       placeholder="Пошук на сайті"
+                                       [formControl]="searchField">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="backdrop"
+                     [ngClass]="{visible: isFocus && searchField.value !== '' && searchField.value !== null}"></div>
+                <a [routerLink]="['']" class="menu__central-block-link link">
+                    <img class="menu__central-block-item-logo"
+                         src="../../../assets/img/logo/Світоч-Монтажна-область-2.svg"
+                         alt="logo">
+                </a>
+                <a [routerLink]="['/account', 'my-orders']" class="btn-account link">
+                    <svg class="profile-icon">
+                        <use xlink:href="#profile-icon"></use>
+                    </svg>
+                    <p class="btn-account__description">Увійти / Зареєструватись</p>
+                </a>
+                <a [routerLink]="['/cart']" class="btn-shopping-cart link">
+                    <svg class="shopping-cart-icon">
+                        <use xlink:href="#shopping-cart-icon"></use>
+                    </svg>
+                    <p *ngIf="totalPrice === 0" class="btn-shopping-cart__description">Кошик</p>
+                    <div *ngIf="totalPrice !== 0" class="btn-shopping-cart__description">
+                        <p>
+                            {{this.totalPrice | currency:'UAH':'symbol-narrow':'1.0-2'}}
+                        </p>
+                        <svg class="chevron_down-icon">
+                            <use xlink:href="#chevron-icon"></use>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="search__wrapper-2">
+        <div class="search"
+             [ngClass]="{focused: isFocus && searchField.value !== '' && searchField.value !== null}">
+            <div class="bottom-nav-search-2">
+                <div class="search__input-row">
+                    <label>
+                        <input (focusin)="isFocus = true"
+                               (focusout)="isFocus = false"
+                               class="search__input"
+                               id="searchInput2"
+                               type="text"
+                               placeholder="Пошук на сайті"
+                               [formControl]="searchField">
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-nav__wrapper" id="fixedDiv">
+        <div class="container">
+            <div class="bottom-nav">
+                <div class="bottom-nav__left-block">
+                    <div class="bottom-nav__left-block-item">
+                        <a [routerLink]="['/catalog']"
+                           class="item-link navigation__link link"
+                           routerLinkActive="item-link-active"
+                           [routerLinkActiveOptions]="{exact: true}">
+                            Акції
                         </a>
                     </div>
-                    <div class="navigation__item navigation__item_margin-info" routerLinkActive="active">
-                        <a [routerLink]="['/help', 'delivery-and-payment']" class="navigation__link link">
+                </div>
+                <div class="bottom-nav__right-block">
+                    <div class="bottom-nav__right-block-item" routerLinkActive="active">
+                        <a [routerLink]="['/help', 'delivery-and-payment']"
+                           class="navigation__link link item-link"
+                           routerLinkActive="item-link-active">
                             доставка та оплата
                         </a>
                     </div>
-                    <div class="navigation__item">
-                        <a [routerLink]="['/help', 'contacts']" class="navigation__link link" routerLinkActive="active">
-                            контакти
+                    <div class="bottom-nav__right-block-item">
+                        <a class="phone__link link item-link"
+                           href="tel:+380472360337"
+                           routerLinkActive="item-link-active">
+                            <svg class="phone-icon">
+                                <use xlink:href="#phone-icon"></use>
+                            </svg>
+                            <span class="phone__description">+380 (472) 36-03-37</span>
                         </a>
                     </div>
                 </div>
             </div>
-            <ul class="navigation__menu menu">
-                <li class="navigation__item navigation__item_margin-category">
-                    <a [routerLink]="['/catalog']" class="link navigation__link" routerLinkActive="active"
-                       [routerLinkActiveOptions]="{exact: true}">
-                        Каталог
-                    </a>
-                    <ul class="menu__sub-menu sub-menu">
-                        <li class="sub-menu__item">
-                            <a class="link link_padding link_font-size" [routerLink]="['/catalog', 'categories']" routerLinkActive="active">
-                                Всі категорії
-                            </a>
-                        </li>
-                        <li class="sub-menu__item"
-                            *ngFor="let category of arrCategories">
-                            <a [routerLink]="['/catalog', category.id]" class="sub-menu__link link link_padding" routerLinkActive="active"
-                               [routerLinkActiveOptions]="{exact: true}">
-                                {{category.name}}
-                            </a>
-                            <em *ngIf="category.iSubcategory === true" class="fas fa-chevron-right"></em>
-                            <ul class="sub-menu__sub-sub-menu sub-sub-menu" *ngIf="arrSubcategories">
-
-                                <li class="sub-sub-menu__item" *ngIf="category.iSubcategory" routerLinkActive="active"
-                                    [routerLinkActiveOptions]="{exact: true}">
-                                    <a class="sub-menu__link link link_padding link_font-size" [routerLink]="['/catalog', category.id, 'subcategories']">
-                                        Всі підкатегорії
-                                    </a>
-                                </li>
-                                <ng-container *ngFor="let subcategory of arrSubcategories">
-                                    <li class="sub-sub-menu__item" *ngIf="subcategory.categoryId === category.id" routerLinkActive="active"
-                                        [routerLinkActiveOptions]="{exact: true}">
-                                        <a class="sub-menu__link link link_padding" [routerLink]="['/catalog', category.id, subcategory.id]">
-                                            {{subcategory.name}}
-                                        </a>
-                                    </li>
-                                </ng-container>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class=" navigation__item navigation__item_margin-author">
-                    <a [routerLink]="['/catalog-author']" class="link navigation__link" routerLinkActive="active">
-                        всі автори
-                    </a>
-                </li>
-                <li class="navigation__item navigation__item_margin-logo">
-                    <a [routerLink]="['']" class="navigation__link link">
-                        <img class="navigation__item-logo" src="../../../assets/img/logo/logo.svg" alt="logo">
-                    </a>
-                </li>
-                <li class="navigation__item navigation__item_margin-info" routerLinkActive="active">
-                    <a [routerLink]="['/help', 'delivery-and-payment']" class="navigation__link link">
-                        доставка та оплата
-                    </a>
-                </li>
-                <li class="navigation__item">
-                    <a [routerLink]="['/help', 'contacts']" class="navigation__link link" routerLinkActive="active">
-                        контакти
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <div class="header__action action">
-            <div class="action__phone phone">
-                <a class="phone__link link" href="tel:+380472360337"><em class="phone-icon"></em>
-                    +380 (472) 36-03-37
-                </a>
-            </div>
-            <ul class="action__menu">
-                <li class="action__item">
-                    <a class="phone__link_small link" href="tel:+380472360337"><em class="phone-icon_small"></em>
-                    </a>
-                </li>
-                <li class="action__item">
-                    <a [routerLink]="['/account', 'my-orders']" class="link">
-                        <em class="account-icon"></em>
-                    </a>
-                </li>
-                <li class="action__item">
-                    <a [routerLink]="['/cart']" class="link">
-                        <em class="shopping-cart-icon"></em>
-                    </a>
-                </li>
-            </ul>
         </div>
-        <div class="header__search search">
-            <form class="search__form" action="#">
-                <input [(ngModel)]="productName"
-                       (focusout)="clearInput()"
-                       class="search__input"
-                       type="text"
-                       name="search-input"
-                       aria-label="Пошук товарів"
-                       autocomplete="off"
-                       placeholder="Введіть ключове слово, прізвище автора, ISBN, назву книги">
-                <button class="search__button" (click)="search()">
-                    Знайти
-                </button>
-            </form>
-        </div>
-    </header>
+    </div>
+</header>
+<div class="header-bottom">
+    <a [routerLink]="['']" class="link header-bottom__item">
+        <svg class="header-bottom__icon">
+            <use xlink:href="#home-icon"></use>
+        </svg>
+        Головна
+    </a>
+    <a [routerLink]="['/catalog/categories']" class="link header-bottom__item">
+        <svg class="header-bottom__icon">
+            <use xlink:href="#bookshelf-icon"></use>
+        </svg>
+        Каталог
+    </a>
+    <a [routerLink]="['/cart']" class="link header-bottom__item">
+        <svg class="header-bottom__icon">
+            <use xlink:href="#shopping-cart-icon"></use>
+        </svg>
+        Кошик
+    </a>
+    <a [routerLink]="['/account', 'my-orders']" class="link header-bottom__item">
+        <svg class="header-bottom__icon">
+            <use xlink:href="#profile-icon"></use>
+        </svg>
+        Профіль
+    </a>
+    <a href="" class="link header-bottom__item">
+        <svg class="header-bottom__icon">
+            <use xlink:href="#more-icon"></use>
+        </svg>
+        Ще
+    </a>
 </div>

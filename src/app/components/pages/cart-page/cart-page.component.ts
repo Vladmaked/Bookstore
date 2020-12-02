@@ -30,6 +30,7 @@ export class CartPageComponent implements OnInit {
 
   delete(cartItem) {
     this.totalPrice -= +cartItem.product.price * cartItem.quantity;
+    this.cartService.totalPrice$.next(this.totalPrice);
     this.productList = this.productList.filter(({product}) => product.id !== cartItem.product.id);
     this.cartService.productList = this.productList;
   }
@@ -39,6 +40,7 @@ export class CartPageComponent implements OnInit {
     this.productList.forEach((cartItem) => {
       this.totalPrice += +cartItem.product.price * cartItem.quantity;
       this.cartService.totalPrice = this.totalPrice;
+      this.cartService.totalPrice$.next(this.totalPrice);
       if (cartItem.quantity === 0) {
         this.delete(cartItem);
       }

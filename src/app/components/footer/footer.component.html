@@ -21,9 +21,14 @@
                                 <div class="subscribe__label">
                                     <label for="subscribe-email_small-screen">Підписатися на наші новини</label>
                                 </div>
-                                <input id="subscribe-email_small-screen" type="text" name="subscribe-email" placeholder="ваш e-mail">
+                                <input id="subscribe-email_small-screen"
+                                       type="text"
+                                       name="subscribe-email"
+                                       placeholder="ваш e-mail">
                                 <button class="subscribe-button" type="submit">
-                                    <img src="../../../assets/img/icons/arrow_subscribe.png" alt="submit">
+                                    <svg class="arrow_right-icon">
+                                        <use xlink:href="#arrow_right-icon"></use>
+                                    </svg>
                                 </button>
                             </div>
                         </form>
@@ -31,15 +36,24 @@
                 </div>
 
                 <div class="footer__contacts contacts">
-                    <p class="contacts__item">
+                    <a class="contacts__item" href="mailto:svitoch@.gmail.com">
+                        <svg class="email-icon">
+                            <use xlink:href="#email-icon"></use>
+                        </svg>
                         svitoch@.gmail.com
-                    </p>
-                    <a class="contacts__item contacts__phone link" href="tel:+380472360337"><em class="phone-icon"></em>
+                    </a>
+                    <a class="contacts__item contacts__phone link" href="tel:+380472360337">
+                        <svg class="phone-icon">
+                            <use xlink:href="#phone-icon"></use>
+                        </svg>
                         +380 (472) 36-03-37
                     </a>
-                    <p class="contacts__item contacts__item_line-height"><em class="address-icon"></em>
-                        м. Черкаси, вул. Байди Вишнівецького, 38
-                    </p>
+                    <a class="contacts__item contacts__address" href="http://maps.google.com/?q=вулиця Байди Вишневецького, 36, Черкаси, Черкаська область, 18000">
+                        <svg class="address-icon">
+                            <use xlink:href="#address-icon"></use>
+                        </svg>
+                            м. Черкаси, вул. Байди Вишнівецького, 38
+                    </a>
                 </div>
                 <div class="footer__copyright">
                     <p>© 2020 svitoch - всі права захищені </p>
@@ -54,7 +68,9 @@
                             </div>
                             <input id="subscribe-email" type="text" name="subscribe-email" placeholder="ваш e-mail">
                             <button class="subscribe-button" type="submit">
-                                <img src="../../../assets/img/icons/arrow_subscribe.png" alt="submit">
+                                <svg class="arrow_right-icon">
+                                    <use xlink:href="#arrow_right-icon"></use>
+                                </svg>
                             </button>
                         </div>
                     </form>

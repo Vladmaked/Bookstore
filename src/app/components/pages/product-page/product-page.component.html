@@ -8,72 +8,114 @@
 
                     <button class="product__btn-back btn" [routerLink]="['/catalog']">Назад до категорії</button>
                 </div>
-
-                <div class="product__title-row">
-                    <h2 class="product__title">{{product.title}}</h2>
-                </div>
                 <div class="product__detail">
-                    <div class="product__photo">
-                        <div class="product__image" [innerHTML]="product.photo"></div>
-                    </div>
-                    <div class="product__info">
-                        <div style="    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;">
-                            <div>
-                                <p class="product__author-label">Автор:</p>
+                    <div class="sds" style="display: flex">
+                        <div class="product__photo">
+                            <div class="product__image" [innerHTML]="product.photo"></div>
+                        </div>
+                        <div class="product__info-wrapper">
+                            <div class="product__info-column">
+                                <div class="product__title-row">
+                                    <h2 class="product__title">{{product.title}}</h2>
+                                    <button class="product__btn-back btn" [routerLink]="['/catalog']">Назад до
+                                                                                                      категорії
+                                    </button>
+                                </div>
                                 <p class="product__author">{{product.author}}</p>
+                                <p class="product__short-description">
+                                    Короткий опис книги Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni
+                                    maxime necessitatibus nostrum
+                                    ratione tempore! Eaque enim error est eveniet ipsa maxime, nam, porro quaerat qui
+                                    recusandae reprehenderit repudiandae.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A architecto explicabo
+                                    illo incidunt maxime odio porro quas sint tempora temporibus.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus autem dolorem
+                                    dolores ipsa sed sunt.
+                                </p>
+                                <div class="product__age-restrictions">
+                                    Вікові обмеження: <span class="data">+6</span>
+                                </div>
+
+                                <div class="product__reviews">
+                                    Відгуки: <span class="data">0</span>
+                                </div>
+
+                                <div class="product__evaluation">
+                                    <svg class="star-icon star-icon_fill">
+                                        <use href="#star-icon"></use>
+                                    </svg>
+                                    <svg class="star-icon star-icon_fill">
+                                        <use href="#star-icon"></use>
+                                    </svg>
+                                    <svg class="star-icon star-icon_fill">
+                                        <use href="#star-icon"></use>
+                                    </svg>
+                                    <svg class="star-icon star-icon_fill">
+                                        <use href="#star-icon"></use>
+                                    </svg>
+                                    <svg class="star-icon">
+                                        <use href="#star-icon"></use>
+                                    </svg>
+                                </div>
                             </div>
-                            <button class="product__btn-back btn" [routerLink]="['/catalog']">Назад до категорії</button>
-                        </div>
-                        <div class="product__purchase-line">
-                            <p class="product__price">{{product.price | currency:'UAH':'symbol-narrow':'1.0-2'}}</p>
-                            <p style="margin: 10px 0;">Кількість</p><input type="text" style="padding: 10px 20px; border: 1px solid black; width: 50%">
-                            <button class="btn btn-add-to-cart" title="Додати до кошика" [routerLink]="['/cart']" (click)="addProduct(product)">
-                                Додати до кошика
-                            </button>
-                        </div>
-                        <div class="product__detail-info">
-                            <p class="product__info-title">Про що книга</p>
-                            <div class="product__info-text"
-                                 [innerHTML]="product.info"
-                                 [ngClass]="{detail:isDetail}">
+                            <div class="product__purchase-line">
+                                <p class="product__price">{{product.price | currency:'UAH':'symbol-narrow':'1.0-2'}}</p>
+                                <!--                                <div class="product__count-row">-->
+                                <!--                                    <p class="product__count">-->
+                                <!--                                        Кількість:-->
+                                <!--                                    </p>-->
+                                <!--                                    <input class="product__count-input" type="text">-->
+                                <!--                                </div>-->
+                                <button class="btn btn-add-to-cart"
+                                        title="Додати до кошика"
+                                        [routerLink]="['/cart']"
+                                        (click)="addProduct(product)">
+                                    Додати до кошика
+                                </button>
                             </div>
-                            <button class="btn-detail" (click)="isDetail = !isDetail">Детальніше</button>
                         </div>
-                        <div class="product__specifications">
-                            <p class="product__specifications-title">Характеристики</p>
-                            <table class="product__specifications-table">
-                                <tr class="table__row">
-                                    <th class="table__header">Автор:</th>
-                                    <td class="table__div">{{product.author}}</td>
-                                </tr>
-                                <tr class="table__row">
-                                    <th class="table__header">Видавництво:</th>
-                                    <td class="table__div">Форс</td>
-                                </tr>
-                                <tr class="table__row">
-                                    <th class="table__header">Рік видання:</th>
-                                    <td class="table__div">2020</td>
-                                </tr>
-                                <tr class="table__row">
-                                    <th class="table__header">Палітурка:</th>
-                                    <td class="table__div">Тверда</td>
-                                </tr>
-                                <tr class="table__row">
-                                    <th class="table__header">ISBN:</th>
-                                    <td class="table__div">978-5-04-110057-5</td>
-                                </tr>
-                                <tr class="table__row">
-                                    <th class="table__header">Кількість сторінок:</th>
-                                    <td class="table__div">208</td>
-                                </tr>
-                                <tr class="table__row">
-                                    <th class="table__header">Мова:</th>
-                                    <td class="table__div">Російська</td>
-                                </tr>
-                            </table>
+                    </div>
+
+                    <div class="product__detail-info">
+                        <p class="product__info-title">Про що книга</p>
+                        <div class="product__info-text"
+                             [innerHTML]="product.info"
+                             [ngClass]="{detail:isDetail}">
                         </div>
+                        <button class="btn-detail" (click)="isDetail = !isDetail">Детальніше</button>
+                    </div>
+                    <div class="product__specifications">
+                        <p class="product__specifications-title">Характеристики</p>
+                        <table class="product__specifications-table">
+                            <tr class="table__row">
+                                <th class="table__header">Автор:</th>
+                                <td class="table__div">{{product.author}}</td>
+                            </tr>
+                            <tr class="table__row">
+                                <th class="table__header">Видавництво:</th>
+                                <td class="table__div">Форс</td>
+                            </tr>
+                            <tr class="table__row">
+                                <th class="table__header">Рік видання:</th>
+                                <td class="table__div">2020</td>
+                            </tr>
+                            <tr class="table__row">
+                                <th class="table__header">Палітурка:</th>
+                                <td class="table__div">Тверда</td>
+                            </tr>
+                            <tr class="table__row">
+                                <th class="table__header">ISBN:</th>
+                                <td class="table__div">978-5-04-110057-5</td>
+                            </tr>
+                            <tr class="table__row">
+                                <th class="table__header">Кількість сторінок:</th>
+                                <td class="table__div">208</td>
+                            </tr>
+                            <tr class="table__row">
+                                <th class="table__header">Мова:</th>
+                                <td class="table__div">Російська</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>

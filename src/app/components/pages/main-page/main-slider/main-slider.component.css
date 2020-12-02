@@ -1,41 +1,22 @@
+
 .main-screen {
-  position: relative;
-  top: -30px;
+  width: 100%;
+  height: 100%;
+
+  max-width: 1700px;
+  padding: 0 20px;
+  margin: 0 auto;
 }
 
 .main-slider-container {
-  max-width: 1440px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
+  margin: 60px auto 0;
+  border-radius: 8px;
   overflow: hidden;
-}
-
-.main-screen .main-screen__bg {
-  width: 100%;
-  height: 100%;
-  color: #FFFFFF;
-}
-
-.ibg {
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-}
-
-.ibg__img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .special-offer {
-  margin-top: 30px;
   max-width: 100%;
-  padding: 0 15px;
 }
 
 /* Slideshow container */
@@ -51,10 +32,9 @@
   top: 50%;
   width: auto;
   padding: 16px;
-  margin-top: -22px;
+  margin-top: -32px;
   color: white;
-  font-weight: bold;
-  font-size: 18px;
+  font-size: 30px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
 }
@@ -67,7 +47,7 @@
 
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 /* Number text (1/3 etc) */
@@ -79,9 +59,39 @@
   top: 0;
 }
 
+.fade__text-wrapper {
+  height: 100%;
+  position: relative;
+  margin: auto;
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.fade__text {
+  color: white;
+  line-height: 1.2em;
+  font-size: 70px;
+  padding-left: 70px;
+  padding-right: 30px;
+  object-fit: scale-down;
+}
+
+.fade__img-wrapper {
+  width: 50%;
+  height: 100%;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
 .fade__img {
-  height: 466px;
-  width: 100%;
+  height: 70%;
+  width: 90%;
+  border-radius: 8px;
+  object-fit: scale-down;
+  text-align: center;
 }
 
 /* The dots/bullets/indicators */
@@ -106,6 +116,9 @@
   -webkit-animation-duration: 1.5s;
   animation-name: fade;
   animation-duration: 1.5s;
+  height: 466px;
+  background-color: darkslategrey;
+  display: flex;
 }
 
 @-webkit-keyframes fade {
@@ -134,78 +147,116 @@
 }
 
 @media only screen and (max-width: 1920px) {
-  .main-slider-container {
-    max-width: 1440px;
+  .main-screen {
+    max-width: 1700px;
   }
 }
 
 @media only screen and (max-width: 1600px) {
-  .main-slider-container {
-    max-width: 1140px;
+  .main-screen {
+    max-width: 1366px;
+  }
+
+  .fade__text {
+    font-size: 50px;
   }
 }
 
 @media only screen and (max-width: 1200px) {
-  .main-slider-container {
+  .main-screen {
     max-width: 960px;
   }
 
-  .fade__img {
+  .fade {
     height: 400px;
+  }
+
+  .fade__text {
+    font-size: 40px;
   }
 }
 
 @media only screen and (max-width: 992px) {
-  .main-slider-container {
-    max-width: 720px;
+  .main-screen {
+    max-width: 100%;
   }
 
-  .fade__img {
+  .fade {
     height: 300px;
+  }
+
+  .fade__text {
+    font-size: 35px;
+  }
+
+  .main-slider-container {
+    margin: 40px auto 0;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .main-slider-container {
-    max-width: 540px;
+  .main-screen {
+    max-width: 100%;
   }
 
-  .fade__img {
+  .fade {
     height: 200px;
+  }
+
+  .fade__text {
+    font-size: 22px;
+    padding-left: 50px;
+  }
+
+  .main-slider-container {
+    margin: 20px auto 0;
   }
 }
 
 
 @media only screen and (max-width: 576px) {
-  .main-slider-container {
+  .prev, .next, .text {
+    font-size: 18px;
+    padding: 10px;
+    margin-top: -18px;
+  }
+
+  .main-screen {
     max-width: 100%;
   }
 
-  .fade__img {
+  .fade {
     height: 150px;
   }
 
   .main-screen {
     position: relative;
-    top: -40px;
-  }
-
-  .special-offer {
-    margin-top: 20px;
-  }
-
-  .fade__img {
-    max-height: 140px;
+    top: -20px;
   }
 
   .dot__row {
     top: -23px;
   }
+
+  .fade__text {
+    font-size: 18px;
+    padding-left: 50px;
+  }
+
+  .main-slider-container {
+    margin: 40px auto 0;
+  }
 }
 
 /* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .prev, .next, .text {
-    font-size: 11px
+@media only screen and (max-width: 425px) {
+  .fade__text {
+    font-size: 13px;
+    padding-left: 30px;
+  }
+
+  .fade__img {
+    height: 60%;
+    width: 80%;
   }
 }

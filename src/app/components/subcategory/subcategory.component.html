@@ -1,7 +1,9 @@
 <div class="subcategories" *ngIf="subcategory; else loading">
-    <a [routerLink]="['/catalog', subcategory.categoryId, subcategory.id]" class="subcategories__image">
-        Місце для фото
-    </a>
+    <div class="image-wrapper">
+        <a [routerLink]="['/catalog', subcategory.categoryId, subcategory.id]" class="subcategories__image">
+            Місце для фото
+        </a>
+    </div>
     <a [routerLink]="['/catalog', subcategory.categoryId, subcategory.id]" class="main-subcategories__name">
         {{subcategory.name}}
     </a>
