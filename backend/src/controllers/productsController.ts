@@ -1,9 +1,9 @@
-import { Request, Response, NextFunction } from 'express';
+import {NextFunction, Request, Response} from 'express';
 
 import Product from '../models/productsModel';
 import catchAsync from '../utils/catchAsync';
-import { AppError } from '../utils/AppError';
-import { getCustomLabel, USER_MESSAGES } from '../labels';
+import {AppError} from '../utils/AppError';
+import {getCustomLabel, USER_MESSAGES} from '../labels';
 import APIFeatures from '../utils/ApiFeatures';
 import Format from 'string-format';
 
