@@ -472,7 +472,6 @@
   margin-right: auto;
 }
 
-
 @media only screen and (min-width: 1920px) {
   .navigation__link {
     font-size: 18px;
@@ -576,7 +575,7 @@
     font-size: 12px;
   }
 
-  .btn-shopping-cart__description {
+  .btn-shopping-cart__description-wrapper {
     display: none;
   }
 

@@ -25,13 +25,11 @@ export class CartService {
       };
       this.productList.push(cartItem);
       this.totalPrice += +cartItem.product.price;
-      console.log(this.totalPrice);
       this.totalPrice$.next(this.totalPrice);
       return;
     }
     this.totalPrice += +p.price;
     productExistInCart.quantity += 1;
-    console.log(this.totalPrice);
     this.totalPrice$.next(this.totalPrice);
   }
 }

@@ -138,14 +138,12 @@
                         <use xlink:href="#shopping-cart-icon"></use>
                     </svg>
                     <p *ngIf="totalPrice === 0" class="btn-shopping-cart__description">Кошик</p>
-                    <div *ngIf="totalPrice !== 0" class="btn-shopping-cart__description">
-                        <p>
-                            {{this.totalPrice | currency:'UAH':'symbol-narrow':'1.0-2'}}
-                        </p>
-                        <svg class="chevron_down-icon">
-                            <use xlink:href="#chevron-icon"></use>
-                        </svg>
-                    </div>
+                    <p *ngIf="totalPrice !== 0" class="btn-shopping-cart__description">
+                        {{this.totalPrice | currency:'UAH':'symbol-narrow':'1.0-2'}}
+                    </p>
+                    <svg *ngIf="totalPrice !== 0" class="chevron_down-icon">
+                        <use xlink:href="#chevron-icon"></use>
+                    </svg>
                 </a>
             </div>
         </div>

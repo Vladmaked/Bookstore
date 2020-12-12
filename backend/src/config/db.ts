@@ -1,5 +1,4 @@
-import { format } from 'path';
-import { ConnectionOptions } from 'mongoose';
+import {ConnectOptions} from 'mongoose';
 
 const {
   DB_USER = 'admin',
@@ -14,8 +13,8 @@ export const MONGO_URI_LOCAL = `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST_LO
 
 export const MONGO_URI_CLOUD = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_HOST_CLOUD}/${DB_NAME}`;
 
-export const MONGO_OPTIONS: ConnectionOptions = {
+export const MONGO_OPTIONS: ConnectOptions = {
   useUnifiedTopology: true,
   useNewUrlParser: true,
-  useFindAndModify: false,
+  useFindAndModify: false
 };

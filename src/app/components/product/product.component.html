@@ -1,6 +1,6 @@
 <div class="product" *ngIf="product">
     <a [routerLink]="['/product', product.id]" class="product__link">
-        <div class="catalog-goods__image" [innerHTML]="product.photo"></div>
+        <div class="catalog-goods__image" [innerHTML]="product.photo" #productPhoto></div>
     </a>
     <div class="product__description">
         <div>
@@ -14,10 +14,9 @@
         <div class="main-goods__buy-row">
             <p class="main-goods__price">
                 {{product.price | currency:'UAH':'symbol-narrow':'1.0-2'}}
-                <!--            <span class="main-goods__currency">₴</span>-->
             </p>
             <button data-btn class="btn__add-product-to-cart" title="Додати до кошика"
-                    (click)="addProduct(product)">
+                    (click)="addProduct(product, $event)">
                 <svg class="shopping-cart-icon">
                     <use xlink:href="#shopping-cart-icon"></use>
                 </svg>

@@ -9,7 +9,6 @@ export interface IProduct extends Document {
   info?: string;
   price?: number;
   date?: Date;
-  id?: string;
   quantityInStock?: number;
 }
 

@@ -1,6 +1,6 @@
 import express from 'express';
-import { handleError } from './controllers/errorController';
-import { getRoutesHandler } from './routes/routerHandler';
+import {handleError} from './controllers/errorController';
+import {getRoutesHandler} from './routes';
 
 export const createApp = () => {
   const app = express();
