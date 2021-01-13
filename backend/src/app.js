@@ -1,8 +1,8 @@
-import express from 'express';
-import {handleError} from './controllers/errorController';
-import {getRoutesHandler} from './routes';
+const express = require('express');
+const { handleError } = require('./controllers/errorController');
+const { getRoutesHandler } = require('./routes/routerHandler');
 
-export const createApp = () => {
+const createApp = () => {
   const app = express();
 
   // to be able to read passed data from req.body as a JS object
@@ -16,3 +16,5 @@ export const createApp = () => {
 
   return app;
 };
+
+module.exports = { createApp };

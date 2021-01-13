@@ -1,14 +1,11 @@
-import { Request, Response, NextFunction } from 'express';
+const User = require('../models/usersModel.js');
+const catchAsync = require('../utils/catchAsync.js');
+const { AppError } = require('../utils/AppError.js');
+const { getCustomLabel, USER_MESSAGES } = require('../labels/index.js');
+const APIFeatures = require('../utils/ApiFeatures.js');
+const Format = require('string-format');
 
-import User from '../models/usersModel';
-import catchAsync from '../utils/catchAsync';
-import { AppError } from '../utils/AppError';
-import { getCustomLabel, USER_MESSAGES } from '../labels';
-import APIFeatures from '../utils/ApiFeatures';
-import { stringify } from 'querystring';
-import Format from 'string-format';
-
-export const getAllUsers = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+const getAllUsers = catchAsync(async (req, res, next) => {
   const apiFeatures = new APIFeatures(User.find({}), req.query);
   apiFeatures.filter().sort().paginate().specifyFields();
 
@@ -17,7 +14,7 @@ export const getAllUsers = catchAsync(async (req: Request, res: Response, next: 
   res.status(200).json({ status: 'success', data: users });
 });
 
-export const getUser = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+const getUser = catchAsync(async (req, res, next) => {
   const apiFeatures = new APIFeatures(User.findById(req.query.id), req.query);
   apiFeatures.specifyFields();
 
@@ -26,13 +23,13 @@ export const getUser = catchAsync(async (req: Request, res: Response, next: Next
   res.status(200).json({ status: 'success', data: user });
 });
 
-export const createUser = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+const createUser = catchAsync(async (req, res, next) => {
   const user = await User.create(req.body);
 
   res.status(200).json({ status: 'success', data: user });
 });
 
-export const updateUser = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+const updateUser = catchAsync(async (req, res, next) => {
   const userId = req.params.id || req.body.id || req.body._id;
 
   const user = await User.findByIdAndUpdate(userId, req.body);
@@ -41,10 +38,12 @@ export const updateUser = catchAsync(async (req: Request, res: Response, next: N
     return next(new AppError(Format(getCustomLabel(req, USER_MESSAGES.USER_WITH_ID_NOT_FOUND_FORMAT), userId), 404));
   }
 
-  res.status(200).json({ status: 'success', data: user });
+  const retrievedUser = await User.findById(user.id);
+
+  res.status(200).json({ status: 'success', data: retrievedUser });
 });
 
-export const deleteUser = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+const deleteUser = catchAsync(async (req, res, next) => {
   const userId = req.params.id || req.body.id || req.body._id;
 
   const user = await User.findByIdAndDelete(userId);
@@ -55,3 +54,11 @@ export const deleteUser = catchAsync(async (req: Request, res: Response, next: N
 
   res.status(204).json({ status: 'success', data: null });
 });
+
+module.exports = {
+  getAllUsers,
+  getUser,
+  createUser,
+  updateUser,
+  deleteUser,
+};

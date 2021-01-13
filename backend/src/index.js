@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
-import { createApp } from './app';
-import { MONGO_URI_CLOUD, MONGO_OPTIONS, APP_PORT } from './config';
+const { createApp } = require('./app');
+const { MONGO_URI_CLOUD, MONGO_OPTIONS, APP_PORT } = require('./config/index');
 
 (async () => {
   await mongoose.connect(MONGO_URI_CLOUD, MONGO_OPTIONS);

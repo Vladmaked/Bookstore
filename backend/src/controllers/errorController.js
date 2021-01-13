@@ -1,7 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
-import { AppError } from '../utils/AppError';
-
-export const handleError = (error: AppError, req: Request, res: Response, next: NextFunction) => {
+const handleError = (error, req, res, next) => {
   error.status = error.status || 'error';
   error.statusCode = error.statusCode || 500;
 
@@ -11,3 +8,5 @@ export const handleError = (error: AppError, req: Request, res: Response, next: 
     stack: error.stack,
   });
 };
+
+module.exports = { handleError };

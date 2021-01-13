@@ -1,5 +1,5 @@
-export default class APIFeatures {
-  constructor(public query: any, public queryObj: any) {
+module.exports = class APIFeatures {
+  constructor(query, queryObj) {
     this.query = query;
     this.queryObj = queryObj;
   }
@@ -50,6 +50,4 @@ export default class APIFeatures {
 
     return this;
   }
-}
-
-module.exports = APIFeatures;
+};

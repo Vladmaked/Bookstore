@@ -1,11 +1,9 @@
-import { Error } from 'mongoose';
+const { Error } = require('mongoose');
 
-export class AppError extends Error {
-  public statusCode: number;
-  public status: string;
-  public isOperational: boolean;
-
-  constructor(message: string, statusCode: number) {
+module.exports = class AppError extends (
+  Error
+) {
+  constructor(message, statusCode) {
     super(message);
 
     this.statusCode = statusCode;
@@ -14,4 +12,4 @@ export class AppError extends Error {
 
     Error.captureStackTrace(this, this.constructor);
   }
-}
+};

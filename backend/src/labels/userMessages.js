@@ -1,4 +1,4 @@
-export const USER_MESSAGES = {
+module.exports = {
   PRODUCT_NOT_FOUND: {
     uk: 'Не вдалося знайти даний товар.',
   },
