@@ -12,7 +12,7 @@ const getAllProducts = catchAsync(async (req, res, next) => {
 
   const products = await apiFeatures.query;
 
-  res.status(200).json({ status: 'success', data: products });
+  return res.status(200).json({ status: 'success', data: products });
 });
 
 const getProduct = catchAsync(async (req, res, next) => {
@@ -26,13 +26,13 @@ const getProduct = catchAsync(async (req, res, next) => {
     return next(new AppError(getCustomLabel(req, MESSAGES.PRODUCT_NOT_FOUND), 404));
   }
 
-  res.status(200).json({ status: 'success', data: product });
+  return res.status(200).json({ status: 'success', data: product });
 });
 
 const createProduct = catchAsync(async (req, res, next) => {
   const product = await Product.create(req.body);
 
-  res.status(201).json({ status: 'success', data: product });
+  return res.status(201).json({ status: 'success', data: product });
 });
 
 const updateProduct = catchAsync(async (req, res, next) => {
@@ -47,7 +47,7 @@ const updateProduct = catchAsync(async (req, res, next) => {
     return next(new AppError(Format(getCustomLabel(req, MESSAGES.PRODUCT_WITH_ID_NOT_FOUND_FORMAT), productId), 404));
   }
 
-  res.status(200).json({ status: 'success', data: product });
+  return res.status(200).json({ status: 'success', data: product });
 });
 
 const deleteProduct = catchAsync(async (req, res, next) => {
@@ -59,7 +59,7 @@ const deleteProduct = catchAsync(async (req, res, next) => {
     return next(new AppError(Format(getCustomLabel(req, MESSAGES.PRODUCT_WITH_ID_NOT_FOUND_FORMAT), productId), 404));
   }
 
-  res.status(204).json({
+  return res.status(204).json({
     status: 'success',
     data: product,
   });

@@ -1,8 +1,10 @@
 const { DEFAULT_LANGUAGE } = require('../config/index');
 const USER_MESSAGES = require('./userMessages');
+const CATEGORY_LABELS = require('./categoryLabels');
 
 const MESSAGES = {
   ...USER_MESSAGES,
+  ...CATEGORY_LABELS,
 };
 
 const getCustomLabel = (req, message) => {
