@@ -50,7 +50,7 @@ const login = catchAsync(async (req, res, next) => {
 });
 
 const logout = catchAsync(async (req, res, next) => {
-  clearJwtCookie();
+  clearJwtCookie(req, res);
 
   return res.status(200).json({
     status: 'success',
