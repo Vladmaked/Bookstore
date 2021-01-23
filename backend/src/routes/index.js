@@ -1,9 +1,13 @@
 const { getUsersRouter } = require('./usersRoute');
 const { getProductsRouter } = require('./productsRoute');
-const { getAuthRoute } = require('./authRoute');
+const { getAuthRouter } = require('./authRoute');
+const { getCategoriesRouter } = require('./categoriesRoute');
+const { getSubcategoriesRouter } = require('./subcategoriesRoute');
 
 module.exports = {
   getUsersRouter,
   getProductsRouter,
-  getAuthRoute,
+  getAuthRouter,
+  getCategoriesRouter,
+  getSubcategoriesRouter,
 };
