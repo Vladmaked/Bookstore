@@ -1,4 +1,5 @@
 const { Error } = require('mongoose');
+const isInProd = require('./isInProd');
 
 module.exports = class AppError extends (
   Error
@@ -8,8 +9,8 @@ module.exports = class AppError extends (
 
     this.statusCode = statusCode;
     this.status = `${statusCode}`.startsWith('4') ? 'failed' : 'error';
-    this.isOperational = true;
+    this.isOperational = false;
 
-    Error.captureStackTrace(this, this.constructor);
+    // if (!isInProd()) Error.captureStackTrace(this, this.constructor);
   }
 };

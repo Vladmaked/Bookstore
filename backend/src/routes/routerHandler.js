@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { getUsersRouter, getProductsRouter } = require('./');
+const { getUsersRouter, getProductsRouter, getAuthRoute } = require('./');
 
 const getRoutesHandler = () => {
   const router = Router();
@@ -7,6 +7,8 @@ const getRoutesHandler = () => {
   router.use('/api/products', getProductsRouter());
 
   router.use('/api/users', getUsersRouter());
+
+  router.use('/api/auth', getAuthRoute());
 
   return router;
 };
