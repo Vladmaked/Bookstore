@@ -5,7 +5,6 @@ const AppError = require('../utils/AppError');
 const { getCustomLabel, MESSAGES } = require('../labels/index');
 const { JWT_EXPIRES_SECONDS, JWT_SECRET } = require('../config');
 const isInProd = require('../utils/isInProd');
-const { sign } = require('crypto');
 const { promisify } = require('util');
 
 const ROLE_USER = 'user';
@@ -65,6 +64,7 @@ const protect = catchAsync(async (req, res, next) => {
 
   // 1) check if user is authinticated at all
   if (!token) {
+    logout(req, res, next);
     return next(new AppError(getCustomLabel(req, MESSAGES.PLEASE_LOG_IN_TO_VIEW_THIS_CONTENT, 401)));
   }
 
@@ -74,6 +74,7 @@ const protect = catchAsync(async (req, res, next) => {
   try {
     decodedToken = await promisify(jwt.verify)(token, JWT_SECRET);
   } catch (error) {
+    logout(req, res, next);
     return next(new AppError(getCustomLabel(req, MESSAGES.PLEASE_LOG_IN_TO_VIEW_THIS_CONTENT, 401)));
   }
 
@@ -81,11 +82,13 @@ const protect = catchAsync(async (req, res, next) => {
   const user = await User.findById(decodedToken.id);
 
   if (!user) {
+    logout(req, res, next);
     return next(new AppError(getCustomLabel(req, MESSAGES.PLEASE_LOG_IN_TO_VIEW_THIS_CONTENT, 401)));
   }
 
   // 4) check if user didn't change the password after the token has been signed
   if (user.hasPasswordChangedAfterJwtExpiry(decodedToken.iat)) {
+    logout(req, res, next);
     return next(new AppError(getCustomLabel(req, MESSAGES.PLEASE_LOG_IN_TO_VIEW_THIS_CONTENT, 401)));
   }
 
