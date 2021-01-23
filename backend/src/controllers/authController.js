@@ -164,6 +164,11 @@ const validateRegisteringUser = async (req, user) => {
     res.isValid = false;
   }
 
+  if (user.password.length < 6) {
+    res.errors.push(getCustomLabel(req, MESSAGES.PASSWORD_IS_TOO_SHORT));
+    res.isValid = false;
+  }
+
   return res;
 };
 

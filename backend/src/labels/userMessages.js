@@ -38,4 +38,7 @@ module.exports = {
   PLEASE_LOG_IN_TO_VIEW_THIS_CONTENT: {
     uk: 'Будь ласка, ввійдіть в свій профіль для перегляду цієї сторінки.',
   },
+  PASSWORD_IS_TOO_SHORT: {
+    uk: 'Пароль занадто короткий (мінімум 6 символів).',
+  },
 };
