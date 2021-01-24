@@ -1,6 +1,5 @@
 const catchAsync = require('../utils/catchAsync');
 const Category = require('../models/categoryModel');
-
 const AppError = require('../utils/AppError');
 const { getCustomLabel, MESSAGES } = require('../labels');
 const Format = require('string-format');
@@ -41,8 +40,21 @@ const updateCategory = catchAsync(async (req, res, next) => {
   res.status(200).json({ status: 'success', category });
 });
 
+const deleteCategory = catchAsync(async (req, res, next) => {
+  const categoryId = req.params.categoryId || req.body.id || req.body._id;
+
+  if (!categoryId) {
+    return next(new AppError(getCustomLabel(req, MESSAGES.CATEGORY_ID_NOT_SPECIFIED), 400));
+  }
+
+  await Category.findByIdAndDelete(categoryId);
+
+  return res.status(204).end();
+});
+
 module.exports = {
   getCategoriesTree,
   createCategory,
   updateCategory,
+  deleteCategory,
 };

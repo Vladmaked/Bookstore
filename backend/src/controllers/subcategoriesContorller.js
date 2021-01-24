@@ -59,8 +59,21 @@ const createSubcategory = catchAsync(async (req, res, next) => {
   });
 });
 
+const deleteSubcategory = catchAsync(async (req, res, next) => {
+  const subcategoryId = req.params.subcategoryId || req.body.id || req.body._id;
+
+  if (!subcategoryId) {
+    return next(new AppError(getCustomLabel(req, MESSAGES.SUBCATEGORY_ID_NOT_SPECIFIED), 400));
+  }
+
+  await Subcategory.findByIdAndDelete(subcategoryId);
+
+  return res.status(204).end();
+});
+
 module.exports = {
   createSubcategory,
   updateSubcategory,
   getSubcategories,
+  deleteSubcategory,
 };

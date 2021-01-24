@@ -1,10 +1,10 @@
 const { Router } = require('express');
-const { updateSubcategory, getSubcategories, createSubcategory } = require('../controllers');
+const { updateSubcategory, getSubcategories, createSubcategory, deleteSubcategory } = require('../controllers');
 
 const getSubcategoriesRouter = () => {
   const router = Router({ mergeParams: true });
 
-  router.route('/:subcategoryId').patch(updateSubcategory);
+  router.route('/:subcategoryId').patch(updateSubcategory).delete(deleteSubcategory);
 
   router.route('/').get(getSubcategories).post(createSubcategory);
 

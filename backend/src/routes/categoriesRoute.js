@@ -1,5 +1,11 @@
 const { Router } = require('express');
-const { getCategoriesTree, createCategory, createSubcategory, updateCategory } = require('../controllers');
+const {
+  getCategoriesTree,
+  createCategory,
+  createSubcategory,
+  updateCategory,
+  deleteCategory,
+} = require('../controllers');
 const { getSubcategoriesRouter } = require('./subcategoriesRoute');
 
 const getCategoriesRouter = () => {
@@ -9,7 +15,7 @@ const getCategoriesRouter = () => {
 
   router.route('/').get(getCategoriesTree).post(createCategory);
 
-  router.route('/:categoryId').patch(updateCategory);
+  router.route('/:categoryId').patch(updateCategory).delete(deleteCategory);
 
   router.route('/:categoryId/subcategories').post(createSubcategory);
 
