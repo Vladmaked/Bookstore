@@ -31,7 +31,7 @@ const getSubcategory = catchAsync(async (req, res, next) => {
     return next(new AppError(getCustomLabel(req, MESSAGES.SUBCATEGORY_ID_NOT_SPECIFIED)));
   }
 
-  const subcategory = await Subcategory.findByIdAndUpdate(subcategoryId, req.body, { new: true });
+  const subcategory = await Subcategory.findById(subcategoryId);
 
   if (!subcategory) {
     return next(new AppError(Format(getCustomLabel(req, MESSAGES.SUBCATEGORY_NOT_FOUND_FORMAT), subcategoryId), 404));
