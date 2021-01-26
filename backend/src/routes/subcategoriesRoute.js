@@ -5,6 +5,7 @@ const {
   createSubcategory,
   deleteSubcategory,
   getSubcategory,
+  getProductsBySubcategory,
 } = require('../controllers');
 
 const getSubcategoriesRouter = () => {
@@ -13,6 +14,8 @@ const getSubcategoriesRouter = () => {
   router.route('/:subcategoryId').patch(updateSubcategory).delete(deleteSubcategory).get(getSubcategory);
 
   router.route('/').get(getSubcategories).post(createSubcategory);
+
+  router.route('/:subcategoryId/products').get(getProductsBySubcategory);
 
   return router;
 };

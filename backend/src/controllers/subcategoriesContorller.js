@@ -1,9 +1,12 @@
 const catchAsync = require('../utils/catchAsync');
 const Category = require('../models/categoryModel');
-const AppError = require('../utils/AppError');
+const Product = require('../models/productsModel');
 const Subcategory = require('../models/subcategoryModel');
+const AppError = require('../utils/AppError');
 const Format = require('string-format');
 const { getCustomLabel, MESSAGES } = require('../labels');
+const APIFeatures = require('../utils/ApiFeatures');
+const { Types } = require('mongoose');
 
 const getSubcategories = catchAsync(async (req, res, next) => {
   const categoryId = req.params.categoryId;
@@ -92,10 +95,28 @@ const deleteSubcategory = catchAsync(async (req, res, next) => {
   return res.status(204).end();
 });
 
+const getProductsBySubcategory = catchAsync(async (req, res, next) => {
+  const subcategoryId = req.params.subcategoryId;
+
+  if (!subcategoryId) {
+    return next(new AppError(getCustomLabel(req, MESSAGES.SUBCATEGORY_ID_NOT_SPECIFIED)));
+  }
+
+  const query = { subcategoryId: new Types.ObjectId(subcategoryId) };
+  const apiFeatures = new APIFeatures(Product.find(query), req.query);
+
+  apiFeatures.filter().sort().paginate().specifyFields();
+
+  const products = await apiFeatures.query;
+
+  return res.status(200).json({ status: 'success', size: products.length, data: products });
+});
+
 module.exports = {
   createSubcategory,
   updateSubcategory,
   getSubcategories,
   deleteSubcategory,
   getSubcategory,
+  getProductsBySubcategory,
 };

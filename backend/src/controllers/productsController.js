@@ -4,7 +4,6 @@ const AppError = require('../utils/AppError');
 const { getCustomLabel, MESSAGES } = require('../labels/index');
 const APIFeatures = require('../utils/ApiFeatures');
 const Format = require('string-format');
-const { Types } = require('mongoose');
 
 const getAllProducts = catchAsync(async (req, res, next) => {
   const apiFeatures = new APIFeatures(Product.find({}), req.query);
