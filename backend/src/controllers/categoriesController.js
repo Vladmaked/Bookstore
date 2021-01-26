@@ -13,6 +13,25 @@ const getCategoriesTree = catchAsync(async (req, res, next) => {
   });
 });
 
+const getCategory = catchAsync(async (req, res, next) => {
+  const categoryId = req.params.categoryId;
+
+  if (!categoryId) {
+    return next(new AppError(getCustomLabel(req, MESSAGES.CATEGORY_ID_NOT_SPECIFIED)));
+  }
+
+  const category = await Category.findByIdAndUpdate(categoryId, req.body, { new: true });
+
+  if (!category) {
+    return next(new AppError(Format(getCustomLabel(req, MESSAGES.CATEGORY_NOT_FOUND_FORMAT), categoryId), 404));
+  }
+
+  res.status(200).json({
+    status: 'success',
+    category,
+  });
+});
+
 const createCategory = catchAsync(async (req, res, next) => {
   const category = await Category.create(req.body);
 
@@ -34,7 +53,7 @@ const updateCategory = catchAsync(async (req, res, next) => {
   });
 
   if (!category) {
-    return next(new AppError(Format(getCustomLabel(req, MESSAGES.CATEGORY_NOT_FOUND_FORMAT), 404)));
+    return next(new AppError(Format(getCustomLabel(req, MESSAGES.CATEGORY_NOT_FOUND_FORMAT), categoryId), 404));
   }
 
   res.status(200).json({ status: 'success', category });
@@ -57,4 +76,5 @@ module.exports = {
   createCategory,
   updateCategory,
   deleteCategory,
+  getCategory,
 };

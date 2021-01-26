@@ -2,6 +2,8 @@ const catchAsync = require('../utils/catchAsync');
 const Category = require('../models/categoryModel');
 const AppError = require('../utils/AppError');
 const Subcategory = require('../models/subcategoryModel');
+const Format = require('string-format');
+const { getCustomLabel, MESSAGES } = require('../labels');
 
 const getSubcategories = catchAsync(async (req, res, next) => {
   const categoryId = req.params.categoryId;
@@ -16,6 +18,25 @@ const getSubcategories = catchAsync(async (req, res, next) => {
   return res.status(200).json({
     status: 'success',
     subacategories,
+  });
+});
+
+const getSubcategory = catchAsync(async (req, res, next) => {
+  const subcategoryId = req.params.subcategoryId;
+
+  if (!subcategoryId) {
+    return next(new AppError(getCustomLabel(req, MESSAGES.SUBCATEGORY_ID_NOT_SPECIFIED)));
+  }
+
+  const subcategory = await Subcategory.findByIdAndUpdate(subcategoryId, req.body, { new: true });
+
+  if (!subcategory) {
+    return next(new AppError(Format(getCustomLabel(req, MESSAGES.SUBCATEGORY_NOT_FOUND_FORMAT), subcategoryId), 404));
+  }
+
+  res.status(200).json({
+    status: 'success',
+    subcategory,
   });
 });
 
@@ -76,4 +97,5 @@ module.exports = {
   updateSubcategory,
   getSubcategories,
   deleteSubcategory,
+  getSubcategory,
 };
