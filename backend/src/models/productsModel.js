@@ -1,9 +1,16 @@
 const mongoose = require('mongoose');
 const { Schema } = require('mongoose');
+const { ObjectId } = require('mongoose/lib/schema');
 
 const productSchema = new Schema({
-  category: String,
-  subcategory: String,
+  categoryId: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Category',
+  },
+  subcategoryId: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Subcategory',
+  },
   title: String,
   author: String,
   photo: String,
