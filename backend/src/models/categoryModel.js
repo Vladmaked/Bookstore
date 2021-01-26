@@ -12,6 +12,12 @@ const categorySchema = new Schema(
   }
 );
 
+categorySchema.pre('remove', async function (next) {
+  await this.model('Subcategory').deleteMany({ categoryId: this._id });
+
+  next();
+});
+
 categorySchema.virtual('subcategories', {
   ref: 'Subcategory',
   localField: '_id',

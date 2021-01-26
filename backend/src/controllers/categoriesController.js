@@ -69,7 +69,9 @@ const deleteCategory = catchAsync(async (req, res, next) => {
     return next(new AppError(getCustomLabel(req, MESSAGES.CATEGORY_ID_NOT_SPECIFIED), 400));
   }
 
-  await Category.findByIdAndDelete(categoryId);
+  const category = await Category.findById(categoryId);
+
+  category.remove();
 
   return res.status(204).end();
 });
