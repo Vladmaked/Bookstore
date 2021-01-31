@@ -21,7 +21,7 @@ module.exports = class APIFeatures {
       }
     }
 
-    this.query = this.query.find();
+    this.query = this.query.find(transformedQuery);
 
     return this;
   }
