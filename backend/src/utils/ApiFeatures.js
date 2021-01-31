@@ -13,7 +13,15 @@ module.exports = class APIFeatures {
     let queryString = JSON.stringify(queryObj);
     queryString = queryString.replace(/\b(gte|gt|lte|lt|ne)\b/g, (match) => `$${match}`);
 
-    this.query = this.query.find(JSON.parse(queryString));
+    const transformedQuery = JSON.parse(queryString);
+
+    for (let el in transformedQuery) {
+      if (transformedQuery[el].includes(',')) {
+        transformedQuery[el] = { $in: transformedQuery[el].split(',') };
+      }
+    }
+
+    this.query = this.query.find();
 
     return this;
   }

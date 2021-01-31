@@ -5,11 +5,13 @@ const { getCustomLabel, MESSAGES } = require('../labels/index');
 const APIFeatures = require('../utils/ApiFeatures');
 const Format = require('string-format');
 
+const DEFAULT_PAGE_SIZE = 1000;
+
 const getAllProducts = catchAsync(async (req, res, next) => {
   const apiFeatures = new APIFeatures(Product.find({}), req.query);
 
   const page = +req.query.page || 1;
-  const limit = +req.query.limit || 100;
+  const limit = +req.query.limit || DEFAULT_PAGE_SIZE;
 
   apiFeatures.filter().sort().specifyFields();
 
