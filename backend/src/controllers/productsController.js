@@ -8,9 +8,12 @@ const Format = require('string-format');
 const getAllProducts = catchAsync(async (req, res, next) => {
   const apiFeatures = new APIFeatures(Product.find({}), req.query);
 
-  apiFeatures.filter().sort().paginate().specifyFields();
+  const page = +req.query.page || 1;
+  const limit = +req.query.limit || 100;
 
-  const products = await apiFeatures.query;
+  apiFeatures.filter().sort().specifyFields();
+
+  const products = await Product.paginate(apiFeatures.query, { page, limit });
 
   return res.status(200).json({ status: 'success', data: products });
 });

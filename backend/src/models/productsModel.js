@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = require('mongoose');
-const { ObjectId } = require('mongoose/lib/schema');
+const paginate = require('mongoose-paginate');
 
 const productSchema = new Schema({
   categoryId: {
@@ -20,5 +20,7 @@ const productSchema = new Schema({
   id: String,
   quantityInStock: Number,
 });
+
+productSchema.plugin(paginate);
 
 module.exports = mongoose.model('Product', productSchema);

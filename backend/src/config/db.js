@@ -10,7 +10,7 @@ const {
 const MONGO_URI_LOCAL = `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST_LOCAL}:${DB_PORT_LOCAL}/${DB_NAME}`;
 
 const MONGO_URI_CLOUD = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_HOST_CLOUD}/${DB_NAME}`;
-
+console.log(MONGO_URI_CLOUD);
 const MONGO_OPTIONS = {
   useUnifiedTopology: true,
   useNewUrlParser: true,
