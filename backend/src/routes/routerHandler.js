@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const { getUsersRouter, getProductsRouter, getAuthRouter, getCategoriesRouter, getSubcategoriesRouter } = require('./');
+const { getImgRouter } = require('./imgRoute');
 
 const getRoutesHandler = () => {
   const router = Router();
@@ -13,6 +14,8 @@ const getRoutesHandler = () => {
   router.use('/api/categories', getCategoriesRouter());
 
   router.use('/api/subcategories', getSubcategoriesRouter());
+
+  router.use('/api/img', getImgRouter());
 
   return router;
 };
