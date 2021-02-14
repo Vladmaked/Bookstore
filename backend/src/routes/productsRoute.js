@@ -12,7 +12,7 @@ const {
 const getProductsRouter = () => {
   const router = Router();
 
-  router.route('/').get(getAllProducts).post(createProduct);
+  router.route('/').get(getAllProducts).post(uploadProductPhoto, createProduct);
 
   router.route('/:id').get(getProduct).patch(uploadProductPhoto, updateProduct).delete(deleteProduct);
 
