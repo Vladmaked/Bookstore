@@ -3,12 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 
-import {Environment} from './interface';
+import {Environment, FbDbEnvironment} from './interface';
 
-export const environment: Environment = {
+export const fbDbEnvironment: FbDbEnvironment = {
   production: false,
   apiKey: 'AIzaSyBwC01x4ZPpNeASzTT0m-yC1rpKm_4AtYE',
   fbDbUrl: 'https://bookstore-3ef34.firebaseio.com/'
+};
+
+export const environment: Environment = {
+  apiUrl: 'http://localhost:4200'
 };
 
 /*

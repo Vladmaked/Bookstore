@@ -49,7 +49,7 @@ body {
   font-family: 'Roboto', serif;
   letter-spacing: 0.045em;
   font-size: 14px;
-  background: #F8F8F8;
+  background: #EEE;
 }
 
 html, body {
@@ -249,7 +249,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ===== goods grid ========= */
 
-.main-goods__row {
+.main-goods__wrapper {
   width: 100%;
   margin-bottom: 100px;
   margin-top: 20px;
@@ -314,26 +314,26 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-@media only screen and (max-width: 1600px) {
+@media only screen and (max-width: 1720px) {
   .container {
     max-width: 1366px;
   }
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1386px) {
   .container {
-    max-width: 960px;
+    max-width: 1032px;
   }
 
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1052px) {
   .container {
-    max-width: 100%;
+    max-width: 698px;
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 718px) {
   .container {
     max-width: 100%;
   }
