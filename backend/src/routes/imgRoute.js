@@ -4,7 +4,7 @@ const { getImage } = require('../controllers');
 const getImgRouter = () => {
   const router = Router();
 
-  router.route('/:entity/:fileName').get(getImage);
+  router.route('/:fileName').get(getImage);
 
   return router;
 };

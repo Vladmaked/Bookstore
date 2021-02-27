@@ -8,14 +8,17 @@ const multer = require('multer');
 const uuid = require('uuid');
 
 const DEFAULT_PAGE_SIZE = 1000;
-const PHOTOS_PATH = './data/img/products';
+const PHOTOS_PATH = './data/img/original';
 
 const multerStorage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, PHOTOS_PATH);
   },
-  filename: function (req, file, cb) {
-    cb(null, `${uuid.v4()}.${file.mimetype.split('/')[1]}`);
+  filename: async function (req, file, cb) {
+    const prod = await Product.findById(req.params.id).select('photo');
+    const photoName = prod?.photo ? prod.photo : `${uuid.v4()}.png`;
+
+    cb(null, photoName);
   },
 });
 
@@ -62,7 +65,12 @@ const getProduct = catchAsync(async (req, res, next) => {
 });
 
 const createProduct = catchAsync(async (req, res, next) => {
-  const product = await Product.create(req.body);
+  const productObj = {
+    ...req.body,
+    photo: req.file.filename,
+  };
+
+  const product = await Product.create(productObj);
 
   return res.status(201).json({ status: 'success', data: product });
 });

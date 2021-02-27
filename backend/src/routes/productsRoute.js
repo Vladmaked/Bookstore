@@ -7,14 +7,15 @@ const {
   getProduct,
   deleteProduct,
   uploadProductPhoto,
+  resizeAndSave,
 } = require('../controllers');
 
 const getProductsRouter = () => {
   const router = Router();
 
-  router.route('/').get(getAllProducts).post(uploadProductPhoto, createProduct);
+  router.route('/').get(getAllProducts).post(uploadProductPhoto, resizeAndSave, createProduct);
 
-  router.route('/:id').get(getProduct).patch(uploadProductPhoto, updateProduct).delete(deleteProduct);
+  router.route('/:id').get(getProduct).patch(uploadProductPhoto, resizeAndSave, updateProduct).delete(deleteProduct);
 
   return router;
 };

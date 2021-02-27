@@ -1,6 +1,12 @@
 const { Router } = require('express');
-const { getUsersRouter, getProductsRouter, getAuthRouter, getCategoriesRouter, getSubcategoriesRouter } = require('./');
-const { getImgRouter } = require('./imgRoute');
+const {
+  getUsersRouter,
+  getProductsRouter,
+  getAuthRouter,
+  getCategoriesRouter,
+  getSubcategoriesRouter,
+  getImgRouter,
+} = require('./');
 
 const getRoutesHandler = () => {
   const router = Router();
