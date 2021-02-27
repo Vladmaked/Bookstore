@@ -51,3 +51,6 @@ Thumbs.db
 
 #firebase
 .ZGlzdC9ib29rc3RvcmU.cache
+
+#data
+/backend/data

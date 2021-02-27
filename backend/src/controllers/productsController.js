@@ -4,8 +4,38 @@ const AppError = require('../utils/AppError');
 const { getCustomLabel, MESSAGES } = require('../labels/index');
 const APIFeatures = require('../utils/ApiFeatures');
 const Format = require('string-format');
+const multer = require('multer');
+const uuid = require('uuid');
 
 const DEFAULT_PAGE_SIZE = 1000;
+const PHOTOS_PATH = './data/img/original';
+
+const multerStorage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, PHOTOS_PATH);
+  },
+  filename: async function (req, file, cb) {
+    const prod = await Product.findById(req.params.id).select('photo');
+    const photoName = prod?.photo ? prod.photo : `${uuid.v4()}.webp`;
+
+    cb(null, photoName);
+  },
+});
+
+const multerFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith('image')) {
+    cb(null, true);
+  } else {
+    cb(new AppError('Not an Image', 400), false);
+  }
+};
+
+const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter,
+});
+
+const uploadProductPhoto = upload.single('photo');
 
 const getAllProducts = catchAsync(async (req, res, next) => {
   const apiFeatures = new APIFeatures(Product.find({}), req.query);
@@ -35,7 +65,12 @@ const getProduct = catchAsync(async (req, res, next) => {
 });
 
 const createProduct = catchAsync(async (req, res, next) => {
-  const product = await Product.create(req.body);
+  const productObj = {
+    ...req.body,
+    photo: !req.body.photo ? 'stub.webp' : req.file?.filename,
+  };
+
+  const product = await Product.create(productObj);
 
   return res.status(201).json({ status: 'success', data: product });
 });
@@ -43,7 +78,12 @@ const createProduct = catchAsync(async (req, res, next) => {
 const updateProduct = catchAsync(async (req, res, next) => {
   const productId = req.params.id || req.body.id || req.body._id;
 
-  const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
+  const productObj = {
+    ...req.body,
+    photo: req.file?.filename,
+  };
+
+  const product = await Product.findByIdAndUpdate(req.params.id, productObj, {
     new: true,
     runValidators: true,
   });
@@ -76,4 +116,5 @@ module.exports = {
   createProduct,
   updateProduct,
   deleteProduct,
+  uploadProductPhoto,
 };
