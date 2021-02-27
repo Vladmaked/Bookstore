@@ -1,8 +1,8 @@
 import {Component, HostBinding, OnDestroy, OnInit} from '@angular/core';
 import {routingAnimation} from '../../shared/animations/routing-animation';
-import {ProductService} from '../../shared/services/product.service';
 import {Subscription} from 'rxjs';
-import {Product} from '../../shared/interfaces';
+import {ProductService} from '../../services';
+import {Product} from '../../models';
 
 @Component({
   selector: 'app-dashboard-page',

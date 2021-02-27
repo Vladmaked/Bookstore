@@ -1,0 +1,21 @@
+<div class="filters-wrapper"
+     appIsHidePopupDirective>
+    <div class="filters-column">
+        <div class="categories-list-wrapper"
+             style="margin: 20px 0; font-size: 24px;"
+             *ngIf="categories">
+            <span appMaxHeightDirective>Категорії</span>
+            <app-categories-list [categories]="categories"
+                                 class="categories-list">
+            </app-categories-list>
+        </div>
+        <div class="categories-list-wrapper"
+             style="margin: 20px 0; font-size: 24px;"
+             *ngIf="subcategories">
+            <span appMaxHeightDirective>Підкатегорії</span>
+            <app-subcategories-list [subcategories]="subcategories"
+                                    class="categories-list">
+            </app-subcategories-list>
+        </div>
+    </div>
+</div>

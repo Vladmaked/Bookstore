@@ -2,8 +2,8 @@ import {Component, HostBinding, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {routingAnimation} from '../../shared/animations/routing-animation';
-import {User} from '../../shared/interfaces';
 import {AdminAuthService} from '../shared/services/admin-auth.service';
+import {User} from '../../models';
 
 @Component({
   selector: 'app-login-page',

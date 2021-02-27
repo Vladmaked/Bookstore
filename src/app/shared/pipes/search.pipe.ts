@@ -1,13 +1,11 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {Product} from '../interfaces';
-import {ProductService} from '../services/product.service';
-import {isEmpty} from 'rxjs/operators';
+import {Product} from '../../models';
 
 @Pipe({
   name: 'search'
 })
 export class SearchPipe implements PipeTransform {
-  constructor(private productService: ProductService) {
+  constructor() {
   }
 
   transform(products: Product[], productName = ''): Product[] {
@@ -18,12 +16,6 @@ export class SearchPipe implements PipeTransform {
     products = products.filter(product => {
       return product.title.toLowerCase().includes(productName.toLowerCase());
     });
-
-    if (products.length === 0) {
-      this.productService.isEmpty = true;
-    } else {
-      this.productService.isEmpty = false;
-    }
 
     return products;
 

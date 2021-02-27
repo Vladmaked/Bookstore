@@ -1,0 +1,8 @@
+<ng-container *ngIf="products.length; else empty" style="padding: 10px;">
+    <app-product-list-item
+            *ngFor="let product of products"
+            [product]="product"
+            class="">
+    </app-product-list-item>
+</ng-container>
+<ng-template #empty>На-жаль, книг даної категорії ще немає на сайті!</ng-template>

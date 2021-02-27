@@ -3,7 +3,7 @@
 
         <div class="login">
 
-            <app-breadcrumb></app-breadcrumb>
+            <app-breadcrumbs></app-breadcrumbs>
 
             <div class="login__wrapper">
                 <h2 class="login__header">
@@ -19,36 +19,50 @@
                             {{error}}
                         </div>
 
-<!--                        <div class="form__error validation" *ngIf="message">-->
-<!--                            {{message}}-->
-<!--                        </div>-->
+                        <!--                        <div class="form__error validation" *ngIf="message">-->
+                        <!--                            {{message}}-->
+                        <!--                        </div>-->
 
                         <div class="form__control">
                             <label class="form__label">
-                                <input type="email" class="form__input" placeholder="Адреса електронної скриньки" formControlName="email">
+                                <input type="email"
+                                       class="form__input"
+                                       placeholder="Адреса електронної скриньки"
+                                       formControlName="email">
                             </label>
-                            <div class="form__validation" *ngIf="loginForm.get('email').touched && loginForm.get('email').invalid">
-                                <small class="validation" *ngIf="loginForm.get('email').errors.required">Введіть Email</small>
-                                <small class="validation" *ngIf="loginForm.get('email').errors.email">Введіть вірний Email</small>
+                            <div class="form__validation"
+                                 *ngIf="loginForm.get('email').touched && loginForm.get('email').invalid">
+                                <small class="validation" *ngIf="loginForm.get('email').errors.required">Введіть
+                                                                                                         Email</small>
+                                <small class="validation" *ngIf="loginForm.get('email').errors.email">Введіть вірний
+                                                                                                      Email</small>
                             </div>
                         </div>
 
 
                         <div class="form__control">
                             <label class="form__label login-form__label-password">
-                                <input type="password" class="form__input" placeholder="Пароль" formControlName="password">
+                                <input type="password"
+                                       class="form__input"
+                                       placeholder="Пароль"
+                                       formControlName="password">
                             </label>
-                            <div class="form__validation" *ngIf="loginForm.get('password').touched && loginForm.get('password').invalid">
-                                <small class="validation" *ngIf="loginForm.get('password').errors.required">Введіть пароль</small>
+                            <div class="form__validation"
+                                 *ngIf="loginForm.get('password').touched && loginForm.get('password').invalid">
+                                <small class="validation" *ngIf="loginForm.get('password').errors.required">Введіть
+                                                                                                            пароль</small>
                                 <small class="validation" *ngIf="loginForm.get('password').errors.minlength">
-                                    Пароль має містити мінімум {{loginForm.get('password').errors.minlength.requiredLength}} символів.
+                                    Пароль має містити
+                                    мінімум {{loginForm.get('password').errors.minlength.requiredLength}} символів.
                                     Зараз {{loginForm.get('password').errors.minlength.actualLength}}
                                 </small>
                             </div>
                         </div>
                     </div>
 
-                    <button class="login-form__btn btn" *ngIf="!loginWrapper" (click)="registrationWrapper = false; loginWrapper = true">
+                    <button class="login-form__btn btn"
+                            *ngIf="!loginWrapper"
+                            (click)="registrationWrapper = false; loginWrapper = true">
                         Вхід
                     </button>
 
@@ -74,44 +88,63 @@
                     Реєстрація
                 </h2>
 
-                <form class="registration__registration-form registration-form" [formGroup]="registrationForm" (ngSubmit)="registration()">
+                <form class="registration__registration-form registration-form"
+                      [formGroup]="registrationForm"
+                      (ngSubmit)="registration()">
 
                     <div class="form__input-wrapper" *ngIf="registrationWrapper">
 
-                        <div class="form__error validation" *ngIf="auth.error$ | async as error">
+                        <div class="form__error validation" *ngIf="(auth.error$ | async) as error">
                             {{error}}
                         </div>
 
-<!--                        <div class="form__error validation" *ngIf="message">-->
-<!--                            {{message}}-->
-<!--                        </div>-->
+                        <!--                        <div class="form__error validation" *ngIf="message">-->
+                        <!--                            {{message}}-->
+                        <!--                        </div>-->
 
                         <div class="form__control">
                             <label class="form__label">
-                                <input type="email" class="form__input" placeholder="Адреса електронної скриньки" formControlName="email">
+                                <input type="email"
+                                       class="form__input"
+                                       placeholder="Адреса електронної скриньки"
+                                       formControlName="email">
                             </label>
-                            <div class="form__validation" *ngIf="registrationForm.get('email').touched && registrationForm.get('email').invalid">
-                                <small class="validation" *ngIf="registrationForm.get('email').errors.required">Введіть Email</small>
-                                <small class="validation" *ngIf="registrationForm.get('email').errors.email">Введіть вірний Email</small>
+                            <div class="form__validation"
+                                 *ngIf="registrationForm.get('email').touched && registrationForm.get('email').invalid">
+                                <small class="validation" *ngIf="registrationForm.get('email').errors.required">Введіть
+                                                                                                                Email</small>
+                                <small class="validation" *ngIf="registrationForm.get('email').errors.email">Введіть
+                                                                                                             вірний
+                                                                                                             Email</small>
                             </div>
                         </div>
 
                         <div class="form__input-initials">
                             <div class="form__control registration-form__first-name">
                                 <label class="form__label">
-                                    <input type="text" class="form__input" placeholder="Ім'я" formControlName="firstName">
+                                    <input type="text"
+                                           class="form__input"
+                                           placeholder="Ім'я"
+                                           formControlName="firstName">
                                 </label>
-                                <div class="form__validation" *ngIf="registrationForm.get('firstName').touched && registrationForm.get('firstName').invalid">
-                                    <small class="validation" *ngIf="registrationForm.get('firstName').errors.required">Введіть ім'я</small>
+                                <div class="form__validation"
+                                     *ngIf="registrationForm.get('firstName').touched && registrationForm.get('firstName').invalid">
+                                    <small class="validation" *ngIf="registrationForm.get('firstName').errors.required">Введіть
+                                                                                                                        ім'я</small>
                                 </div>
                             </div>
 
                             <div class="form__control registration-form__last-name">
                                 <label class="form__label ">
-                                    <input type="text" class="form__input" placeholder="Прізвище" formControlName="lastName">
+                                    <input type="text"
+                                           class="form__input"
+                                           placeholder="Прізвище"
+                                           formControlName="lastName">
                                 </label>
-                                <div class="form__validation" *ngIf="registrationForm.get('lastName').touched && registrationForm.get('lastName').invalid">
-                                    <small class="validation" *ngIf="registrationForm.get('lastName').errors.required">Введіть прізвище</small>
+                                <div class="form__validation"
+                                     *ngIf="registrationForm.get('lastName').touched && registrationForm.get('lastName').invalid">
+                                    <small class="validation" *ngIf="registrationForm.get('lastName').errors.required">Введіть
+                                                                                                                       прізвище</small>
                                 </div>
                             </div>
                         </div>
@@ -120,10 +153,14 @@
                             <label class="form__label">
                                 <input type="text" class="form__input" placeholder="Пароль" formControlName="password">
                             </label>
-                            <div class="form__validation" *ngIf="registrationForm.get('password').touched && registrationForm.get('password').invalid">
-                                <small class="validation" *ngIf="registrationForm.get('password').errors.required">Введіть пароль</small>
+                            <div class="form__validation"
+                                 *ngIf="registrationForm.get('password').touched && registrationForm.get('password').invalid">
+                                <small class="validation" *ngIf="registrationForm.get('password').errors.required">Введіть
+                                                                                                                   пароль</small>
                                 <small class="validation" *ngIf="registrationForm.get('password').errors.minlength">
-                                    Пароль має містити мінімум {{registrationForm.get('password').errors.minlength.requiredLength}} символів.
+                                    Пароль має містити
+                                    мінімум {{registrationForm.get('password').errors.minlength.requiredLength}}
+                                    символів.
                                     Зараз {{registrationForm.get('password').errors.minlength.actualLength}}
                                 </small>
                             </div>
@@ -137,7 +174,9 @@
                         </div>
                     </div>
 
-                    <button class="registration-form__btn btn" *ngIf="!registrationWrapper" (click)="registrationWrapper = true; loginWrapper = false">
+                    <button class="registration-form__btn btn"
+                            *ngIf="!registrationWrapper"
+                            (click)="registrationWrapper = true; loginWrapper = false">
                         Створити обліковий запис
                     </button>
 
@@ -170,8 +209,12 @@
 
                 <p class="registration-form__info" *ngIf="registrationWrapper">
                     Натискаючи на кнопку "Створити обліковий запис", Ви приймаєте умови
-                    <a [routerLink]="['/help', 'privacy-policy']" class="link registration-form__link">Політики конфіденційності</a>,
-                    <a [routerLink]="['/help', 'terms-and-conditions']" class="link registration-form__link">Правила і умови використання сайту</a>
+                    <a [routerLink]="['/help', 'privacy-policy']" class="link registration-form__link">Політики
+                                                                                                       конфіденційності</a>,
+                    <a [routerLink]="['/help', 'terms-and-conditions']" class="link registration-form__link">Правила і
+                                                                                                             умови
+                                                                                                             використання
+                                                                                                             сайту</a>
                 </p>
             </div>
         </div>

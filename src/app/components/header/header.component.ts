@@ -1,67 +1,54 @@
-import {Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {ProductService} from '../../shared/services/product.service';
+import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
-import {CategoryService} from '../../shared/services/category.service';
-import {Category, Subcategory} from '../../shared/interfaces';
 import {FormControl} from '@angular/forms';
 import {filter, map, pairwise, throttleTime} from 'rxjs/operators';
-import {fromEvent, Subscription} from 'rxjs';
-import {CartService} from '../../shared/services/cart.service';
+import {BehaviorSubject, fromEvent, Observable, ReplaySubject, Subject} from 'rxjs';
+import {CartService, CategoryService, ProductService} from '../../services';
+import {CartItem, Category, Subcategory} from '../../models';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit {
 
-  category;
-  arrCategories: Array<Category> = [];
-  arrSubcategories: Array<Subcategory> = [];
-  private cSub: Subscription;
-  private sSub: Subscription;
-  subcategory;
-  private productName = 'my name is Alice';
-  input;
-  // subMenu = false;
-  // subSubMenu = false;
+  categories$: Observable<Category[]>;
+  subcategories$: Observable<Subcategory[]>;
   isOpenMenuBooks = false;
   isOpenMenuAuthors = false;
   isFocus = false;
+  isFocus2 = false;
   searchField: FormControl;
-  // isSearch = false;
-  totalPrice = 0;
-  // btnNode = document.querySelector('[data-btn]');
+  totalPrice: number = 0;
+  productList: CartItem[] = [];
 
-  @ViewChild('firstMenuLevel1') firstMenuLevel1: ElementRef;
-  @ViewChild('secondMenuLevel1') secondMenuLevel1: ElementRef;
+  @ViewChild('firstMenuLevel1') firstMenu: ElementRef;
 
+  // @ViewChild('secondMenuLevel1') secondMenuLevel1: ElementRef;
   @HostListener('click', ['$event']) onClick(e: MouseEvent) {
-    if (!this.firstMenuLevel1.nativeElement.contains(e.target)) {
+    if (!this.firstMenu.nativeElement.contains(e.target)) {
       this.isOpenMenuBooks = false;
     }
-    if (!this.secondMenuLevel1.nativeElement.contains(e.target)) {
-      this.isOpenMenuAuthors = false;
-    }
+    // if (!this.secondMenuLevel1.nativeElement.contains(e.target)) {
+    //   this.isOpenMenuAuthors = false;
+    // }
   }
 
   constructor(
-    public productService: ProductService,
     public router: Router,
     private categoryService: CategoryService,
     private cartService: CartService) {
     this.cartService.totalPrice$.subscribe((value) => {
       this.totalPrice = value;
     });
+    this.cartService.productList$.subscribe((value) => {
+      this.productList = value;
+    });
   }
 
   ngOnInit() {
     this.searchField = new FormControl();
-
-    this.getAllSubcategories();
-    setTimeout(() => {
-      this.getAllCategories();
-    }, 100);
 
     const fixedDiv: HTMLElement = document.getElementById('fixedDiv');
     fromEvent(window, 'scroll').pipe(
@@ -74,39 +61,24 @@ export class HeaderComponent implements OnInit, OnDestroy {
     ).subscribe((isScrolledToTop) => {
       fixedDiv.classList.toggle('close', isScrolledToTop);
     });
+    this.getAllCategories();
+    this.getAllSubcategories();
   }
 
-  getAllCategories() {
-    this.cSub = this.categoryService.getAllCategories()
-      .subscribe(categories => {
-        this.arrCategories = categories;
-      });
+  getAllCategories(): void {
+   this.categories$ = this.categoryService.getAllCategories();
   }
 
-  getAllSubcategories() {
-    this.sSub = this.categoryService.getAllSubcategories().subscribe(subcategories => {
-      this.arrSubcategories = subcategories;
-    });
+  getAllSubcategories(): void {
+    this.subcategories$ = this.categoryService.getAllSubcategories();
   }
 
-  // search() {
-  // this.productService.productName = this.productName;
-  // this.router.navigate(['/catalog']);
-  // }
-
-  // clearInput() {
-  // this.input = document.getElementsByClassName('search__input')[0];
-  // this.input.value = '';
-  // this.productName = '';
-  // }
-
-  ngOnDestroy(): void {
-    if (this.cSub) {
-      this.cSub.unsubscribe();
-    }
-    if (this.sSub) {
-      this.sSub.unsubscribe();
-    }
+  deleteCartItem(productListItem: any) {
+    this.totalPrice -= productListItem.product.price * productListItem.quantity;
+    this.cartService.totalPrice$.next(this.totalPrice);
+    this.cartService.totalPrice = this.totalPrice;
+    this.productList = this.productList.filter(({product}) => product.id !== productListItem.product.id);
+    this.cartService.productList = this.productList;
+    this.cartService.productList$.next(this.productList);
   }
-
 }

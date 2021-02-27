@@ -1,0 +1,8 @@
+.category-list__item-wrapper {
+  display: flex;
+}
+
+.category-list__item {
+  height: 100px;
+  width: 100%;
+}

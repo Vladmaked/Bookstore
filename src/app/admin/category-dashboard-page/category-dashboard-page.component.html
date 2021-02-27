@@ -42,8 +42,8 @@
                     </ng-container>
                 </select>
 
-                <ng-container *ngIf="formSubcategory.get('category').touched && formSubcategory.get('category').invalid">
-                    <small class="validation" *ngIf="formSubcategory.get('category').errors.required">
+                <ng-container *ngIf="formSubcategory.get('details').touched && formSubcategory.get('details').invalid">
+                    <small class="validation" *ngIf="formSubcategory.get('details').errors.required">
                         Оберіть категорію товару
                     </small>
                 </ng-container>
@@ -56,8 +56,8 @@
 
                 <input class="form-control__input" id="subcategory" type="text" formControlName="subcategory" autocomplete="off">
 
-                <ng-container *ngIf="formSubcategory.get('subcategory').touched && formSubcategory.get('subcategory').invalid">
-                    <small class="validation" *ngIf="formSubcategory.get('subcategory').errors.required">
+                <ng-container *ngIf="formSubcategory.get('details').touched && formSubcategory.get('details').invalid">
+                    <small class="validation" *ngIf="formSubcategory.get('details').errors.required">
                         Введіть назву підкатегорії
                     </small>
                 </ng-container>
@@ -94,7 +94,7 @@
             <td class="table__td">{{ inx + 1 }}</td>
             <td class="table__td">{{ category.name }}</td>
             <td class="table__td">
-                <button class="table__button table__button_edit" [routerLink]="['/admin', 'category', category.id, 'edit']">
+                <button class="table__button table__button_edit" [routerLink]="['/admin', 'details', category.id, 'edit']">
                     Подивитися (Редагувати)
                 </button>
             </td>
@@ -107,7 +107,7 @@
                 <div *ngFor="let subcategory of arrSubcategories">
                     <ng-container class="table__subcategory-text" *ngIf="category.id === subcategory.categoryId">
                         {{subcategory.name}}
-                        <button class="table__button table__button-open-subcategory" [routerLink]="['/admin', 'subcategory', subcategory.id, 'edit']">
+                        <button class="table__button table__button-open-subcategory" [routerLink]="['/admin', 'details', subcategory.id, 'edit']">
                             Подивитися (Редагувати) /
                         </button>
                         <button class="table__button table__button-delete-subcategory" (click)="deleteSubcategory(subcategory.id)">

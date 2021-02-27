@@ -1,0 +1,180 @@
+<div class="filters-row">
+    <form [formGroup]="filtersForm" class="filters-form">
+        <ul class="filters-list" #filters *ngIf="categories$ | async as categories">
+            <li class="filters-list__item">
+                <label class="filters-list__title"
+                       (click)="filtersItem === 'author' ? filtersItem = false : filtersItem = 'author'">
+                    Автор
+                    <svg [ngClass]="filtersItem === 'author' ? 'chevron_up-icon' : 'chevron_down-icon'">
+                        <use xlink:href="#chevron-icon">
+                        </use>
+                    </svg>
+                </label>
+
+                <div class="filters-list__sublist filters-sublist" *ngIf="filtersItem === 'author'">
+                    <div class="filters-sublist__item" *ngFor="let category of categories">
+                        <label class="filters-sublist__title">{{category.name}}
+                            <input class="checkbox" type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="btn-wrapper">
+                        <button class="btn btn-filter">
+                            Фільтрувати
+                        </button>
+                    </div>
+                </div>
+            </li>
+
+            <li class="filters-list__item">
+                <label class="filters-list__title"
+                       (click)="this.filtersItem === 'publication' ? this.filtersItem = false : this.filtersItem = 'publication'">
+                    Видавництво
+                    <svg [ngClass]="filtersItem === 'publication' ? 'chevron_up-icon' : 'chevron_down-icon'">
+                        <use xlink:href="#chevron-icon">
+                        </use>
+                    </svg>
+                </label>
+
+                <div class="filters-list__sublist filters-sublist" *ngIf="filtersItem === 'publication'">
+                    <div class="filters-sublist__item" *ngFor="let category of categories">
+                        <label class="filters-sublist__title">{{category.name}}
+                            <input class="checkbox" type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="btn-wrapper">
+                        <button class="btn btn-filter">
+                            Фільтрувати
+                        </button>
+                    </div>
+                </div>
+            </li>
+
+            <li class="filters-list__item">
+                <label class="filters-list__title" (click)="this.filtersItem === 'yearOfPublication' ? this.filtersItem = false : this.filtersItem
+                        = 'yearOfPublication'">
+                    Рік видання
+                    <svg [ngClass]="filtersItem === 'yearOfPublication' ? 'chevron_up-icon' : 'chevron_down-icon'">
+                        <use xlink:href="#chevron-icon">
+                        </use>
+                    </svg>
+                </label>
+
+                <div class="filters-list__sublist filters-sublist" *ngIf="filtersItem === 'yearOfPublication'">
+                    <div class="filters-sublist__item" *ngFor="let category of categories">
+                        <label class="filters-sublist__title">{{category.name}}
+                            <input class="checkbox" type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="btn-wrapper">
+                        <button class="btn btn-filter">
+                            Фільтрувати
+                        </button>
+                    </div>
+                </div>
+            </li>
+
+            <li class="filters-list__item">
+                <label class="filters-list__title"
+                       (click)="this.filtersItem === 'binding' ? this.filtersItem = false : this.filtersItem = 'binding'">
+                    Палітурка
+                    <svg [ngClass]="filtersItem === 'binding' ? 'chevron_up-icon' : 'chevron_down-icon'">
+                        <use xlink:href="#chevron-icon">
+                        </use>
+                    </svg>
+                </label>
+
+                <div class="filters-list__sublist filters-sublist" *ngIf="filtersItem === 'binding'">
+                    <div class="filters-sublist__item" *ngFor="let category of categories">
+                        <label class="filters-sublist__title">{{category.name}}
+                            <input class="checkbox" type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="btn-wrapper">
+                        <button class="btn btn-filter">
+                            Фільтрувати
+                        </button>
+                    </div>
+                </div>
+            </li>
+
+            <li class="filters-list__item">
+                <label class="filters-list__title"
+                       (click)="this.filtersItem === 'language' ? this.filtersItem = false : this.filtersItem = 'language'">
+                    Мова
+                    <svg [ngClass]="filtersItem === 'language' ? 'chevron_up-icon' : 'chevron_down-icon'">
+                        <use xlink:href="#chevron-icon">
+                        </use>
+                    </svg>
+                </label>
+
+                <div class="filters-list__sublist filters-sublist" *ngIf="filtersItem === 'language'">
+                    <div class="filters-sublist__item" *ngFor="let category of categories">
+                        <label class="filters-sublist__title">{{category.name}}
+                            <input class="checkbox" type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="btn-wrapper">
+                        <button class="btn btn-filter">
+                            Фільтрувати
+                        </button>
+                    </div>
+                </div>
+            </li>
+
+            <li class="filters-list__item">
+                <label class="filters-list__title"
+                       (click)="this.filtersItem === 'series' ? this.filtersItem = false : this.filtersItem = 'series'">
+                    Серія
+                    <svg [ngClass]="filtersItem === 'series' ? 'chevron_up-icon' : 'chevron_down-icon'">
+                        <use xlink:href="#chevron-icon">
+                        </use>
+                    </svg>
+                </label>
+
+                <div class="filters-list__sublist filters-sublist" *ngIf="filtersItem === 'series'">
+                    <div class="filters-sublist__item" *ngFor="let category of categories">
+                        <label class="filters-sublist__title">{{category.name}}
+                            <input class="checkbox" type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="btn-wrapper">
+                        <button class="btn btn-filter">
+                            Фільтрувати
+                        </button>
+                    </div>
+                </div>
+            </li>
+
+            <li class="filters-list__item">
+                <label class="filters-list__title"
+                       (click)="this.filtersItem === 'price' ? this.filtersItem = false : this.filtersItem = 'price'">
+                    Ціна
+                    <svg [ngClass]="filtersItem === 'price' ? 'chevron_up-icon' : 'chevron_down-icon'">
+                        <use xlink:href="#chevron-icon">
+                        </use>
+                    </svg>
+                </label>
+
+                <div class="filters-list__sublist filters-sublist" *ngIf="filtersItem === 'price'">
+                    <div class="filters-sublist__item" *ngFor="let category of categories">
+                        <label class="filters-sublist__title">{{category.name}}
+                            <input class="checkbox" type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="btn-wrapper">
+                        <button class="btn btn-filter">
+                            Фільтрувати
+                        </button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </form>
+</div>

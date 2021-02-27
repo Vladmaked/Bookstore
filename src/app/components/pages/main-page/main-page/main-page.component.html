@@ -20,31 +20,31 @@
                     Книги зі знижками
                 </button>
             </div>
-            <div class="main-goods__row">
-                <ul class="main-goods__grid" *ngIf="product$ | async as products; else loading">
+            <div class="main-goods__wrapper">
+                <div class="main-goods__grid" *ngIf="products$ | async as products; else loading">
                     <ng-container *ngIf="selectedTab === 'best'">
-                        <app-product class="main-goods__cell"
-                                     *ngFor="let product of products"
-                                     [product]="product">
-                        </app-product>
+                        <app-products-list
+                                [products]="products"
+                                class="product-list">
+                        </app-products-list>
                     </ng-container>
                     <ng-container *ngIf="selectedTab === 'rec'">
-                        <app-product class="main-goods__cell"
-                                     *ngFor="let product of products"
-                                     [product]="product">
-                        </app-product>
+                        <app-products-list
+                                [products]="products"
+                                class="product-list">
+                        </app-products-list>
                     </ng-container>
                     <ng-container *ngIf="selectedTab === 'disc'">
-                        <app-product class="main-goods__cell"
-                                     *ngFor="let product of products"
-                                     [product]="product">
-                        </app-product>
+                        <app-products-list
+                                [products]="products"
+                                class="product-list">
+                        </app-products-list>
                     </ng-container>
 
-                    <a href="" class="to-all-items-link link">
+                    <button class="to-all-items-link link">
                         Показати всі
-                    </a>
-                </ul>
+                    </button>
+                </div>
                 <ng-template #loading>
                     <p>Завантаження...</p>
                 </ng-template>

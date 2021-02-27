@@ -1,9 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ProductService} from '../../shared/services/product.service';
 import {Subscription} from 'rxjs';
-import {Category, Subcategory} from '../../shared/interfaces';
-import {CategoryService} from '../../shared/services/category.service';
+import {CategoryService, ProductService} from '../../services';
+import {Category, Subcategory} from '../../models';
 
 @Component({
   selector: 'app-add-category-page',
@@ -87,7 +86,7 @@ export class CategoryDashboardPageComponent implements OnInit, OnDestroy {
 
     this.uCSub = this.categoryService.updateCategory({
       ...this.category,
-      iSubcategory: true
+      isSubcategory: true
     }).subscribe();
   }
 
@@ -123,23 +122,24 @@ export class CategoryDashboardPageComponent implements OnInit, OnDestroy {
 
 
   updateCategoryProperty(id: string) {
-    this.uCPSub = this.categoryService.getSubcategoryById(id).subscribe((subcategory: Subcategory) => {
-
-      this.arrSubcategories = this.arrSubcategories.filter(subcategory1 => subcategory1.id !== id);
-
-      let isSubcategory = false;
-      this.arrSubcategories.forEach((subcategory2: Subcategory) => {
-        if (subcategory2.categoryId === subcategory.categoryId) {
-          isSubcategory = true;
+    this.uCPSub = this.categoryService.getSubcategoryById(id)
+      .subscribe((subcategory: Subcategory) => {
+        this.arrSubcategories = this.arrSubcategories.filter((subcategory1: Subcategory) => subcategory1.id !== id);
+        let isSubcategory = false;
+        this.arrSubcategories.forEach((subcategory2: Subcategory) => {
+          if (subcategory2.categoryId === subcategory.categoryId) {
+            isSubcategory = true;
+            console.log(isSubcategory);
+          }
+        });
+        if (!isSubcategory) {
+          console.log(isSubcategory);
+          this.categoryService.updateCategory({
+            ...this.category,
+            isSubcategory: false
+          }).subscribe();
         }
       });
-      if (!isSubcategory) {
-        this.categoryService.updateCategory({
-          ...this.category,
-          iSubcategory: false
-        }).subscribe();
-      }
-    });
   }
 
 

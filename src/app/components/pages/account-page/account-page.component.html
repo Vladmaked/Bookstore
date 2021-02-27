@@ -1,23 +1,38 @@
 <div class="container">
-    <app-breadcrumb></app-breadcrumb>
+    <app-breadcrumbs></app-breadcrumbs>
 
     <div class="account__wrapper">
 
         <div class="account__navigation account__navigation_small" *ngIf="open">
             <nav class="navigation">
-                <a class="link link_navigation" [routerLink]="['/account', 'my-orders']" routerLinkActive="active" (click)="open = false">
+                <a class="link link_navigation"
+                   [routerLink]="['/account', 'my-orders']"
+                   routerLinkActive="active"
+                   (click)="open = false">
                     Мої замовлення
                 </a>
-                <a class="link link_navigation" [routerLink]="['/account', 'my-returns']" routerLinkActive="active" (click)="open = false">
+                <a class="link link_navigation"
+                   [routerLink]="['/account', 'my-returns']"
+                   routerLinkActive="active"
+                   (click)="open = false">
                     Мої повернення
                 </a>
-                <a class="link link_navigation" [routerLink]="['/account', 'my-data']" routerLinkActive="active" (click)="open = false">
+                <a class="link link_navigation"
+                   [routerLink]="['/account', 'my-data']"
+                   routerLinkActive="active"
+                   (click)="open = false">
                     Мої дані
                 </a>
-                <a class="link link_navigation" [routerLink]="['/account', 'my-address']" routerLinkActive="active" (click)="open = false">
+                <a class="link link_navigation"
+                   [routerLink]="['/account', 'my-address']"
+                   routerLinkActive="active"
+                   (click)="open = false">
                     Моя адреса
                 </a>
-                <a class="link link_navigation" [routerLink]="['/account', 'payment-account-data']" routerLinkActive="active" (click)="open = false">
+                <a class="link link_navigation"
+                   [routerLink]="['/account', 'payment-account-data']"
+                   routerLinkActive="active"
+                   (click)="open = false">
                     Дані рахунку
                 </a>
 
@@ -27,19 +42,34 @@
 
         <div class="account__navigation account__navigation_large">
             <nav class="navigation">
-                <a class="link link_navigation" [routerLink]="['/account', 'my-orders']" routerLinkActive="active" (click)="open = false">
+                <a class="link link_navigation"
+                   [routerLink]="['/account', 'my-orders']"
+                   routerLinkActive="active"
+                   (click)="open = false">
                     Мої замовлення
                 </a>
-                <a class="link link_navigation" [routerLink]="['/account', 'my-returns']" routerLinkActive="active" (click)="open = false">
+                <a class="link link_navigation"
+                   [routerLink]="['/account', 'my-returns']"
+                   routerLinkActive="active"
+                   (click)="open = false">
                     Мої повернення
                 </a>
-                <a class="link link_navigation" [routerLink]="['/account', 'my-data']" routerLinkActive="active" (click)="open = false">
+                <a class="link link_navigation"
+                   [routerLink]="['/account', 'my-data']"
+                   routerLinkActive="active"
+                   (click)="open = false">
                     Мої дані
                 </a>
-                <a class="link link_navigation" [routerLink]="['/account', 'my-address']" routerLinkActive="active" (click)="open = false">
+                <a class="link link_navigation"
+                   [routerLink]="['/account', 'my-address']"
+                   routerLinkActive="active"
+                   (click)="open = false">
                     Моя адреса
                 </a>
-                <a class="link link_navigation" [routerLink]="['/account', 'payment-account-data']" routerLinkActive="active" (click)="open = false">
+                <a class="link link_navigation"
+                   [routerLink]="['/account', 'payment-account-data']"
+                   routerLinkActive="active"
+                   (click)="open = false">
                     Дані рахунку
                 </a>
 

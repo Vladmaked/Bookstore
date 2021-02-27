@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {OrderService} from '../../../shared/services/order.service';
-import {ProductService} from '../../../shared/services/product.service';
-import {CartService} from '../../../shared/services/cart.service';
-import {CartItem, Order} from '../../../shared/interfaces';
 import {Router} from '@angular/router';
+import {CartItem, Order} from '../../../models';
+import {CartService, OrderService, ProductService} from '../../../services';
 
 @Component({
   selector: 'app-order-page',
@@ -42,7 +40,7 @@ export class OrderPageComponent implements OnInit {
   }
 
   total() {
-    return this.productList.reduce((sum, cartItem) => sum += cartItem.quantity, 0);
+    return this.productList.reduce((sum, cartItem) => cartItem.quantity, 0);
   }
 
   createFormGroup() {

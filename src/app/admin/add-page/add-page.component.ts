@@ -1,10 +1,9 @@
 import {Component, HostBinding, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ProductService} from '../../shared/services/product.service';
 import {routingAnimation} from '../../shared/animations/routing-animation';
 import {Subscription} from 'rxjs';
-import {CategoryService} from '../../shared/services/category.service';
-import {Category, Product, Subcategory} from '../../shared/interfaces';
+import {Category, Product, Subcategory} from '../../models';
+import {CategoryService, ProductService} from '../../services';
 
 @Component({
   selector: 'app-add-page',

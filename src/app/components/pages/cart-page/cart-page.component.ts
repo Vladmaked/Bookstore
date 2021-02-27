@@ -1,7 +1,7 @@
 import {Component, HostBinding, OnInit} from '@angular/core';
 import {routingAnimation} from '../../../shared/animations/routing-animation';
-import {CartItem} from '../../../shared/interfaces';
-import {CartService} from '../../../shared/services/cart.service';
+import {CartItem} from '../../../models';
+import {CartService} from '../../../services';
 
 @Component({
   selector: 'app-cart-page',
@@ -30,9 +30,11 @@ export class CartPageComponent implements OnInit {
 
   delete(cartItem) {
     this.totalPrice -= +cartItem.product.price * cartItem.quantity;
+    this.cartService.totalPrice = this.totalPrice;
     this.cartService.totalPrice$.next(this.totalPrice);
     this.productList = this.productList.filter(({product}) => product.id !== cartItem.product.id);
     this.cartService.productList = this.productList;
+    this.cartService.productList$.next(this.productList);
   }
 
   modelChanged() {

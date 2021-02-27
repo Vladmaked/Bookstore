@@ -1,15 +1,22 @@
-.header {
-  height: 150px;
+:host {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
-@media only screen and (max-width: 992px) {
-  .header {
-    height: 115px;
-  }
+.layout__header {
+  flex: 0 1 auto;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .2);
 }
 
-@media only screen and (max-width: 768px) {
-  .header {
-    height: 60px;
-  }
+.layout__content {
+  flex: 1 1 auto;
+}
+
+.layout__footer {
+  flex: 0 1 auto;
 }

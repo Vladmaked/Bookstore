@@ -17,8 +17,8 @@
                     </ng-container>
                 </select>
 
-                <ng-container *ngIf="form.get('category').touched && form.get('category').invalid">
-                    <small class="validation" *ngIf="form.get('category').errors.required">
+                <ng-container *ngIf="form.get('details').touched && form.get('details').invalid">
+                    <small class="validation" *ngIf="form.get('details').errors.required">
                         Оберіть категорію товару
                     </small>
                 </ng-container>
@@ -32,7 +32,7 @@
 
                 <select class="form__select" formControlName="subcategory" id="subcategory">
                     <ng-container *ngFor="let subcategory of arrSubcategories">
-                        <ng-container *ngIf="subcategory.categoryId === form.get('category').value">
+                        <ng-container *ngIf="subcategory.categoryId === form.get('details').value">
                             <option class="form__option" [value]="subcategory.id">
                                 {{subcategory.name}}
                             </option>
@@ -40,8 +40,8 @@
                     </ng-container>
                 </select>
 
-                <ng-container *ngIf="form.get('subcategory').touched && form.get('subcategory').invalid">
-                    <small class="validation" *ngIf="form.get('subcategory').errors.required">
+                <ng-container *ngIf="form.get('details').touched && form.get('details').invalid">
+                    <small class="validation" *ngIf="form.get('details').errors.required">
                         Оберіть підкатегорію товару
                     </small>
                 </ng-container>

@@ -4,34 +4,21 @@ import {registerLocaleData} from '@angular/common';
 import localeUk from '@angular/common/locales/uk';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './components/app.component';
-import {HeaderComponent} from './components/header/header.component';
-import {FooterComponent} from './components/footer/footer.component';
-import {CatalogPageComponent} from './components/pages/catalog-page/catalog-page.component';
+import {FooterComponent, HeaderComponent} from './components';
 import {MainPageComponent} from './components/pages/main-page/main-page/main-page.component';
 import {MainSliderComponent} from './components/pages/main-page/main-slider/main-slider.component';
-import {ProductPageComponent} from './components/pages/product-page/product-page.component';
 import {LoginRegistrationPageComponent} from './components/pages/login-registration-page/login-registration-page.component';
 import {AccountPageComponent} from './components/pages/account-page/account-page.component';
 import {SearchResultComponent} from './components/pages/search-result/search-result.component';
 import {ErrorPageComponent} from './components/pages/error-page/error-page.component';
-import {BreadcrumbComponent} from './components/breadcrumb/breadcrumb.component';
 import {MainLayoutComponent} from './shared/main-layout/main-layout.component';
 import {CartPageComponent} from './components/pages/cart-page/cart-page.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import {QuillModule} from 'ngx-quill';
-import {AuthInterceptor} from './shared/auth.interceptor';
-import {ProductComponent} from './components/product/product.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {SortingPipe} from './shared/pipes/sorting.pipe';
 import {AdminModule} from './admin/admin.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {OrderPageComponent} from './components/pages/order-page/order-page.component';
-import {CategoriesPageComponent} from './components/pages/categories-page/categories-page.component';
-import {CategoryPageComponent} from './components/pages/category-page/category-page.component';
-import {SubcategoriesPageComponent} from './components/pages/subcategories-page/subcategories-page.component';
-import {SubcategoryPageComponent} from './components/pages/subcategory-page/subcategory-page.component';
-import {CategoryComponent} from './components/category/category.component';
-import {SubcategoryComponent} from './components/subcategory/subcategory.component';
 import {DeliveryAndPaymentPageComponent} from './components/pages/help-pages/delivery-and-payment-page/delivery-and-payment-page.component';
 import {HelpPageComponent} from './components/pages/help-page/help-page.component';
 import {ContactsPageComponent} from './components/pages/help-pages/contacts-page/contacts-page.component';
@@ -44,15 +31,24 @@ import {ConsumerSupportPageComponent} from './components/pages/help-pages/consum
 import {ClaimsPageComponent} from './components/pages/help-pages/claims-page/claims-page.component';
 import {PrivacyPolicyPageComponent} from './components/pages/help-pages/privacy-policy-page/privacy-policy-page.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
-import {environment} from '../environments/environment';
+import {fbDbEnvironment} from '../environments/environment';
 import {SharedModule} from './shared/shared.module';
-import {AuthService} from './shared/services/auth.service';
 import {MyOrdersPageComponent} from './components/pages/account-pages/my-orders-page/my-orders-page.component';
 import {MyDataPageComponent} from './components/pages/account-pages/my-data-page/my-data-page.component';
 import {MyAddressPageComponent} from './components/pages/account-pages/my-address-page/my-address-page.component';
 import {MyReturnsPageComponent} from './components/pages/account-pages/my-returns-page/my-returns-page.component';
 import {PaymentAccountDataPageComponent} from './components/pages/account-pages/payment-account-data-page/payment-account-data-page.component';
-import {FiltersComponent} from './components/pages/filters/filters.component';
+import {appServices} from './services';
+import {appPipes} from './shared/pipes';
+import {
+  BreadcrumbsModule,
+  CatalogModule,
+  CategoriesListModule,
+  ProductsDetailsModule,
+  ProductsListModule,
+  SubcategoriesDetailsModule
+} from './modules';
+import {SubcategoriesListModule} from './modules/subcategories/list';
 
 registerLocaleData(localeUk, 'uk');
 
@@ -62,26 +58,15 @@ registerLocaleData(localeUk, 'uk');
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    CatalogPageComponent,
     MainPageComponent,
     MainSliderComponent,
-    ProductPageComponent,
     LoginRegistrationPageComponent,
     AccountPageComponent,
     SearchResultComponent,
     ErrorPageComponent,
-    BreadcrumbComponent,
     MainLayoutComponent,
     CartPageComponent,
-    ProductComponent,
-    SortingPipe,
     OrderPageComponent,
-    CategoriesPageComponent,
-    CategoryPageComponent,
-    SubcategoriesPageComponent,
-    SubcategoryPageComponent,
-    CategoryComponent,
-    SubcategoryComponent,
     DeliveryAndPaymentPageComponent,
     HelpPageComponent,
     ContactsPageComponent,
@@ -98,11 +83,10 @@ registerLocaleData(localeUk, 'uk');
     MyAddressPageComponent,
     MyReturnsPageComponent,
     PaymentAccountDataPageComponent,
-    FiltersComponent
+    ...appPipes
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
@@ -110,19 +94,31 @@ registerLocaleData(localeUk, 'uk');
     AdminModule,
     FormsModule,
     SharedModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: fbDbEnvironment.production}),
+    ProductsListModule,
+    SubcategoriesListModule,
+    CategoriesListModule,
+    CatalogModule,
+    AppRoutingModule,
+    BreadcrumbsModule,
+    ProductsDetailsModule,
+    SubcategoriesDetailsModule
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      multi: true,
-      useClass: AuthInterceptor
-    },
+    // {
+      // provide: HTTP_INTERCEPTORS,
+      // multi: true,
+      // useClass: AuthInterceptor
+    // },
     {
       provide: LOCALE_ID,
       useValue: 'uk'
     },
-    AuthService
+    ...appServices,
+    ...appPipes
+  ],
+  exports: [
+    ...appPipes
   ],
   bootstrap: [AppComponent]
 })

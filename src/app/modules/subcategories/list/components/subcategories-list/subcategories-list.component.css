@@ -1,0 +1,8 @@
+.subcategory-list {
+  display: flex;
+}
+
+.subcategory-list__item {
+  height: 100px;
+  width: 100%;
+}

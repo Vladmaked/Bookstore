@@ -1,19 +1,13 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
-import {CatalogPageComponent} from './components/pages/catalog-page/catalog-page.component';
 import {AccountPageComponent} from './components/pages/account-page/account-page.component';
 import {LoginRegistrationPageComponent} from './components/pages/login-registration-page/login-registration-page.component';
 import {MainPageComponent} from './components/pages/main-page/main-page/main-page.component';
 import {MainLayoutComponent} from './shared/main-layout/main-layout.component';
-import {ProductPageComponent} from './components/pages/product-page/product-page.component';
 import {CartPageComponent} from './components/pages/cart-page/cart-page.component';
 import {OrderPageComponent} from './components/pages/order-page/order-page.component';
 import {SearchResultComponent} from './components/pages/search-result/search-result.component';
-import {CategoriesPageComponent} from './components/pages/categories-page/categories-page.component';
-import {CategoryPageComponent} from './components/pages/category-page/category-page.component';
-import {SubcategoriesPageComponent} from './components/pages/subcategories-page/subcategories-page.component';
-import {SubcategoryPageComponent} from './components/pages/subcategory-page/subcategory-page.component';
 import {DeliveryAndPaymentPageComponent} from './components/pages/help-pages/delivery-and-payment-page/delivery-and-payment-page.component';
 import {HelpPageComponent} from './components/pages/help-page/help-page.component';
 import {ContactsPageComponent} from './components/pages/help-pages/contacts-page/contacts-page.component';
@@ -31,6 +25,8 @@ import {MyReturnsPageComponent} from './components/pages/account-pages/my-return
 import {MyDataPageComponent} from './components/pages/account-pages/my-data-page/my-data-page.component';
 import {MyAddressPageComponent} from './components/pages/account-pages/my-address-page/my-address-page.component';
 import {PaymentAccountDataPageComponent} from './components/pages/account-pages/payment-account-data-page/payment-account-data-page.component';
+import {CategoriesDetailsComponent} from './modules/categories/details';
+import {CatalogComponent, ProductsDetailsComponent, SubcategoriesDetailsComponent} from './modules';
 
 const routes: Routes = [
     {
@@ -38,7 +34,7 @@ const routes: Routes = [
         {path: '', redirectTo: '/', pathMatch: 'full'},
         {path: '', component: MainPageComponent},
         {path: 'cart', component: CartPageComponent, data: {breadcrumb: 'Кошик'}},
-        {path: 'catalog', component: CatalogPageComponent, data: {breadcrumb: 'Каталог'}},
+        {path: 'catalog', component: CatalogComponent, data: {breadcrumb: 'Каталог'}},
         {
           path: 'catalog',
           data: {
@@ -46,15 +42,8 @@ const routes: Routes = [
           },
           children: [
             {
-              path: 'categories',
-              component: CategoriesPageComponent,
-              data: {
-                breadcrumb: 'Категорії'
-              }
-            },
-            {
               path: ':category',
-              component: CategoryPageComponent,
+              component: CategoriesDetailsComponent,
               data: {
                 breadcrumb: ''
               }
@@ -66,15 +55,8 @@ const routes: Routes = [
               },
               children: [
                 {
-                  path: 'subcategories',
-                  component: SubcategoriesPageComponent,
-                  data: {
-                    breadcrumb: 'Підкатегорії'
-                  }
-                },
-                {
                   path: ':subcategory',
-                  component: SubcategoryPageComponent,
+                  component: SubcategoriesDetailsComponent,
                   data: {
                     breadcrumb: ''
                   }
@@ -83,12 +65,11 @@ const routes: Routes = [
             }
           ]
         },
-        {path: 'catalog-author', component: CatalogPageComponent, data: {breadcrumb: 'Каталог'}},
         {
           path: 'product', data: {breadcrumb: ''}, children: [
             {
               path: ':id',
-              component: ProductPageComponent,
+              component: ProductsDetailsComponent,
               data: {
                 breadcrumb: ''
               }
@@ -152,7 +133,11 @@ const routes: Routes = [
           ]
         },
         {path: 'search', component: SearchResultComponent},
-        {path: 'login-registration-page', component: LoginRegistrationPageComponent, data: {breadcrumb: 'Вхід та реєстрація'}},
+        {
+          path: 'login-registration-page',
+          component: LoginRegistrationPageComponent,
+          data: {breadcrumb: 'Вхід та реєстрація'}
+        },
         {
           path: 'account',
           component: AccountPageComponent,
@@ -173,14 +158,14 @@ const routes: Routes = [
             },
             {
               path: 'payment-account-data', component: PaymentAccountDataPageComponent, data: {breadcrumb: 'Дані рахунку'}
-            },
+            }
           ]
         }
       ]
     },
     {
-      path: 'admin', loadChildren:
-        () => import('./admin/admin.module').then(m => m.AdminModule)
+      path: 'admin1',
+      loadChildren: () => import('./modules/admin').then(m => m.AdminModule)
     }
   ]
 ;

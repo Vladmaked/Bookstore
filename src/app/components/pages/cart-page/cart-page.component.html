@@ -2,7 +2,7 @@
   <div class="cart__wrapper" *ngIf="productList.length > 0; else empty">
     <div class="cart__body">
       <div class="breadcrumb">
-        <app-breadcrumb></app-breadcrumb>
+        <app-breadcrumbs></app-breadcrumbs>
       </div>
       <h2 class="cart__title">
         Кошик
@@ -123,7 +123,7 @@
 
   <ng-template #empty>
 
-    <app-breadcrumb></app-breadcrumb>
+    <app-breadcrumbs></app-breadcrumbs>
 
     <h2 class="cart__empty-title">Ваш кошик порожній</h2>
     <p class="cart__empty-text">Якщо ви додали товари в кошик під час минулого візиту,<br> спробуйте увійти в ваш акаунт.</p>

@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="subcategory__header">
+        <app-breadcrumbs></app-breadcrumbs>
+        <div [class.active]="isActivePopupFilters" class="subcategory__popup-filters-backdrop"></div>
+<!--        <app-popup-filters *ngIf="isActivePopupFilters" class="popup-filters">-->
+<!--        </app-popup-filters>-->
+        <div class="filters-wrapper">
+            <ul class="sorting-filters">
+                <li class="filters-list__item">
+                    <label class="filters-list__title"
+                           (click)="this.filtersItem === 'sorting' ? this.filtersItem = false : this.filtersItem = 'sorting'">
+                        Спочатку дешевші
+                    </label>
+                </li>
+            </ul>
+        </div>
+        <div class="btn-filter-row">
+            <button class="btn-filter-row__btn" (click)="activatePopupFilters()">
+                Фільтр
+            </button>
+        </div>
+    </div>
+<!--    <app-filters></app-filters>-->
+    <app-products-list
+            *ngIf="(products$ | async) as products; else loading"
+            [products]="products"
+            class="product-list">
+    </app-products-list>
+
+
+    <ng-template #loading>
+        <p>Завантаження...</p>
+    </ng-template>
+</div>

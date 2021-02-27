@@ -1,8 +1,8 @@
 import {Component, HostBinding, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {OrderService} from '../../shared/services/order.service';
 import {routingAnimation} from '../../shared/animations/routing-animation';
-import {Order} from '../../shared/interfaces';
+import {Order} from '../../models';
+import {OrderService} from '../../services';
 
 @Component({
   selector: 'app-orders-page',

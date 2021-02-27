@@ -1,10 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
-import {CategoryService} from '../../shared/services/category.service';
 import {switchMap} from 'rxjs/operators';
-import {Category} from '../../shared/interfaces';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
+import {CategoryService} from '../../services';
+import {Category} from '../../models';
 
 @Component({
   selector: 'app-category-edit-page',

@@ -34,6 +34,12 @@
   text-align: center;
 }
 
+.product-list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(316px, 316px));
+  grid-gap: 10px;
+}
 
 @media only screen and (max-width: 1600px) {
   .main-goods__cell {

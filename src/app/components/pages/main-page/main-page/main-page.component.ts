@@ -1,6 +1,8 @@
 import {Component, HostBinding, OnInit} from '@angular/core';
 import {routingAnimation} from '../../../../shared/animations/routing-animation';
-import {ProductService} from '../../../../shared/services/product.service';
+import {ProductService} from '../../../../services';
+import {Observable} from 'rxjs';
+import {Product} from '../../../../models';
 
 @Component({
   selector: 'app-main-page',
@@ -11,7 +13,7 @@ import {ProductService} from '../../../../shared/services/product.service';
 export class MainPageComponent implements OnInit {
   @HostBinding('@routingAnimation') private routing;
 
-  product$;
+  products$: Observable<Product[]>;
   goods;
 
   selectedTab = 'best';
@@ -24,7 +26,7 @@ export class MainPageComponent implements OnInit {
   }
 
   getProducts$() {
-    this.product$ = this.productService.getAllProducts();
+    this.products$ = this.productService.getAllProducts();
   }
 
 

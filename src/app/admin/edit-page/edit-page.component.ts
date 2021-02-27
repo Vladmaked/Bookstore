@@ -1,12 +1,11 @@
 import {Component, HostBinding, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ProductService} from '../../shared/services/product.service';
 import {switchMap} from 'rxjs/operators';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Category, Product, Subcategory} from '../../shared/interfaces';
 import {routingAnimation} from '../../shared/animations/routing-animation';
-import {CategoryService} from '../../shared/services/category.service';
 import {Observable, Subscription} from 'rxjs';
+import {Category, Product, Subcategory} from '../../models';
+import {CategoryService, ProductService} from '../../services';
 
 @Component({
   selector: 'app-edit-page',
@@ -42,7 +41,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
       })
     ).subscribe(product => {
       this.product = product;
-      console.log('this.product', this.product);
+      console.log('this.details', this.product);
       this.form = new FormGroup({
         category: new FormControl(product.category, Validators.required),
         subcategory: new FormControl(product.subcategory),
@@ -88,7 +87,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
       price: this.form.value.price,
       date: new Date()
     }).subscribe(res => {
-      console.log('update(product)', res);
+      console.log('update(details)', res);
       this.submitted = false;
       this.router.navigate(['/admin', 'dashboard']);
     });
@@ -110,7 +109,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
   checkSubcategoryByCategoryId() {
     console.log(this.form.get('subcategory').value);
     this.gCBSub = this.categoryService.getCategoryById(this.form.get('category').value).subscribe((category: Category) => {
-      this.iSubcategory = category.iSubcategory;
+      this.iSubcategory = category.isSubcategory;
     });
   }
 }

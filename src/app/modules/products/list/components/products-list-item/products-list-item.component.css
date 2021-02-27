@@ -1,0 +1,147 @@
+.product {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 16px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  transition: all .35s ease;
+}
+
+.main-goods__title {
+  display: block;
+  height: 28px;
+  overflow: hidden;
+  text-decoration: none;
+  font-weight: 500;
+  text-align: center;
+  color: #000000;
+  margin-top: 15px;
+}
+
+.main-goods__author {
+  display: block;
+  height: 28px;
+  overflow: hidden;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #545454;
+}
+
+.main-goods__buy-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.main-goods__price {
+  font-size: 24px;
+  color: darkslategrey;
+  font-weight: 600;
+}
+
+.catalog-goods__image >>> p {
+  height: 250px;
+  margin: auto;
+}
+
+.catalog-goods__image >>> img {
+  max-height: 100%;
+  max-width: 100%;
+  margin: auto;
+}
+
+.btn__add-product-to-cart {
+  cursor: pointer;
+  background-color: darkslategrey;
+  display: flex;
+  align-items: center;
+  border-radius: 25px;
+  padding: 8px 17px;
+  color: white;
+  font-size: 12px;
+}
+
+.btn__add-product-to-cart:hover {
+  background-color: rgb(59, 99, 99);
+}
+
+.shopping-cart-icon {
+  width: 17px;
+  height: 17px;
+  fill: white;
+  margin-right: 8px;
+}
+
+
+@media only screen and (min-width: 992px) {
+  .product:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .catalog-goods__image {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .catalog-goods__image >>> p {
+    width: 100%;
+    height: 160px;
+  }
+
+  .product__link {
+    display: flex;
+    min-width: 40%;
+    margin-right: 10px;
+  }
+
+  .main-goods__title {
+    margin-top: 0;
+    text-align: left;
+  }
+
+  .main-goods__author {
+    display: flex;
+  }
+
+  .product__description {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .main-goods__buy-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .main-goods__price {
+    margin-bottom: 10px;
+  }
+
+  .product {
+    flex-direction: row;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .main-goods__price {
+    font-size: 16px;
+  }
+
+  .main-goods__buy-row {
+    display: flex;
+    text-align: right;
+    padding: 0;
+  }
+}
