@@ -19,10 +19,11 @@ const getImage = catchAsync(async (req, res, next) => {
 });
 
 const resizeAndSave = catchAsync(async (req, res, next) => {
-  outputPath = `${PATH}/small/${req.file.filename}`;
+  if (req.file) {
+    outputPath = `${PATH}/small/${req.file.filename}`;
 
-  await sharp(req.file.path).resize({ height: SMALL_HEIGHT }).png().toFile(outputPath);
-
+    await sharp(req.file.path).resize({ height: SMALL_HEIGHT }).webp().toFile(outputPath);
+  }
   next();
 });
 

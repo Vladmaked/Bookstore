@@ -16,7 +16,7 @@ const multerStorage = multer.diskStorage({
   },
   filename: async function (req, file, cb) {
     const prod = await Product.findById(req.params.id).select('photo');
-    const photoName = prod?.photo ? prod.photo : `${uuid.v4()}.png`;
+    const photoName = prod?.photo ? prod.photo : `${uuid.v4()}.webp`;
 
     cb(null, photoName);
   },
@@ -67,7 +67,7 @@ const getProduct = catchAsync(async (req, res, next) => {
 const createProduct = catchAsync(async (req, res, next) => {
   const productObj = {
     ...req.body,
-    photo: req.file.filename,
+    photo: !req.body.photo ? 'stub.webp' : req.file?.filename,
   };
 
   const product = await Product.create(productObj);
@@ -80,7 +80,7 @@ const updateProduct = catchAsync(async (req, res, next) => {
 
   const productObj = {
     ...req.body,
-    photo: req.file.filename,
+    photo: req.file?.filename,
   };
 
   const product = await Product.findByIdAndUpdate(req.params.id, productObj, {

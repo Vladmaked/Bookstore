@@ -30,15 +30,16 @@ const productSchema = new Schema({
 productSchema.pre('findOneAndDelete', async function (next) {
   const prod = await this.findOne();
 
-  try {
-    await Promise.all([
-      unlinkAsync(`${IMG_PATH}/original/${prod.photo}`),
-      unlinkAsync(`${IMG_PATH}/small/${prod.photo}`),
-    ]);
-  } catch (er) {
-    console.log('Error on photo delete: ', er);
+  if (prod.photo) {
+    try {
+      await Promise.all([
+        unlinkAsync(`${IMG_PATH}/original/${prod.photo}`),
+        unlinkAsync(`${IMG_PATH}/small/${prod.photo}`),
+      ]);
+    } catch (er) {
+      console.log('Error on photo delete: ', er);
+    }
   }
-
   next();
 });
 
