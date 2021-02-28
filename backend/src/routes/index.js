@@ -4,6 +4,7 @@ const { getAuthRouter } = require('./authRoute');
 const { getCategoriesRouter } = require('./categoriesRoute');
 const { getSubcategoriesRouter } = require('./subcategoriesRoute');
 const { getImgRouter } = require('./imgRoute');
+const { getOrdersRouter } = require('./orderRoute');
 
 module.exports = {
   getUsersRouter,
@@ -12,4 +13,5 @@ module.exports = {
   getCategoriesRouter,
   getSubcategoriesRouter,
   getImgRouter,
+  getOrdersRouter,
 };

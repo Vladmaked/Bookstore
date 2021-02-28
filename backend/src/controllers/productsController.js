@@ -6,8 +6,8 @@ const APIFeatures = require('../utils/ApiFeatures');
 const Format = require('string-format');
 const multer = require('multer');
 const uuid = require('uuid');
+const { DEFAULT_PAGE_SIZE } = require('../config');
 
-const DEFAULT_PAGE_SIZE = 1000;
 const PHOTOS_PATH = './data/img/original';
 
 const multerStorage = multer.diskStorage({
